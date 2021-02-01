@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -29,5 +31,13 @@ public class Student {
 
     private String neptun_code;
 
+    @OneToMany
+    private List<Konzultacio> konzultacioList;
+
+    @OneToMany
+    private List<Eloadas> eloadasList;
+
+    @OneToMany
+    private List<Gyakorlat> gyakorlatList;
 
 }
