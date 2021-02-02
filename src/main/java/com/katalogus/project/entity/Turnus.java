@@ -24,4 +24,9 @@ public class Turnus {
 
     private Integer turnus_number;
 
+    private Double lecture;
+
+    private Double practice;
+
+    private Double consultation;
 }
