@@ -36,49 +36,4 @@ public class ClassesProvider {
 
         return classes;
     }
-
-    public Boolean saveNewEloadas(Eloadas eloadas) {
-        Object response = eloadasRepository.save(eloadas);
-        return response.getClass().equals(Eloadas.class);
-    }
-
-    public Boolean saveNewKonzultacio(Konzultacio konzultacio) {
-        Object response = konzultacioRepository.save(konzultacio);
-        return response.getClass().equals(Konzultacio.class);
-    }
-
-    public Boolean saveNewGyakorlat(Gyakorlat gyakorlat) {
-        Object response = gyakorlatRepository.save(gyakorlat);
-        return response.getClass().equals(Gyakorlat.class);
-    }
-
-    public Boolean updateEloadasById(Eloadas eloadas, Long eloadasId) {
-        eloadas.setId(eloadasId);
-        Object response = eloadasRepository.save(eloadas);
-        return response.getClass().equals(Eloadas.class);
-    }
-
-    public Boolean updateKonzultacioById(Konzultacio konzultacio, Long konzultacioId) {
-        konzultacio.setId(konzultacioId);
-        Object response = konzultacioRepository.save(konzultacio);
-        return response.getClass().equals(Konzultacio.class);
-    }
-
-    public Boolean updateGyakorlatById(Gyakorlat gyakorlat, Long gyakorlatId) {
-        gyakorlat.setId(gyakorlatId);
-        Object response = gyakorlatRepository.save(gyakorlat);
-        return response.getClass().equals(Gyakorlat.class);
-    }
-
-    public void deleteEloadasById(Long eloadasId) {
-        eloadasRepository.deleteById(eloadasId);
-    }
-
-    public void deleteKonzultacioById(Long konzultacioId) {
-        konzultacioRepository.deleteById(konzultacioId);
-    }
-
-    public void deleteGyakorlatById(Long gyakorlatId) {
-        gyakorlatRepository.deleteById(gyakorlatId);
-    }
 }

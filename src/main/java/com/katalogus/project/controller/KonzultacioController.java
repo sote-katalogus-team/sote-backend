@@ -2,6 +2,7 @@ package com.katalogus.project.controller;
 
 import com.katalogus.project.entity.Konzultacio;
 import com.katalogus.project.service.ClassesProvider;
+import com.katalogus.project.service.KonzultacioProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 public class KonzultacioController {
 
     @Autowired
-    ClassesProvider classesProvider;
+    KonzultacioProvider konzultacioProvider;
 
     @PostMapping("/add")
     public ResponseEntity saveNewKonzultacio(@RequestBody Konzultacio konzultacio) {
-        Boolean successful = classesProvider.saveNewKonzultacio(konzultacio);
+        Boolean successful = konzultacioProvider.saveNewKonzultacio(konzultacio);
         if (successful) {
             return ResponseEntity.ok("New Konzultacio created successfully");
         } else {
@@ -25,7 +26,7 @@ public class KonzultacioController {
 
     @PutMapping("/{konzultacio_id}/update")
     public ResponseEntity updateKonzultacioById(@RequestBody Konzultacio konzultacio, @PathVariable("konzultacio_id") Long konzultacioId) {
-        Boolean successful = classesProvider.updateKonzultacioById(konzultacio, konzultacioId);
+        Boolean successful = konzultacioProvider.updateKonzultacioById(konzultacio, konzultacioId);
         if (successful) {
             return ResponseEntity.ok("Konzultacio updated successfully");
         } else {
@@ -35,6 +36,6 @@ public class KonzultacioController {
 
     @DeleteMapping("/{konzultacio_id}/delete")
     public void deleteKonzultacioById(@PathVariable("konzultacio_id") Long konzultacioId) {
-        classesProvider.deleteKonzultacioById(konzultacioId);
+        konzultacioProvider.deleteKonzultacioById(konzultacioId);
     }
 }
