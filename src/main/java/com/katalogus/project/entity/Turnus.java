@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Data
@@ -16,10 +17,16 @@ import javax.persistence.Id;
 public class Turnus {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     private String name;
 
     private Integer turnus_number;
 
+    private Double lecture;
+
+    private Double practice;
+
+    private Double consultation;
 }
