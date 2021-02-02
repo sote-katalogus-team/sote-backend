@@ -1,16 +1,15 @@
 package com.katalogus.project.model;
 
+import java.util.HashMap;
+
 public class StudentStatistic {
 
     private String studentName;
 
     private String neptunCode;
 
-    private double lecturePercentage;
+    private HashMap<String, Double> percentages = new HashMap<>();
 
-    private double consultationPercentage;
-
-    private double practicePercentage;
 }
 
 
