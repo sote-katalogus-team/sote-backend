@@ -38,4 +38,9 @@ public class EloadasController {
     public void deleteEloadasById(@PathVariable("eloadas_id") Long eloadasId) {
         eloadasProvider.deleteEloadasById(eloadasId);
     }
+
+    @PutMapping("/{eloadas_id}/change_status")
+    public void changeActiveStatusById(@PathVariable("eloadas_id") Long eloadasId) {
+        eloadasProvider.changeActiveStatusById(eloadasId);
+    }
 }
