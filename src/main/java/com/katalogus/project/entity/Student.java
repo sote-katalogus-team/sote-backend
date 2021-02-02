@@ -31,6 +31,8 @@ public class Student {
 
     private String neptun_code;
 
+    private Long turnus_id;
+
     @OneToMany
     private List<Konzultacio> konzultacioList;
 

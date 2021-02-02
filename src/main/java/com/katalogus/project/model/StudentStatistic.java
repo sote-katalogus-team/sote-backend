@@ -12,5 +12,6 @@ public class StudentStatistic {
 
     private double practicePercentage;
 }
-//százalék számító függvény
+
+
 //lista készítés StudentStatistic-l
