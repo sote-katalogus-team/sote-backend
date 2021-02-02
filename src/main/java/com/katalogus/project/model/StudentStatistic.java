@@ -11,6 +11,3 @@ public class StudentStatistic {
     private HashMap<String, Double> percentages = new HashMap<>();
 
 }
-
-
-//lista készítés StudentStatistic-l

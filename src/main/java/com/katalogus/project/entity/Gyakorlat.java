@@ -25,4 +25,6 @@ public class Gyakorlat {
     private String name;
 
     private String code;
+
+    private Integer point;
 }

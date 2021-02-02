@@ -23,4 +23,6 @@ public class Eloadas {
     private Long turnus_id;
 
     private String name;
+
+    private Integer point;
 }
