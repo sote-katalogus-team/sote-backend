@@ -25,4 +25,7 @@ public class Eloadas {
     private Long turnus_id;
 
     private String name;
+
+    @Builder.Default
+    private Boolean active = true;
 }

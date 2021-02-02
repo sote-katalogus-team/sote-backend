@@ -28,4 +28,7 @@ public class Konzultacio {
     private String name;
 
     private Integer point;
+
+    @Builder.Default
+    private Boolean active = true;
 }
