@@ -40,4 +40,8 @@ public class TurnusController {
         }
     }
 
+    @DeleteMapping("/{turnus_id}/delete")
+    public void deleteTurnusById(@PathVariable("turnus_id") Long turnusId) {
+        turnusService.deleteTurnusById(turnusId);
+    }
 }

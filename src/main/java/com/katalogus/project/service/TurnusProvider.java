@@ -27,4 +27,8 @@ public class TurnusProvider {
         Object response = turnusRepository.save(turnus);
         return response.getClass().equals(Turnus.class);
     }
+
+    public void deleteTurnusById(Long turnusId) {
+        turnusRepository.deleteById(turnusId);
+    }
 }
