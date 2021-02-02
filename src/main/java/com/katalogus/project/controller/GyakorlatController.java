@@ -38,4 +38,9 @@ public class GyakorlatController {
     public void deleteGyakorlatById(@PathVariable("gyakorlat_id") Long gyakorlatId) {
         gyakorlatProvider.deleteGyakorlatById(gyakorlatId);
     }
+
+    @PutMapping("/{gyakorlat_id}/change_status")
+    public void changeActiveStatusById(@PathVariable("gyakorlat_id") Long gyakorlatId) {
+        gyakorlatProvider.changeActiveStatusById(gyakorlatId);
+    }
 }
