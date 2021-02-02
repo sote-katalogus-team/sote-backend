@@ -21,14 +21,23 @@ public class TurnusController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity saveNewTurnus(@RequestBody Turnus turnus){
-        Boolean successful =turnusService.saveNewTurnus(turnus);
-        if (successful){
+    public ResponseEntity saveNewTurnus(@RequestBody Turnus turnus) {
+        Boolean successful = turnusService.saveNewTurnus(turnus);
+        if (successful) {
             return ResponseEntity.ok("New Turnus created successfully");
-        }else {
+        } else {
             return ResponseEntity.badRequest().build();
         }
     }
 
+    @PutMapping("/{turnus_id}/update")
+    public ResponseEntity updateTurnusById(@RequestBody Turnus turnus, @PathVariable("turnus_id") Long turnusId) {
+        Boolean successful = turnusService.updateTurnusById(turnus, turnusId);
+        if (successful) {
+            return ResponseEntity.ok("Turnus updated successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 
 }

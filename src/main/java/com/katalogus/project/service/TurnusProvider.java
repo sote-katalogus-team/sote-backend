@@ -21,4 +21,10 @@ public class TurnusProvider {
         Object response = turnusRepository.save(turnus);
         return response.getClass().equals(Turnus.class);
     }
+
+    public Boolean updateTurnusById(Turnus turnus, Long turnusId) {
+        turnus.setId(turnusId);
+        Object response = turnusRepository.save(turnus);
+        return response.getClass().equals(Turnus.class);
+    }
 }
