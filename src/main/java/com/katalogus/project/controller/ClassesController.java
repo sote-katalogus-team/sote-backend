@@ -18,4 +18,9 @@ public class ClassesController {
     public Classes getAllClasses(@PathVariable("turnus_id") Long turnusId) {
         return classesProvider.getAllByTurnusId(turnusId);
     }
+
+    @GetMapping("/test")
+    public String getTestData(){
+        return "test";
+    }
 }
