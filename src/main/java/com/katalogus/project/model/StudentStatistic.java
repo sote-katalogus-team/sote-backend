@@ -17,6 +17,6 @@ public class StudentStatistic {
 
     private String neptunCode;
 
-    private HashMap<String, Double> percentages = new HashMap<>();
+    private HashMap<String, Integer> percentages = new HashMap<>();
 
 }
