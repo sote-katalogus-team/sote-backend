@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -17,6 +18,7 @@ import javax.persistence.ManyToOne;
 public class Konzultacio {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     private Long teacher_id;
@@ -26,4 +28,7 @@ public class Konzultacio {
     private String name;
 
     private Integer point;
+
+    @Builder.Default
+    private Boolean active = true;
 }

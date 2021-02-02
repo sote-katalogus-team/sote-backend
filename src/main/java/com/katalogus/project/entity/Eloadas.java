@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Data
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 public class Eloadas {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     private Long teacher_id;
@@ -24,5 +26,10 @@ public class Eloadas {
 
     private String name;
 
+
     private Integer point;
+
+    @Builder.Default
+    private Boolean active = true;
+
 }
