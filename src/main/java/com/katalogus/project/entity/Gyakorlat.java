@@ -27,4 +27,7 @@ public class Gyakorlat {
     private String name;
 
     private String code;
+
+    @Builder.Default
+    private Boolean active = true;
 }
