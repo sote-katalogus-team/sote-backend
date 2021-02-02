@@ -28,6 +28,10 @@ public class Gyakorlat {
 
     private String code;
 
+
+    private Integer point;
+
     @Builder.Default
     private Boolean active = true;
+
 }
