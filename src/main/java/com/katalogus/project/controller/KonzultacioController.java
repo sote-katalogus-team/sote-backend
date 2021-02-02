@@ -1,7 +1,6 @@
 package com.katalogus.project.controller;
 
 import com.katalogus.project.entity.Konzultacio;
-import com.katalogus.project.service.ClassesProvider;
 import com.katalogus.project.service.KonzultacioProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,5 +36,10 @@ public class KonzultacioController {
     @DeleteMapping("/{konzultacio_id}/delete")
     public void deleteKonzultacioById(@PathVariable("konzultacio_id") Long konzultacioId) {
         konzultacioProvider.deleteKonzultacioById(konzultacioId);
+    }
+
+    @PutMapping("/{konzultacio_id}/change_status")
+    public void changeActiveStatusById(@PathVariable("konzultacio_id") Long konzultacioId) {
+        konzultacioProvider.changeActiveStatusById(konzultacioId);
     }
 }

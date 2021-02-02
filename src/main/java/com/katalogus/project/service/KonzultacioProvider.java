@@ -1,9 +1,12 @@
 package com.katalogus.project.service;
 
+import com.katalogus.project.entity.Gyakorlat;
 import com.katalogus.project.entity.Konzultacio;
 import com.katalogus.project.repository.KonzultacioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class KonzultacioProvider {
@@ -27,4 +30,12 @@ public class KonzultacioProvider {
         konzultacioRepository.deleteById(konzultacioId);
     }
 
+    public void changeActiveStatusById(Long konzultacioId) {
+        Optional<Konzultacio> optionalKonzultacio = konzultacioRepository.findById(konzultacioId);
+        if (optionalKonzultacio.isPresent()) {
+            Konzultacio konzultacio = optionalKonzultacio.get();
+            konzultacio.setActive(!konzultacio.getActive());
+            konzultacioRepository.save(konzultacio);
+        }
+    }
 }
