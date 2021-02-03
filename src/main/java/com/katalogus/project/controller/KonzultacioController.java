@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/konzultacio")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class KonzultacioController {
 
     @Autowired

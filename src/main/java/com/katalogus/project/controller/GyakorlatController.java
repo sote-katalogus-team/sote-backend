@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/gyakorlat")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class GyakorlatController {
 
     @Autowired
