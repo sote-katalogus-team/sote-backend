@@ -29,6 +29,8 @@ public class Eloadas {
 
     private Date date;
 
+    private String code;
+
     private Integer point;
 
     private Boolean potlas;

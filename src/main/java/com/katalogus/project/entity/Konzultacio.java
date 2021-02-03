@@ -29,6 +29,8 @@ public class Konzultacio {
 
     private Boolean potlas;
 
+    private String code;
+
     private Date date;
 
     @Builder.Default
