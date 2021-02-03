@@ -4,10 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+import java.sql.Date;
 
 @Data
 @NoArgsConstructor
@@ -26,8 +27,13 @@ public class Eloadas {
 
     private String name;
 
+    private Date date;
+
+    private String code;
 
     private Integer point;
+
+    private Boolean potlas;
 
     @Builder.Default
     private Boolean active = true;
