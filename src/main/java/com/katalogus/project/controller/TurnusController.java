@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/turnus")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TurnusController {
 
     @Autowired

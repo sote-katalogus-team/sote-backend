@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/eloadas")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class EloadasController {
 
     @Autowired
