@@ -5,10 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.sql.Date;
 
 @Data
 @NoArgsConstructor
@@ -28,6 +26,10 @@ public class Konzultacio {
     private String name;
 
     private Integer point;
+
+    private Boolean potlas;
+
+    private Date date;
 
     @Builder.Default
     private Boolean active = true;
