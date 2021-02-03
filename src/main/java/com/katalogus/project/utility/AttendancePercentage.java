@@ -17,9 +17,9 @@ public class AttendancePercentage {
         //Calculate attendance by student id
         HashMap<String, Integer> percentages = new HashMap<>();
 
-            int pointValueOfLectureAtTheSchool = eloadasList.stream().filter(a -> a.getTurnus_id() == turnusId).mapToInt(b -> b.getPoint()).sum();
-            int pointValueOfPracticeAtTheSchool = gyakorlatList.stream().filter(a -> a.getTurnus_id() == turnusId).mapToInt(b -> b.getPoint()).sum();
-            int pointValueOfConsultationAtTheSchool = konzultacioList.stream().filter(a -> a.getTurnus_id() == turnusId).mapToInt(b -> b.getPoint()).sum();
+            int pointValueOfLectureAtTheSchool = eloadasList.stream().filter(a -> (a.getTurnus_id() == turnusId && !a.getPotlas())).mapToInt(b -> b.getPoint()).sum();
+            int pointValueOfPracticeAtTheSchool = gyakorlatList.stream().filter(a -> (a.getTurnus_id() == turnusId && !a.getPotlas())).mapToInt(b -> b.getPoint()).sum();
+            int pointValueOfConsultationAtTheSchool = konzultacioList.stream().filter(a -> (a.getTurnus_id() == turnusId && !a.getPotlas())).mapToInt(b -> b.getPoint()).sum();
 
             int pointValueOfLectureAtTheStudent = student.getEloadasList().stream().mapToInt(b -> b.getPoint()).sum();
             int pointValueOfPracticeAtTheStudent = student.getGyakorlatList().stream().mapToInt(b -> b.getPoint()).sum();
