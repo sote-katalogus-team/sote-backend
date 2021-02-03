@@ -19,4 +19,6 @@ public class StudentStatistic {
 
     private HashMap<String, Integer> percentages = new HashMap<>();
 
+    private String warning;
+
 }
