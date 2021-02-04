@@ -42,7 +42,12 @@ public class TeacherController {
     }
 
     @DeleteMapping("/{teacher_id}/delete")
-    public void deleteTeacherById(@PathVariable("teacher_id") Long teacherId) {
-        teacherProvider.deleteTeacherById(teacherId);
+    public ResponseEntity<String> deleteTeacherById(@PathVariable("teacher_id") Long teacherId) {
+        Boolean successful = teacherProvider.deleteTeacherById(teacherId);
+        if (successful) {
+            return ResponseEntity.ok("Teacher deletion successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }

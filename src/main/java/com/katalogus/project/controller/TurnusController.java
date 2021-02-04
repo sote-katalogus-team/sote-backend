@@ -22,7 +22,7 @@ public class TurnusController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity saveNewTurnus(@RequestBody Turnus turnus) {
+    public ResponseEntity<String>  saveNewTurnus(@RequestBody Turnus turnus) {
         Boolean successful = turnusService.saveNewTurnus(turnus);
         if (successful) {
             return ResponseEntity.ok("New Turnus created successfully");
@@ -32,7 +32,7 @@ public class TurnusController {
     }
 
     @PutMapping("/{turnus_id}/update")
-    public ResponseEntity updateTurnusById(@RequestBody Turnus turnus, @PathVariable("turnus_id") Long turnusId) {
+    public ResponseEntity<String>  updateTurnusById(@RequestBody Turnus turnus, @PathVariable("turnus_id") Long turnusId) {
         Boolean successful = turnusService.updateTurnusById(turnus, turnusId);
         if (successful) {
             return ResponseEntity.ok("Turnus updated successfully");
@@ -42,7 +42,13 @@ public class TurnusController {
     }
 
     @DeleteMapping("/{turnus_id}/delete")
-    public void deleteTurnusById(@PathVariable("turnus_id") Long turnusId) {
-        turnusService.deleteTurnusById(turnusId);
+    public ResponseEntity<String> deleteTurnusById(@PathVariable("turnus_id") Long turnusId) {
+        Boolean successful = turnusService.deleteTurnusById(turnusId);
+        if (successful) {
+            return ResponseEntity.ok("Turnus deletion successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+
     }
 }

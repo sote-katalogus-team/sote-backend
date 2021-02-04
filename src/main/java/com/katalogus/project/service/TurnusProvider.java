@@ -28,7 +28,10 @@ public class TurnusProvider {
         return response.getClass().equals(Turnus.class);
     }
 
-    public void deleteTurnusById(Long turnusId) {
+    public Boolean deleteTurnusById(Long turnusId) {
+        long before = turnusRepository.count();
         turnusRepository.deleteById(turnusId);
+        long after = turnusRepository.count();
+        return before > after;
     }
 }

@@ -30,8 +30,11 @@ public class StudentProvider {
         return response.getClass().equals(Student.class);
     }
 
-    public void deleteStudentById(Long studentId){
+    public Boolean deleteStudentById(Long studentId){
+        long before = studentRepository.count();
         studentRepository.deleteById(studentId);
+        long after = studentRepository.count();
+        return before > after;
     }
 
 }

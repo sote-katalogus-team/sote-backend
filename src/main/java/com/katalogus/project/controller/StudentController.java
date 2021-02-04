@@ -22,7 +22,7 @@ public class StudentController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity saveNewStudent(@RequestBody Student student) {
+    public ResponseEntity<String> saveNewStudent(@RequestBody Student student) {
         Boolean successful = studentProvider.saveNewStudent(student);
         if (successful) {
             return ResponseEntity.ok("New Student created successfully");
@@ -33,7 +33,7 @@ public class StudentController {
 
 
     @PutMapping("/{student_id}/update")
-    public ResponseEntity updateStudentById(@RequestBody Student student, @PathVariable("student_id") Long studentId) {
+    public ResponseEntity<String> updateStudentById(@RequestBody Student student, @PathVariable("student_id") Long studentId) {
         Boolean successful = studentProvider.updateStudentById(student, studentId);
         if (successful) {
             return ResponseEntity.ok("Student updated successfully");
@@ -43,7 +43,12 @@ public class StudentController {
     }
 
     @DeleteMapping("/{student_id}/delete")
-    public void deleteStudentById(@PathVariable("student_id") Long studentId) {
-        studentProvider.deleteStudentById(studentId);
+    public ResponseEntity<String> deleteStudentById(@PathVariable("student_id") Long studentId) {
+        Boolean successful = studentProvider.deleteStudentById(studentId);
+        if (successful) {
+            return ResponseEntity.ok("Student deletion successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
