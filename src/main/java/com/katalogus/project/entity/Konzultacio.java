@@ -19,7 +19,8 @@ public class Konzultacio {
     @GeneratedValue
     private Long id;
 
-    private Long teacher_id;
+    @Builder.Default
+    private Long teacher_id = null;
 
     private Long turnus_id;
 
@@ -29,7 +30,8 @@ public class Konzultacio {
 
     private Boolean potlas;
 
-    private String code;
+    @Builder.Default
+    private String code = null;
 
     private Date date;
 

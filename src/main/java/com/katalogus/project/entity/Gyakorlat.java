@@ -19,13 +19,15 @@ public class Gyakorlat {
     @GeneratedValue
     private Long id;
 
-    private Long teacher_id;
+    @Builder.Default
+    private Long teacher_id = null;
 
     private Long turnus_id;
 
     private String name;
 
-    private String code;
+    @Builder.Default
+    private String code = null;
 
     private Date date;
 

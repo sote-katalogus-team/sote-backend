@@ -21,7 +21,8 @@ public class Eloadas {
     @GeneratedValue
     private Long id;
 
-    private Long teacher_id;
+    @Builder.Default
+    private Long teacher_id = null;
 
     private Long turnus_id;
 
@@ -29,7 +30,8 @@ public class Eloadas {
 
     private Date date;
 
-    private String code;
+    @Builder.Default
+    private String code = null;
 
     private Integer point;
 

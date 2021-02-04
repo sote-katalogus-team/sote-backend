@@ -24,9 +24,12 @@ public class Turnus {
 
     private Integer turnus_number;
 
-    private Integer lecture;
+    @Builder.Default
+    private Integer lecture = 0;
 
-    private Integer practice;
+    @Builder.Default
+    private Integer practice = 0;
 
-    private Integer consultation;
+    @Builder.Default
+    private Integer consultation = 0;
 }
