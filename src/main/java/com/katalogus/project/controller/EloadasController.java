@@ -16,7 +16,7 @@ public class EloadasController {
     EloadasProvider eloadasProvider;
 
     @PostMapping("/add")
-    public ResponseEntity saveNewEloadas(@RequestBody Eloadas eloadas) {
+    public ResponseEntity<String> saveNewEloadas(@RequestBody Eloadas eloadas) {
         Boolean successful = eloadasProvider.saveNewEloadas(eloadas);
         if (successful) {
             return ResponseEntity.ok("New Eloadas created successfully");
@@ -26,7 +26,7 @@ public class EloadasController {
     }
 
     @PutMapping("/{eloadas_id}/update")
-    public ResponseEntity updateEloadasById(@RequestBody Eloadas eloadas, @PathVariable("eloadas_id") Long eloadasId) {
+    public ResponseEntity<String> updateEloadasById(@RequestBody Eloadas eloadas, @PathVariable("eloadas_id") Long eloadasId) {
         Boolean successful = eloadasProvider.updateEloadasById(eloadas, eloadasId);
         if (successful) {
             return ResponseEntity.ok("Eloadas updated successfully");
@@ -36,12 +36,22 @@ public class EloadasController {
     }
 
     @DeleteMapping("/{eloadas_id}/delete")
-    public void deleteEloadasById(@PathVariable("eloadas_id") Long eloadasId) {
-        eloadasProvider.deleteEloadasById(eloadasId);
+    public ResponseEntity<String> deleteEloadasById(@PathVariable("eloadas_id") Long eloadasId) {
+        Boolean successful = eloadasProvider.deleteEloadasById(eloadasId);
+        if (successful) {
+            return ResponseEntity.ok("Eloadas deletion successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PutMapping("/{eloadas_id}/change_status")
-    public void changeActiveStatusById(@PathVariable("eloadas_id") Long eloadasId) {
-        eloadasProvider.changeActiveStatusById(eloadasId);
+    public ResponseEntity<String> changeActiveStatusById(@PathVariable("eloadas_id") Long eloadasId) {
+        Boolean successful = eloadasProvider.changeActiveStatusById(eloadasId);
+        if (successful) {
+            return ResponseEntity.ok("Eloadas's status changed successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }

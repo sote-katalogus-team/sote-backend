@@ -26,16 +26,22 @@ public class KonzultacioProvider {
         return response.getClass().equals(Konzultacio.class);
     }
 
-    public void deleteKonzultacioById(Long konzultacioId) {
+    public Boolean deleteKonzultacioById(Long konzultacioId) {
+        long before = konzultacioRepository.count();
         konzultacioRepository.deleteById(konzultacioId);
+        long after = konzultacioRepository.count();
+        return before > after;
     }
 
-    public void changeActiveStatusById(Long konzultacioId) {
+    public Boolean changeActiveStatusById(Long konzultacioId) {
+        boolean success = false;
         Optional<Konzultacio> optionalKonzultacio = konzultacioRepository.findById(konzultacioId);
         if (optionalKonzultacio.isPresent()) {
             Konzultacio konzultacio = optionalKonzultacio.get();
             konzultacio.setActive(!konzultacio.getActive());
             konzultacioRepository.save(konzultacio);
+            success = true;
         }
+        return success;
     }
 }

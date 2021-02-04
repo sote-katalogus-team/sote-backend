@@ -19,8 +19,11 @@ public class GyakorlatProvider {
         return response.getClass().equals(Gyakorlat.class);
     }
 
-    public void deleteGyakorlatById(Long gyakorlatId) {
+    public Boolean deleteGyakorlatById(Long gyakorlatId) {
+        long before = gyakorlatRepository.count();
         gyakorlatRepository.deleteById(gyakorlatId);
+        long after = gyakorlatRepository.count();
+        return before > after;
     }
 
     public Boolean updateGyakorlatById(Gyakorlat gyakorlat, Long gyakorlatId) {
@@ -30,12 +33,15 @@ public class GyakorlatProvider {
     }
 
 
-    public void changeActiveStatusById(Long gyakorlatId) {
+    public Boolean changeActiveStatusById(Long gyakorlatId) {
+        boolean success = false;
         Optional<Gyakorlat> optionalGyakorlat = gyakorlatRepository.findById(gyakorlatId);
         if (optionalGyakorlat.isPresent()) {
             Gyakorlat gyakorlat = optionalGyakorlat.get();
             gyakorlat.setActive(!gyakorlat.getActive());
             gyakorlatRepository.save(gyakorlat);
+            success = true;
         }
+        return success;
     }
 }

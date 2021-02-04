@@ -15,7 +15,7 @@ public class KonzultacioController {
     KonzultacioProvider konzultacioProvider;
 
     @PostMapping("/add")
-    public ResponseEntity saveNewKonzultacio(@RequestBody Konzultacio konzultacio) {
+    public ResponseEntity<String> saveNewKonzultacio(@RequestBody Konzultacio konzultacio) {
         Boolean successful = konzultacioProvider.saveNewKonzultacio(konzultacio);
         if (successful) {
             return ResponseEntity.ok("New Konzultacio created successfully");
@@ -25,7 +25,7 @@ public class KonzultacioController {
     }
 
     @PutMapping("/{konzultacio_id}/update")
-    public ResponseEntity updateKonzultacioById(@RequestBody Konzultacio konzultacio, @PathVariable("konzultacio_id") Long konzultacioId) {
+    public ResponseEntity<String> updateKonzultacioById(@RequestBody Konzultacio konzultacio, @PathVariable("konzultacio_id") Long konzultacioId) {
         Boolean successful = konzultacioProvider.updateKonzultacioById(konzultacio, konzultacioId);
         if (successful) {
             return ResponseEntity.ok("Konzultacio updated successfully");
@@ -35,12 +35,22 @@ public class KonzultacioController {
     }
 
     @DeleteMapping("/{konzultacio_id}/delete")
-    public void deleteKonzultacioById(@PathVariable("konzultacio_id") Long konzultacioId) {
-        konzultacioProvider.deleteKonzultacioById(konzultacioId);
+    public ResponseEntity<String> deleteKonzultacioById(@PathVariable("konzultacio_id") Long konzultacioId) {
+        Boolean successful = konzultacioProvider.deleteKonzultacioById(konzultacioId);
+        if (successful) {
+            return ResponseEntity.ok("Konzultacio deletion successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PutMapping("/{konzultacio_id}/change_status")
-    public void changeActiveStatusById(@PathVariable("konzultacio_id") Long konzultacioId) {
-        konzultacioProvider.changeActiveStatusById(konzultacioId);
+    public ResponseEntity<String> changeActiveStatusById(@PathVariable("konzultacio_id") Long konzultacioId) {
+        Boolean successful = konzultacioProvider.changeActiveStatusById(konzultacioId);
+        if (successful) {
+            return ResponseEntity.ok("Konzultacio's status changed successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
