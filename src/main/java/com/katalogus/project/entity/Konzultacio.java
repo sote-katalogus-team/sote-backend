@@ -13,7 +13,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Konzultacio {
+public class Konzultacio extends BasicClass {
 
     @Id
     @GeneratedValue

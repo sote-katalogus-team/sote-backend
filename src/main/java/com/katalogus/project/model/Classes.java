@@ -28,7 +28,7 @@ public class Classes {
 
         eloadasList.forEach(eloadas -> {
             if (eloadas.getIsAttendanceOpen()) {
-                basicClassList.add(eloadas);
+                basicClassList.add( eloadas);
             }
         });
         gyakorlatList.forEach(gyakorlat -> {

@@ -13,7 +13,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Gyakorlat {
+public class Gyakorlat extends BasicClass{
 
     @Id
     @GeneratedValue

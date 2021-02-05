@@ -15,7 +15,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Eloadas {
+public class Eloadas extends BasicClass{
 
     @Id
     @GeneratedValue
