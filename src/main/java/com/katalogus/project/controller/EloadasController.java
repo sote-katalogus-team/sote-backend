@@ -59,4 +59,19 @@ public class EloadasController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @GetMapping("/{eloadas_id}/openClass")
+    public String openClassForAttendance(@PathVariable("eloadas_id") Long eloadasId) {
+        return eloadasProvider.openClassForAttendace(eloadasId);
+    }
+
+    @PostMapping("/{eloadas_id}/closeClass")
+    public ResponseEntity<String> closeClassForAttendance(@PathVariable("eloadas_id") Long eloadasId) {
+        Boolean successful = eloadasProvider.closeClassForAttendace(eloadasId);
+        if (successful) {
+            return ResponseEntity.ok("Eloadas closed successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }
