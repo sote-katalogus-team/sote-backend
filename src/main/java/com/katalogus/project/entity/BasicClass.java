@@ -1,10 +1,7 @@
 package com.katalogus.project.entity;
 
-import lombok.Builder;
 import lombok.Getter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.sql.Date;
 
 @Getter
