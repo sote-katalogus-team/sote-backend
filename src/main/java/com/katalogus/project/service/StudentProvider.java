@@ -1,6 +1,8 @@
 package com.katalogus.project.service;
 
 import com.katalogus.project.entity.*;
+import com.katalogus.project.model.ClassInfo;
+import com.katalogus.project.model.ClassType;
 import com.katalogus.project.model.Classes;
 import com.katalogus.project.model.StudentStatistic;
 import com.katalogus.project.repository.StudentRepository;
@@ -8,6 +10,7 @@ import com.katalogus.project.utility.AttendancePercentage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -56,7 +59,7 @@ public class StudentProvider {
             Classes classes = classesProvider.getAllByTurnusId(student.getTurnus_id());
             return StudentStatistic.builder()
                     .percentages(attendancePercentage.calculateAttendancePercentages(student, classes))
-                    .neptunCode(student.getNeptun_code())
+                    .neptunCode(student.getNeptunCode())
                     .studentName(student.getName())
                     .build();
         }
@@ -96,7 +99,78 @@ public class StudentProvider {
                 }
                 studentRepository.save(student);
             }
+        }
+        return success;
+    }
 
+    public Integer countStudentAtClass(ClassInfo classInfo) {
+        Integer count = 0;
+        List<Student> studentList = studentRepository.findAll();
+        for (Student currentStudent : studentList) {
+            if (classInfo.getType() == ClassType.ELOADAS) {
+                for (Eloadas eloadas : currentStudent.getEloadasList()) {
+                    if (eloadas.getId().equals(classInfo.getId())) {
+                        count++;
+                    }
+                }
+            } else if (classInfo.getType() == ClassType.GYAKORLAT) {
+                for (Gyakorlat gyakorlat : currentStudent.getGyakorlatList()) {
+                    if (gyakorlat.getId().equals(classInfo.getId())) {
+                        count++;
+                    }
+                }
+            } else {
+                for (Konzultacio konzultacio : currentStudent.getKonzultacioList()) {
+                    if (konzultacio.getId().equals(classInfo.getId())) {
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+    public HashMap<Boolean, String> addByNeptunCode(HashMap<String, String> neptunCode, ClassInfo classInfo) {
+        HashMap<Boolean, String> success = new HashMap<>();
+        String neptunString = neptunCode.get("neptunCode");
+        success.put(false, "No registered student with " + neptunString);
+        Optional<Student> optionalStudent = studentRepository.findByNeptunCode(neptunString);
+        if (optionalStudent.isPresent()) {
+            success.put(false, "No class found");
+            Classes classes = classesProvider.getAllClasses();
+            Student student = optionalStudent.get();
+            if (classInfo.getType() == ClassType.ELOADAS) {
+                for (Eloadas eloadas : classes.getEloadasList()) {
+                    if (eloadas.getId().equals(classInfo.getId())) {
+                        List<Eloadas> eloadasList = student.getEloadasList();
+                        eloadasList.add(eloadas);
+                        student.setEloadasList(eloadasList);
+                        success.remove(false);
+                        success.put(true,student.getName() + "was added to class!");
+                    }
+                }
+            } else if (classInfo.getType() == ClassType.GYAKORLAT) {
+                for (Gyakorlat gyakorlat : classes.getGyakorlatList()) {
+                    if (gyakorlat.getId().equals(classInfo.getId())) {
+                        List<Gyakorlat> gyakorlatList = student.getGyakorlatList();
+                        gyakorlatList.add(gyakorlat);
+                        student.setGyakorlatList(gyakorlatList);
+                        success.remove(false);
+                        success.put(true,student.getName() + "was added to class!");
+                    }
+                }
+            } else {
+                for (Konzultacio konzultacio : classes.getKonzultacioList()) {
+                    if (konzultacio.getId().equals(classInfo.getId())) {
+                        List<Konzultacio> konzultacioList = student.getKonzultacioList();
+                        konzultacioList.add(konzultacio);
+                        student.setKonzultacioList(konzultacioList);
+                        success.remove(false);
+                        success.put(true,student.getName() + "was added to class!");
+                    }
+                }
+            }
+            studentRepository.save(student);
         }
         return success;
     }

@@ -1,6 +1,7 @@
 package com.katalogus.project.controller;
 
 import com.katalogus.project.entity.Student;
+import com.katalogus.project.model.ClassInfo;
 import com.katalogus.project.model.StudentStatistic;
 import com.katalogus.project.service.StudentProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,5 +68,20 @@ public class StudentController {
         } else {
             return ResponseEntity.badRequest().body(success.get(false));
         }
+    }
+
+    @PostMapping("/addByNeptunCode")
+    public ResponseEntity<String> addByNeptunCode(@RequestBody HashMap<String, String> neptunCode, @RequestBody ClassInfo classInfo) {
+        HashMap<Boolean, String> success = studentProvider.addByNeptunCode(neptunCode, classInfo);
+        if (success.containsKey(true)) {
+            return ResponseEntity.ok(success.get(true));
+        } else {
+            return ResponseEntity.badRequest().body(success.get(false));
+        }
+    }
+
+    @GetMapping("/countStudent")
+    public Integer countStudentAtClass(@RequestBody ClassInfo classInfo) {
+        return studentProvider.countStudentAtClass(classInfo);
     }
 }

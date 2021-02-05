@@ -15,6 +15,11 @@ public class EloadasController {
     @Autowired
     EloadasProvider eloadasProvider;
 
+    @GetMapping("/{eloadas_id}")
+    public Eloadas getEloadasById(@PathVariable("eloadas_id") Long eloadasId) {
+        return eloadasProvider.getEloadasById(eloadasId);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<String> saveNewEloadas(@RequestBody Eloadas eloadas) {
         Boolean successful = eloadasProvider.saveNewEloadas(eloadas);
@@ -50,6 +55,21 @@ public class EloadasController {
         Boolean successful = eloadasProvider.changeActiveStatusById(eloadasId);
         if (successful) {
             return ResponseEntity.ok("Eloadas's status changed successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping("/{eloadas_id}/openClass")
+    public String openClassForAttendance(@PathVariable("eloadas_id") Long eloadasId) {
+        return eloadasProvider.openClassForAttendace(eloadasId);
+    }
+
+    @PostMapping("/{eloadas_id}/closeClass")
+    public ResponseEntity<String> closeClassForAttendance(@PathVariable("eloadas_id") Long eloadasId) {
+        Boolean successful = eloadasProvider.closeClassForAttendace(eloadasId);
+        if (successful) {
+            return ResponseEntity.ok("Eloadas closed successfully");
         } else {
             return ResponseEntity.badRequest().build();
         }

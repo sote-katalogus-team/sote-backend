@@ -3,6 +3,7 @@ package com.katalogus.project.service;
 import com.katalogus.project.entity.Eloadas;
 import com.katalogus.project.entity.Gyakorlat;
 import com.katalogus.project.repository.EloadasRepository;
+import com.katalogus.project.utility.RandomCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ public class EloadasProvider {
 
     @Autowired
     EloadasRepository eloadasRepository;
+
+    @Autowired
+    RandomCodeGenerator randomCodeGenerator;
 
     public Boolean saveNewEloadas(Eloadas eloadas) {
         Object response = eloadasRepository.save(eloadas);
@@ -38,6 +42,36 @@ public class EloadasProvider {
         if (optionalEloadas.isPresent()) {
             Eloadas eloadas = optionalEloadas.get();
             eloadas.setActive(!eloadas.getActive());
+            eloadasRepository.save(eloadas);
+            success = true;
+        }
+        return success;
+    }
+
+    public Eloadas getEloadasById(Long eloadasId) {
+        return eloadasRepository.findById(eloadasId).get();
+
+    }
+
+    public String openClassForAttendace(Long eloadasId) {
+        String code = "There is no eloadas with this Id";
+        Optional<Eloadas> optionalEloadas = eloadasRepository.findById(eloadasId);
+        if (optionalEloadas.isPresent()) {
+            Eloadas eloadas = optionalEloadas.get();
+            code = randomCodeGenerator.codeGenerator();
+            eloadas.setCode(code);
+            eloadas.setIsAttendanceOpen(true);
+            eloadasRepository.save(eloadas);
+        }
+        return code;
+    }
+
+    public Boolean closeClassForAttendace(Long eloadasId) {
+        boolean success = false;
+        Optional<Eloadas> optionalEloadas = eloadasRepository.findById(eloadasId);
+        if (optionalEloadas.isPresent()) {
+            Eloadas eloadas = optionalEloadas.get();
+            eloadas.setIsAttendanceOpen(false);
             eloadasRepository.save(eloadas);
             success = true;
         }

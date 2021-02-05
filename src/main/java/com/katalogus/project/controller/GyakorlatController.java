@@ -1,5 +1,6 @@
 package com.katalogus.project.controller;
 
+import com.katalogus.project.entity.Eloadas;
 import com.katalogus.project.entity.Gyakorlat;
 import com.katalogus.project.service.ClassesProvider;
 import com.katalogus.project.service.GyakorlatProvider;
@@ -14,6 +15,11 @@ public class GyakorlatController {
 
     @Autowired
     GyakorlatProvider gyakorlatProvider;
+
+    @GetMapping("/{gyakorlat_id}")
+    public Gyakorlat getGyakorlatById(@PathVariable("gyakorlat_id") Long gyakorlatId) {
+        return gyakorlatProvider.getGyakorlatById(gyakorlatId);
+    }
 
     @PostMapping("/add")
     public ResponseEntity<String> saveNewGyakorlat(@RequestBody Gyakorlat gyakorlat) {
@@ -50,6 +56,21 @@ public class GyakorlatController {
         Boolean successful = gyakorlatProvider.changeActiveStatusById(gyakorlatId);
         if (successful) {
             return ResponseEntity.ok("Gyakorlat's status changed successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping("/{gyakorlat_id}/openClass")
+    public String openClassForAttendance(@PathVariable("gyakorlat_id") Long gyakorlatId) {
+        return gyakorlatProvider.openClassForAttendace(gyakorlatId);
+    }
+
+    @PostMapping("/{gyakorlat_id}/closeClass")
+    public ResponseEntity<String> closeClassForAttendance(@PathVariable("gyakorlat_id") Long gyakorlatId) {
+        Boolean successful = gyakorlatProvider.closeClassForAttendace(gyakorlatId);
+        if (successful) {
+            return ResponseEntity.ok("Gyakorlat closed successfully");
         } else {
             return ResponseEntity.badRequest().build();
         }

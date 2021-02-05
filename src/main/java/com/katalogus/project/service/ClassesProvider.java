@@ -11,6 +11,7 @@ import com.katalogus.project.utility.AttendancePercentage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -50,6 +51,22 @@ public class ClassesProvider {
                 .gyakorlatList(gyakorlatRepository.findAllByTurnus_id(turnusId))
                 .konzultacioList(konzultacioRepository.findAllByTurnus_id(turnusId))
                 .build();
-        return attendancePercentage.getStudentsStatistics(turnus,studentRepository.findAll(), classes);
+        return attendancePercentage.getStudentsStatistics(turnus, studentRepository.findAll(), classes);
+    }
+
+    public Classes getClassesByDate(Date date) {
+        return Classes.builder()
+                .eloadasList(eloadasRepository.findByDate(date))
+                .konzultacioList(konzultacioRepository.findByDate(date))
+                .gyakorlatList(gyakorlatRepository.findByDate(date))
+                .build();
+    }
+
+    public Classes getAllClasses() {
+        return Classes.builder()
+                .eloadasList(eloadasRepository.findAll())
+                .gyakorlatList(gyakorlatRepository.findAll())
+                .konzultacioList(konzultacioRepository.findAll())
+                .build();
     }
 }
