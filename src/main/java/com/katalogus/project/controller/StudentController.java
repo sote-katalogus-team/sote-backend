@@ -1,6 +1,7 @@
 package com.katalogus.project.controller;
 
 import com.katalogus.project.entity.Student;
+import com.katalogus.project.model.StudentStatistic;
 import com.katalogus.project.service.StudentProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,5 +51,10 @@ public class StudentController {
         } else {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @GetMapping("/{student_id}/statistics")
+    public StudentStatistic getStudentStatisticByStudentId(@PathVariable("student_id") Long studentId) {
+        return studentProvider.getStudentStatisticByStudentId(studentId);
     }
 }
