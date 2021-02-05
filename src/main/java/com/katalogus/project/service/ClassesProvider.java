@@ -61,4 +61,12 @@ public class ClassesProvider {
                 .gyakorlatList(gyakorlatRepository.findByDate(date))
                 .build();
     }
+
+    public Classes getAllClasses() {
+        return Classes.builder()
+                .eloadasList(eloadasRepository.findAll())
+                .gyakorlatList(gyakorlatRepository.findAll())
+                .konzultacioList(konzultacioRepository.findAll())
+                .build();
+    }
 }

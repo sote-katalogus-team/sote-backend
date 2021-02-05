@@ -29,7 +29,7 @@ public class Student {
 
     private String password;
 
-    private String neptun_code;
+    private String neptunCode;
 
     private Long turnus_id;
 
