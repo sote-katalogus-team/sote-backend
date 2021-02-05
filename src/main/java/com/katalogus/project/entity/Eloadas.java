@@ -30,14 +30,16 @@ public class Eloadas {
 
     private Date date;
 
+    private Integer point;
+
     @Builder.Default
     private String code = null;
-
-    private Integer point;
 
     private Boolean potlas;
 
     @Builder.Default
     private Boolean active = true;
 
+    @Builder.Default
+    private Boolean isAttendanceOpen = false;
 }

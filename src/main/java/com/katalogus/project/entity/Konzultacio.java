@@ -26,15 +26,18 @@ public class Konzultacio {
 
     private String name;
 
-    private Integer point;
+    private Date date;
 
-    private Boolean potlas;
+    private Integer point;
 
     @Builder.Default
     private String code = null;
 
-    private Date date;
+    private Boolean potlas;
 
     @Builder.Default
     private Boolean active = true;
+
+    @Builder.Default
+    private Boolean isAttendanceOpen = false;
 }
