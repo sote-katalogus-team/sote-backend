@@ -60,4 +60,19 @@ public class GyakorlatController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @GetMapping("/{gyakorlat_id}/openClass")
+    public String openClassForAttendance(@PathVariable("gyakorlat_id") Long gyakorlatId) {
+        return gyakorlatProvider.openClassForAttendace(gyakorlatId);
+    }
+
+    @PostMapping("/{gyakorlat_id}/closeClass")
+    public ResponseEntity<String> closeClassForAttendance(@PathVariable("gyakorlat_id") Long gyakorlatId) {
+        Boolean successful = gyakorlatProvider.closeClassForAttendace(gyakorlatId);
+        if (successful) {
+            return ResponseEntity.ok("Gyakorlat closed successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }
