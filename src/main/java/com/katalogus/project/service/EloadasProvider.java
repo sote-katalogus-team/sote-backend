@@ -67,12 +67,13 @@ public class EloadasProvider {
     }
 
     public Boolean closeClassForAttendace(Long eloadasId) {
-        Boolean success = false;
+        boolean success = false;
         Optional<Eloadas> optionalEloadas = eloadasRepository.findById(eloadasId);
         if (optionalEloadas.isPresent()) {
             Eloadas eloadas = optionalEloadas.get();
             eloadas.setIsAttendanceOpen(false);
             eloadasRepository.save(eloadas);
+            success = true;
         }
         return success;
     }
