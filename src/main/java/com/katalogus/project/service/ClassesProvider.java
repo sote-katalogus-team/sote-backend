@@ -36,16 +36,20 @@ public class ClassesProvider {
 
 
     public Classes getAllByTurnusId(Long turnusId) {
-        Classes classes = new Classes();
-        classes.setEloadasList(eloadasRepository.findAllByTurnus_id(turnusId));
-        classes.setGyakorlatList(gyakorlatRepository.findAllByTurnus_id(turnusId));
-        classes.setKonzultacioList(konzultacioRepository.findAllByTurnus_id(turnusId));
-
-        return classes;
+        return Classes.builder()
+                .eloadasList(eloadasRepository.findAllByTurnus_id(turnusId))
+                .gyakorlatList(gyakorlatRepository.findAllByTurnus_id(turnusId))
+                .konzultacioList(konzultacioRepository.findAllByTurnus_id(turnusId))
+                .build();
     }
 
     public List<StudentStatistic> getAllStatistic(Long turnusId) {
         Turnus turnus = turnusRepository.getOne(turnusId);
-        return attendancePercentage.getStudentsStatistics(turnus, studentRepository.findAll(), eloadasRepository.findAll(), gyakorlatRepository.findAll(), konzultacioRepository.findAll());
+        Classes classes = Classes.builder()
+                .eloadasList(eloadasRepository.findAllByTurnus_id(turnusId))
+                .gyakorlatList(gyakorlatRepository.findAllByTurnus_id(turnusId))
+                .konzultacioList(konzultacioRepository.findAllByTurnus_id(turnusId))
+                .build();
+        return attendancePercentage.getStudentsStatistics(turnus,studentRepository.findAll(), classes);
     }
 }
