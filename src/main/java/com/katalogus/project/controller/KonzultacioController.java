@@ -58,4 +58,20 @@ public class KonzultacioController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+
+    @GetMapping("/{konzultacio_id}/openClass")
+    public String openClassForAttendance(@PathVariable("konzultacio_id") Long konzultacioId) {
+        return konzultacioProvider.openClassForAttendace(konzultacioId);
+    }
+
+    @PostMapping("/{konzultacio_id}/closeClass")
+    public ResponseEntity<String> closeClassForAttendance(@PathVariable("konzultacio_id") Long konzultacioId) {
+        Boolean successful = konzultacioProvider.closeClassForAttendace(konzultacioId);
+        if (successful) {
+            return ResponseEntity.ok("Konzultacio closed successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }
