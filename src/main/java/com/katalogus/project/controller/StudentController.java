@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -56,5 +57,15 @@ public class StudentController {
     @GetMapping("/{student_id}/statistics")
     public StudentStatistic getStudentStatisticByStudentId(@PathVariable("student_id") Long studentId) {
         return studentProvider.getStudentStatisticByStudentId(studentId);
+    }
+
+    @PostMapping("/{student_id}/send_code")
+    public ResponseEntity<String> sendInCode(@PathVariable("student_id") Long studentId, @RequestBody HashMap<String, String> code) {
+        HashMap<Boolean, String> success = studentProvider.sendInCode(studentId, code);
+        if (success.containsKey(true)) {
+            return ResponseEntity.ok(success.get(true));
+        } else {
+            return ResponseEntity.badRequest().body(success.get(false));
+        }
     }
 }
