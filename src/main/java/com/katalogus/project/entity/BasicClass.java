@@ -10,11 +10,8 @@ import java.sql.Date;
 @Getter
 public abstract class BasicClass {
 
-    @Id
-    @GeneratedValue
     private Long id;
 
-    @Builder.Default
     private Long teacher_id = null;
 
     private Long turnus_id;
@@ -25,14 +22,11 @@ public abstract class BasicClass {
 
     private Integer point;
 
-    @Builder.Default
     private String code = null;
 
     private Boolean potlas;
 
-    @Builder.Default
     private Boolean active = true;
 
-    @Builder.Default
     private Boolean isAttendanceOpen = false;
 }
