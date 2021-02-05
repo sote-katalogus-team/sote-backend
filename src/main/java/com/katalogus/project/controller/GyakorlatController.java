@@ -1,5 +1,6 @@
 package com.katalogus.project.controller;
 
+import com.katalogus.project.entity.Eloadas;
 import com.katalogus.project.entity.Gyakorlat;
 import com.katalogus.project.service.ClassesProvider;
 import com.katalogus.project.service.GyakorlatProvider;
@@ -14,6 +15,11 @@ public class GyakorlatController {
 
     @Autowired
     GyakorlatProvider gyakorlatProvider;
+
+    @GetMapping("/{gyakorlat_id}")
+    public Gyakorlat getGyakorlatById(@PathVariable("gyakorlat_id") Long gyakorlatId) {
+        return gyakorlatProvider.getGyakorlatById(gyakorlatId);
+    }
 
     @PostMapping("/add")
     public ResponseEntity<String> saveNewGyakorlat(@RequestBody Gyakorlat gyakorlat) {

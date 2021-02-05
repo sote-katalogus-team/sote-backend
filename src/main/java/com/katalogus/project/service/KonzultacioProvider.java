@@ -44,4 +44,8 @@ public class KonzultacioProvider {
         }
         return success;
     }
+
+    public Konzultacio getKonzultacioById(Long konzultacioId) {
+        return konzultacioRepository.findById(konzultacioId).get();
+    }
 }

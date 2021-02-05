@@ -15,6 +15,11 @@ public class EloadasController {
     @Autowired
     EloadasProvider eloadasProvider;
 
+    @GetMapping("/{eloadas_id}")
+    public Eloadas getEloadasById(@PathVariable("eloadas_id") Long eloadasId) {
+        return eloadasProvider.getEloadasById(eloadasId);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<String> saveNewEloadas(@RequestBody Eloadas eloadas) {
         Boolean successful = eloadasProvider.saveNewEloadas(eloadas);

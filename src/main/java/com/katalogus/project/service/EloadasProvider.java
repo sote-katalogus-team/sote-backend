@@ -43,4 +43,9 @@ public class EloadasProvider {
         }
         return success;
     }
+
+    public Eloadas getEloadasById(Long eloadasId) {
+        return eloadasRepository.findById(eloadasId).get();
+
+    }
 }

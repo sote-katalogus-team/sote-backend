@@ -1,5 +1,6 @@
 package com.katalogus.project.service;
 
+import com.katalogus.project.entity.Eloadas;
 import com.katalogus.project.entity.Gyakorlat;
 import com.katalogus.project.repository.GyakorlatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,9 @@ public class GyakorlatProvider {
             success = true;
         }
         return success;
+    }
+
+    public Gyakorlat getGyakorlatById(Long gyakorlatId) {
+        return gyakorlatRepository.findById(gyakorlatId).get();
     }
 }

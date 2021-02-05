@@ -14,6 +14,11 @@ public class KonzultacioController {
     @Autowired
     KonzultacioProvider konzultacioProvider;
 
+    @GetMapping("/{konzultacio_id}")
+    public Konzultacio getKonzultacioById(@PathVariable("konzultacio_id") Long konzultacioId) {
+        return konzultacioProvider.getKonzultacioById(konzultacioId);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<String> saveNewKonzultacio(@RequestBody Konzultacio konzultacio) {
         Boolean successful = konzultacioProvider.saveNewKonzultacio(konzultacio);
