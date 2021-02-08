@@ -19,10 +19,7 @@ public class Konzultacio extends BasicClass {
     @GeneratedValue
     private Long id;
 
-    @Builder.Default
-    private Long teacher_id = null;
-
-    private Long turnus_id;
+    private Long turnusId;
 
     private String name;
 

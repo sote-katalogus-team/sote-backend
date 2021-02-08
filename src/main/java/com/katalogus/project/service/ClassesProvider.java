@@ -28,7 +28,7 @@ public class ClassesProvider {
 
     @Autowired
     KonzultacioRepository konzultacioRepository;
-
+loadas/1
     @Autowired
     AttendancePercentage attendancePercentage;
 
@@ -38,18 +38,18 @@ public class ClassesProvider {
 
     public Classes getAllByTurnusId(Long turnusId) {
         return Classes.builder()
-                .eloadasList(eloadasRepository.findAllByTurnus_id(turnusId))
-                .gyakorlatList(gyakorlatRepository.findAllByTurnus_id(turnusId))
-                .konzultacioList(konzultacioRepository.findAllByTurnus_id(turnusId))
+                .eloadasList(eloadasRepository.findAllByTurnusId(turnusId))
+                .gyakorlatList(gyakorlatRepository.findAllByTurnusId(turnusId))
+                .konzultacioList(konzultacioRepository.findAllByTurnusId(turnusId))
                 .build();
     }
 
     public List<StudentStatistic> getAllStatistic(Long turnusId) {
         Turnus turnus = turnusRepository.getOne(turnusId);
         Classes classes = Classes.builder()
-                .eloadasList(eloadasRepository.findAllByTurnus_id(turnusId))
-                .gyakorlatList(gyakorlatRepository.findAllByTurnus_id(turnusId))
-                .konzultacioList(konzultacioRepository.findAllByTurnus_id(turnusId))
+                .eloadasList(eloadasRepository.findAllByTurnusId(turnusId))
+                .gyakorlatList(gyakorlatRepository.findAllByTurnusId(turnusId))
+                .konzultacioList(konzultacioRepository.findAllByTurnusId(turnusId))
                 .build();
         return attendancePercentage.getStudentsStatistics(turnus, studentRepository.findAll(), classes);
     }

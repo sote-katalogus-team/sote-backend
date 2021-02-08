@@ -9,9 +9,7 @@ public abstract class BasicClass {
 
     private Long id;
 
-    private Long teacher_id = null;
-
-    private Long turnus_id;
+    private Long turnusId;
 
     private String name;
 

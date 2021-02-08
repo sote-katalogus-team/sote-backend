@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface KonzultacioRepository extends JpaRepository<Konzultacio, Long> {
 
-    @Query("SELECT k FROM Konzultacio k WHERE k.turnus_id  = ?1")
-    List<Konzultacio> findAllByTurnus_id(Long turnusId);
+    @Query("SELECT k FROM Konzultacio k WHERE k.turnusId  = ?1")
+    List<Konzultacio> findAllByTurnusId(Long turnusId);
 
     List<Konzultacio> findByDate(Date date);
 }
