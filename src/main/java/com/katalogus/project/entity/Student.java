@@ -1,14 +1,12 @@
 package com.katalogus.project.entity;
 
+import com.katalogus.project.security.ApplicationUserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Data
@@ -16,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Student {
+public class Student extends ApplicationUser {
 
 
     @Id
@@ -32,6 +30,10 @@ public class Student {
     private String neptunCode;
 
     private Long turnus_id;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private List<ApplicationUserRole> roles;
 
     @OneToMany
     private List<Konzultacio> konzultacioList;
