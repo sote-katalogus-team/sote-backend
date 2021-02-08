@@ -11,7 +11,7 @@ import com.katalogus.project.utility.AttendancePercentage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @Service
