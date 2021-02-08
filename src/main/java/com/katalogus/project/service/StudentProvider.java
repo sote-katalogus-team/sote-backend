@@ -10,7 +10,6 @@ import com.katalogus.project.utility.AttendancePercentage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -56,7 +55,7 @@ public class StudentProvider {
         Optional<Student> optionalStudent = studentRepository.findById(studentId);
         if (optionalStudent.isPresent()) {
             Student student = optionalStudent.get();
-            Classes classes = classesProvider.getAllByTurnusId(student.getTurnus_id());
+            Classes classes = classesProvider.getAllByTurnusId(student.getTurnusId());
             return StudentStatistic.builder()
                     .percentages(attendancePercentage.calculateAttendancePercentages(student, classes))
                     .neptunCode(student.getNeptunCode())
@@ -72,7 +71,7 @@ public class StudentProvider {
         Optional<Student> optionalStudent = studentRepository.findById(studentId);
         if (optionalStudent.isPresent()) {
             Student student = optionalStudent.get();
-            Classes classes = classesProvider.getAllByTurnusId(student.getTurnus_id());
+            Classes classes = classesProvider.getAllByTurnusId(student.getTurnusId());
             List<BasicClass> activeClasses = classes.getActiveClasses();
             BasicClass currentClass = null;
             for (BasicClass classToCheck : activeClasses) {
@@ -146,7 +145,7 @@ public class StudentProvider {
                         eloadasList.add(eloadas);
                         student.setEloadasList(eloadasList);
                         success.remove(false);
-                        success.put(true,student.getName() + "was added to class!");
+                        success.put(true, student.getName() + "was added to class!");
                     }
                 }
             } else if (classInfo.getType() == ClassType.GYAKORLAT) {
@@ -156,7 +155,7 @@ public class StudentProvider {
                         gyakorlatList.add(gyakorlat);
                         student.setGyakorlatList(gyakorlatList);
                         success.remove(false);
-                        success.put(true,student.getName() + "was added to class!");
+                        success.put(true, student.getName() + "was added to class!");
                     }
                 }
             } else {
@@ -166,12 +165,22 @@ public class StudentProvider {
                         konzultacioList.add(konzultacio);
                         student.setKonzultacioList(konzultacioList);
                         success.remove(false);
-                        success.put(true,student.getName() + "was added to class!");
+                        success.put(true, student.getName() + "was added to class!");
                     }
                 }
             }
             studentRepository.save(student);
         }
         return success;
+    }
+
+    public Integer getHeadCount(Long turnusId) {
+        Integer headCount = studentRepository.countByTurnusId(turnusId);
+        if (headCount < 1) {
+            return -1;
+        } else {
+            return headCount;
+        }
+
     }
 }
