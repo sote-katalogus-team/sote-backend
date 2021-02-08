@@ -38,7 +38,7 @@ public class AttendancePercentage {
             if (student.getTurnus_id().equals(turnus.getId())) {
                 StudentStatistic studentStatistic = StudentStatistic.builder()
                         .studentName(student.getName())
-                        .neptunCode(student.getNeptun_code())
+                        .neptunCode(student.getNeptunCode())
                         .percentages(calculateAttendancePercentages(student, classes))
                         .build();
                 studentStatistic.createWarning(turnus);
