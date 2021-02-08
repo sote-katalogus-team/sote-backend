@@ -6,7 +6,7 @@ import com.katalogus.project.service.ClassesProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -28,7 +28,7 @@ public class ClassesController {
     }
 
     @GetMapping("/find_by_date")
-    public Classes getClassesByDate(@RequestBody Date date) {
-        return  classesProvider.getClassesByDate(date);
+    public Classes getClassesByDate() {
+        return classesProvider.getClassesByDate(new Date());
     }
 }
