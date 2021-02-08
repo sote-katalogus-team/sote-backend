@@ -28,7 +28,7 @@ public class ClassesProvider {
 
     @Autowired
     KonzultacioRepository konzultacioRepository;
-loadas/1
+
     @Autowired
     AttendancePercentage attendancePercentage;
 
