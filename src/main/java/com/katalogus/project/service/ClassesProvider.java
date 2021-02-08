@@ -12,10 +12,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 public class ClassesProvider {
-
     @Autowired
     TurnusRepository turnusRepository;
 
@@ -76,12 +77,45 @@ public class ClassesProvider {
         List<Konzultacio> konzultacioList = konzultacioRepository.findAllByTurnusId(turnusId);
         List<ClassAttendance> classAttendances = new ArrayList<>();
 
-        /*
-        Minden órához meg kell számolni hányan vettek rajta rész turnuson belül.
-        Az összes listában csak az adott turnushoz tartozó adatok vannak.
 
-        */
+        for (Gyakorlat gyakorlat : gyakorlatList) {
+            classAttendances.add(new ClassAttendance(gyakorlat, szamolGyakorlat(gyakorlat.getDate(), studentList)));
+        }
+        for (Eloadas eloadas : eloadasList) {
+            classAttendances.add(new ClassAttendance(eloadas, szamolEloadas(eloadas.getDate(), studentList)));
+        }
+        for (Konzultacio konzultacio : konzultacioList) {
+            classAttendances.add(new ClassAttendance(konzultacio, szamolKonzultacio(konzultacio.getDate(), studentList)));
+        }
+
         return classAttendances;
 
+    }
+
+    private int szamolGyakorlat(Date date, List<Student> studentList) {
+        int counter = 0;
+        for (Student student : studentList) {
+            int number = (int) student.getGyakorlatList().stream().filter(a -> a.getDate().equals(date)).count();
+            counter += number;
+        }
+        return counter;
+    }
+
+    private int szamolEloadas(Date date, List<Student> studentList) {
+        int counter = 0;
+        for (Student student : studentList) {
+            int number = (int) student.getEloadasList().stream().filter(a -> a.getDate().equals(date)).count();
+            counter += number;
+        }
+        return counter;
+    }
+
+    private int szamolKonzultacio(Date date, List<Student> studentList) {
+        int counter = 0;
+        for (Student student : studentList) {
+            int number = (int) student.getKonzultacioList().stream().filter(a -> a.getDate().equals(date)).count();
+            counter += number;
+        }
+        return counter;
     }
 }
