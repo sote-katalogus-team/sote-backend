@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface GyakorlatRepository extends JpaRepository<Gyakorlat, Long> {
 
-    @Query("SELECT gy FROM Gyakorlat gy WHERE gy.turnus_id  = ?1")
-    List<Gyakorlat> findAllByTurnus_id(Long turnusId);
+    @Query("SELECT gy FROM Gyakorlat gy WHERE gy.turnusId  = ?1")
+    List<Gyakorlat> findAllByTurnusId(Long turnusId);
 
     List<Gyakorlat> findByDate(Date date);
 }

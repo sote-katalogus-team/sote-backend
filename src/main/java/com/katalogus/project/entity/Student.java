@@ -29,7 +29,7 @@ public class Student extends ApplicationUser {
 
     private String neptunCode;
 
-    private Long turnus_id;
+    private Long turnusId;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)

@@ -38,6 +38,17 @@ public class StudentController {
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN')")
+
+    @GetMapping("/head_count/{turnus_id}")
+    public ResponseEntity<Integer> getHeadCount(@PathVariable("turnus_id") Long turnusId) {
+        Integer headCount = studentProvider.getHeadCount(turnusId);
+        if (headCount == -1) {
+            return ResponseEntity.badRequest().body(-1);
+        } else {
+            return ResponseEntity.ok(headCount);
+        }
+    }
+
     @PutMapping("/{student_id}/update")
     public ResponseEntity<String> updateStudentById(@RequestBody Student student, @PathVariable("student_id") Long studentId) {
         Boolean successful = studentProvider.updateStudentById(student, studentId);

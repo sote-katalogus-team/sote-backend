@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface EloadasRepository extends JpaRepository<Eloadas, Long> {
 
-    @Query("SELECT e FROM Eloadas e WHERE e.turnus_id  = ?1")
-    List<Eloadas> findAllByTurnus_id(Long turnusId);
+    @Query("SELECT e FROM Eloadas e WHERE e.turnusId  = ?1")
+    List<Eloadas> findAllByTurnusId(Long turnusId);
 
     List<Eloadas> findByDate(Date date);
 }

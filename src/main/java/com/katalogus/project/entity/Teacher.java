@@ -22,12 +22,15 @@ public class Teacher extends ApplicationUser {
 
     private String name;
 
+
     private String email;
 
     private String password;
-
+  
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private List<ApplicationUserRole> roles;
+
+
 
 }
