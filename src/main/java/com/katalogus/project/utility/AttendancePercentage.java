@@ -35,7 +35,7 @@ public class AttendancePercentage {
     public List<StudentStatistic> getStudentsStatistics(Turnus turnus, List<Student> studentList, Classes classes) {
         List<StudentStatistic> studentStatisticList = new ArrayList<>();
         for (Student student : studentList) {
-            if (student.getTurnus_id().equals(turnus.getId())) {
+            if (student.getTurnusId().equals(turnus.getId())) {
                 StudentStatistic studentStatistic = StudentStatistic.builder()
                         .studentName(student.getName())
                         .neptunCode(student.getNeptunCode())
