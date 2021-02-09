@@ -5,6 +5,7 @@ import com.katalogus.project.service.ClassesProvider;
 import com.katalogus.project.service.EloadasProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,11 +16,13 @@ public class EloadasController {
     @Autowired
     EloadasProvider eloadasProvider;
 
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
     @GetMapping("/{eloadas_id}")
     public Eloadas getEloadasById(@PathVariable("eloadas_id") Long eloadasId) {
         return eloadasProvider.getEloadasById(eloadasId);
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<String> saveNewEloadas(@RequestBody Eloadas eloadas) {
         Boolean successful = eloadasProvider.saveNewEloadas(eloadas);
@@ -30,6 +33,7 @@ public class EloadasController {
         }
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PutMapping("/{eloadas_id}/update")
     public ResponseEntity<String> updateEloadasById(@RequestBody Eloadas eloadas, @PathVariable("eloadas_id") Long eloadasId) {
         Boolean successful = eloadasProvider.updateEloadasById(eloadas, eloadasId);
@@ -40,6 +44,7 @@ public class EloadasController {
         }
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @DeleteMapping("/{eloadas_id}/delete")
     public ResponseEntity<String> deleteEloadasById(@PathVariable("eloadas_id") Long eloadasId) {
         Boolean successful = eloadasProvider.deleteEloadasById(eloadasId);
@@ -50,6 +55,7 @@ public class EloadasController {
         }
     }
 
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
     @PutMapping("/{eloadas_id}/change_status")
     public ResponseEntity<String> changeActiveStatusById(@PathVariable("eloadas_id") Long eloadasId) {
         Boolean successful = eloadasProvider.changeActiveStatusById(eloadasId);
@@ -60,11 +66,13 @@ public class EloadasController {
         }
     }
 
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
     @GetMapping("/{eloadas_id}/openClass")
     public String openClassForAttendance(@PathVariable("eloadas_id") Long eloadasId) {
         return eloadasProvider.openClassForAttendace(eloadasId);
     }
 
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
     @PostMapping("/{eloadas_id}/closeClass")
     public ResponseEntity<String> closeClassForAttendance(@PathVariable("eloadas_id") Long eloadasId) {
         Boolean successful = eloadasProvider.closeClassForAttendace(eloadasId);
