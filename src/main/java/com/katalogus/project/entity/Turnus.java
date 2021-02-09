@@ -22,8 +22,6 @@ public class Turnus {
 
     private String name;
 
-    private Integer turnus_number;
-
     @Builder.Default
     private Integer lecture = 0;
 
