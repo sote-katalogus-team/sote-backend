@@ -1,11 +1,10 @@
 package com.katalogus.project.repository;
 
-import com.katalogus.project.entity.Eloadas;
 import com.katalogus.project.entity.Gyakorlat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public interface GyakorlatRepository extends JpaRepository<Gyakorlat, Long> {
