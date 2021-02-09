@@ -1,11 +1,15 @@
 package com.katalogus.project.entity;
 
 import com.katalogus.project.security.ApplicationUserRole;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
+@Setter
 @Getter
+@Builder
 public abstract class ApplicationUser {
 
     private Long id;
@@ -18,3 +22,4 @@ public abstract class ApplicationUser {
 
     private List<ApplicationUserRole> roles;
 }
+
