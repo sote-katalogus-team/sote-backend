@@ -2,7 +2,7 @@ package com.katalogus.project.entity;
 
 import lombok.Getter;
 
-import java.sql.Date;
+import java.util.Date;
 
 @Getter
 public abstract class BasicClass {
