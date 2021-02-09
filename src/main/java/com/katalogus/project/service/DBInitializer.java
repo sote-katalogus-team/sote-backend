@@ -67,7 +67,7 @@ public class DBInitializer {
                 .name("eloadas1t1")
                 .point(1)
                 .potlas(false)
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .id((long) 11)
                 .build();
         Eloadas eloadas2t1 = Eloadas.builder()
@@ -78,7 +78,7 @@ public class DBInitializer {
                 .name("eloadas2t1")
                 .point(1)
                 .potlas(false)
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .id((long) 12)
                 .build();
         Eloadas eloadas3t1 = Eloadas.builder()
@@ -89,7 +89,7 @@ public class DBInitializer {
                 .name("eloadas3t1")
                 .point(1)
                 .potlas(true)
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .id((long) 13)
                 .build();
         Eloadas eloadas1t2 = Eloadas.builder()
@@ -100,7 +100,7 @@ public class DBInitializer {
                 .name("eloadas1t2")
                 .point(1)
                 .potlas(false)
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .id((long) 14)
                 .build();
         Eloadas eloadas2t2 = Eloadas.builder()
@@ -111,7 +111,7 @@ public class DBInitializer {
                 .name("eloadas2t2")
                 .point(1)
                 .potlas(false)
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .id((long) 15)
                 .build();
         Eloadas eloadas3t2 = Eloadas.builder()
@@ -122,7 +122,7 @@ public class DBInitializer {
                 .name("eloadas3t2")
                 .point(1)
                 .potlas(true)
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .id((long) 16)
                 .build();
 
@@ -134,7 +134,7 @@ public class DBInitializer {
                 .name("konzultacio1t1")
                 .point(1)
                 .potlas(false)
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .id((long) 11)
                 .build();
         Konzultacio konzultacio2t1 = Konzultacio.builder()
@@ -145,7 +145,7 @@ public class DBInitializer {
                 .name("konzultacio2t1")
                 .point(2)
                 .potlas(false)
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .id((long) 12)
                 .build();
         Konzultacio konzultacio3t1 = Konzultacio.builder()
@@ -156,7 +156,7 @@ public class DBInitializer {
                 .name("konzultacio3t1")
                 .point(2)
                 .potlas(false)
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .id((long) 13)
                 .build();
         Konzultacio konzultacio1t2 = Konzultacio.builder()
@@ -167,7 +167,7 @@ public class DBInitializer {
                 .name("konzultacio1t2")
                 .point(1)
                 .potlas(false)
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .id((long) 14)
                 .build();
         Konzultacio konzultacio2t2 = Konzultacio.builder()
@@ -178,7 +178,7 @@ public class DBInitializer {
                 .name("konzultacio2t2")
                 .point(2)
                 .potlas(false)
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .id((long) 15)
                 .build();
         Konzultacio konzultacio3t2 = Konzultacio.builder()
@@ -189,7 +189,7 @@ public class DBInitializer {
                 .name("konzultacio3t2")
                 .point(2)
                 .potlas(false)
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .id((long) 16)
                 .build();
         Gyakorlat gyakorlat1t1 = Gyakorlat.builder()
@@ -200,7 +200,7 @@ public class DBInitializer {
                 .name("gyakorlat1t1")
                 .point(1)
                 .potlas(false)
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .id((long) 11)
                 .build();
         Gyakorlat gyakorlat2t1 = Gyakorlat.builder()
@@ -211,7 +211,7 @@ public class DBInitializer {
                 .name("gyakorlat2t1")
                 .point(1)
                 .potlas(false)
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .id((long) 12)
                 .build();
         Gyakorlat gyakorlat3t1 = Gyakorlat.builder()
@@ -222,7 +222,7 @@ public class DBInitializer {
                 .name("gyakorlat3t1")
                 .point(1)
                 .potlas(false)
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .id((long) 13)
                 .build();
         Gyakorlat gyakorlat1t2 = Gyakorlat.builder()
@@ -233,7 +233,7 @@ public class DBInitializer {
                 .name("gyakorlat1t2")
                 .point(1)
                 .potlas(false)
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .id((long) 14)
                 .build();
         Gyakorlat gyakorlat2t2 = Gyakorlat.builder()
@@ -244,7 +244,7 @@ public class DBInitializer {
                 .name("gyakorlat2t2")
                 .point(1)
                 .potlas(false)
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .id((long) 15)
                 .build();
         Gyakorlat gyakorlat3t2 = Gyakorlat.builder()
@@ -255,7 +255,7 @@ public class DBInitializer {
                 .name("gyakorlat3t2")
                 .point(1)
                 .potlas(false)
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .id((long) 16)
                 .build();
 
@@ -284,16 +284,16 @@ public class DBInitializer {
         gyakorlatRepository.save(gyakorlat2t2);
         gyakorlatRepository.save(gyakorlat3t2);
 
-        List<Gyakorlat> gyakorlatListt1 = gyakorlatRepository.findAllByTurnus_id((long) 1);
-        List<Konzultacio> konzultacioListt1 = konzultacioRepository.findAllByTurnus_id((long) 1);
-        List<Eloadas> eloadasListt1 = eloadasRepository.findAllByTurnus_id((long) 1);
+        List<Gyakorlat> gyakorlatListt1 = gyakorlatRepository.findAllByTurnusId((long) 1);
+        List<Konzultacio> konzultacioListt1 = konzultacioRepository.findAllByTurnusId((long) 1);
+        List<Eloadas> eloadasListt1 = eloadasRepository.findAllByTurnusId((long) 1);
 
         Student student1t1 = Student.builder()
                 .email("student1t1@student.com")
                 .name("Student1t1")
                 .neptunCode("QWERTZ")
                 .password("password")
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .gyakorlatList(gyakorlatListt1.subList(0, 3))
                 .eloadasList(eloadasListt1.subList(0, 2))
                 .konzultacioList(konzultacioListt1.subList(0, 1))
@@ -303,7 +303,7 @@ public class DBInitializer {
                 .name("Student2t1")
                 .neptunCode("QWERTZ")
                 .password("password")
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .gyakorlatList(gyakorlatListt1.subList(0, 1))
                 .eloadasList(eloadasListt1.subList(0, 3))
                 .konzultacioList(konzultacioListt1.subList(0, 2))
@@ -313,7 +313,7 @@ public class DBInitializer {
                 .name("Student3t1")
                 .neptunCode("QWERTZ")
                 .password("password")
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .gyakorlatList(gyakorlatListt1.subList(0, 2))
                 .eloadasList(eloadasListt1.subList(0, 1))
                 .konzultacioList(konzultacioListt1.subList(0, 3))
@@ -323,7 +323,7 @@ public class DBInitializer {
                 .name("Student4t1")
                 .neptunCode("QWERTZ")
                 .password("password")
-                .turnus_id((long) 1)
+                .turnusId((long) 1)
                 .gyakorlatList(gyakorlatListt1)
                 .eloadasList(eloadasListt1)
                 .konzultacioList(konzultacioListt1)
@@ -333,28 +333,28 @@ public class DBInitializer {
                 .name("Student1t2")
                 .neptunCode("QWERTZ")
                 .password("password")
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .build();
         Student student2t2 = Student.builder()
                 .email("student2t2@student.com")
                 .name("Student2t2")
                 .neptunCode("QWERTZ")
                 .password("password")
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .build();
         Student student3t2 = Student.builder()
                 .email("student3t2@student.com")
                 .name("Student3t2")
                 .neptunCode("QWERTZ")
                 .password("password")
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .build();
         Student student4t2 = Student.builder()
                 .email("student4t2@student.com")
                 .name("Student4t2")
                 .neptunCode("QWERTZ")
                 .password("password")
-                .turnus_id((long) 2)
+                .turnusId((long) 2)
                 .build();
 
 
