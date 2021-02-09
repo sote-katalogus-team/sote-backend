@@ -35,13 +35,13 @@ public class Student extends ApplicationUser {
     @Enumerated(EnumType.STRING)
     private List<ApplicationUserRole> roles;
 
-    @OneToMany
+    @ManyToMany
     private List<Konzultacio> konzultacioList;
 
-    @OneToMany
+    @ManyToMany
     private List<Eloadas> eloadasList;
 
-    @OneToMany
+    @ManyToMany
     private List<Gyakorlat> gyakorlatList;
 
 }
