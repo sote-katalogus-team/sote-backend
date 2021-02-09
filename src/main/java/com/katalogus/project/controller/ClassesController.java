@@ -24,13 +24,13 @@ public class ClassesController {
         return classesProvider.getAllByTurnusId(turnusId);
     }
 
-    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")//hiba
     @GetMapping("/statistic/{turnus_id}")
     public List<StudentStatistic> getAllStatistic(@PathVariable("turnus_id") Long turnusId) {
         return classesProvider.getAllStatistic(turnusId);
     }
 
-    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")//dátum rossz
     @GetMapping("/find_by_date")
     public Classes getClassesByDate() {
         return classesProvider.getClassesByDate(new Date());
