@@ -7,9 +7,7 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Setter
 @Getter
-@Builder
 public abstract class ApplicationUser {
 
     private Long id;
