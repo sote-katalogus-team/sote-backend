@@ -26,7 +26,7 @@ public class ClassesController {
     }
 
     @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")//hiba
-    @GetMapping("/statistic/{turnus_id}")
+    @GetMapping("/student_statistic/{turnus_id}")
 
     public List<StudentStatistic> getAllStatistic(@PathVariable("turnus_id") Long turnusId) {
         return classesProvider.getAllStatistic(turnusId);
