@@ -17,11 +17,11 @@ import java.util.List;
 @Data
 public class Classes {
 
-    private List<Eloadas> eloadasList = new ArrayList<>();
+    private List<Eloadas> eloadasList;
 
-    private List<Gyakorlat> gyakorlatList = new ArrayList<>();
+    private List<Gyakorlat> gyakorlatList;
 
-    private List<Konzultacio> konzultacioList = new ArrayList<>();
+    private List<Konzultacio> konzultacioList;
 
     public List<BasicClass> getActiveClasses() {
         List<BasicClass> basicClassList = new ArrayList<>();

@@ -1,5 +1,6 @@
 package com.katalogus.project.entity;
 
+import com.katalogus.project.security.ApplicationUserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Student {
+public class Student extends ApplicationUser {
 
 
     @Id
@@ -29,6 +30,10 @@ public class Student {
     private String neptunCode;
 
     private Long turnusId;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private List<ApplicationUserRole> roles;
 
     @ManyToMany
     private List<Konzultacio> konzultacioList;

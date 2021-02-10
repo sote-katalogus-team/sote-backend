@@ -2,6 +2,7 @@ package com.katalogus.project.service;
 
 import com.katalogus.project.entity.*;
 import com.katalogus.project.repository.*;
+import com.katalogus.project.security.ApplicationUserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -32,6 +33,9 @@ public class DBInitializer {
     @Autowired
     TeacherRepository teacherRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @PostConstruct
     public void postConstruct() {
         turnusRepository.save(Turnus.builder()
@@ -51,12 +55,20 @@ public class DBInitializer {
         teacherRepository.save(Teacher.builder()
                 .email("teacher1@teacher.com")
                 .name("tanar1")
-                .password("password")
+                .password(passwordEncoder.encode("password"))
+                .roles(List.of(ApplicationUserRole.TEACHER))
                 .build());
         teacherRepository.save(Teacher.builder()
                 .email("teacher2@teacher.com")
                 .name("tanar2")
-                .password("password")
+                .password(passwordEncoder.encode("password"))
+                .roles(List.of(ApplicationUserRole.TEACHER))
+                .build());
+        teacherRepository.save(Teacher.builder()
+                .email("admin@admin.com")
+                .name("admin")
+                .password(passwordEncoder.encode("password"))
+                .roles(List.of(ApplicationUserRole.TEACHER, ApplicationUserRole.ADMIN))
                 .build());
 
         Eloadas eloadas1t1 = Eloadas.builder()
@@ -292,69 +304,77 @@ public class DBInitializer {
                 .email("student1t1@student.com")
                 .name("Student1t1")
                 .neptunCode("QWERTZ")
-                .password("password")
-                .turnusId((long) 1)
-                .gyakorlatList(gyakorlatListt1.subList(0, 3))
-                .eloadasList(eloadasListt1.subList(0, 2))
-                .konzultacioList(konzultacioListt1.subList(0, 1))
+                .password(passwordEncoder.encode("password"))
+                .turnus_id((long) 1)
+                .gyakorlatList(gyakorlatListt1.subList(0, 2))
+                .eloadasList(eloadasListt1.subList(0, 1))
+                .konzultacioList(konzultacioListt1.subList(0, 0))
+                .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
         Student student2t1 = Student.builder()
                 .email("student2t1@student.com")
                 .name("Student2t1")
                 .neptunCode("QWERTZ")
-                .password("password")
-                .turnusId((long) 1)
-                .gyakorlatList(gyakorlatListt1.subList(0, 1))
-                .eloadasList(eloadasListt1.subList(0, 3))
-                .konzultacioList(konzultacioListt1.subList(0, 2))
+                .password(passwordEncoder.encode("password"))
+                .turnus_id((long) 1)
+                .gyakorlatList(gyakorlatListt1.subList(0, 0))
+                .eloadasList(eloadasListt1.subList(0, 2))
+                .konzultacioList(konzultacioListt1.subList(0, 1))
+                .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
         Student student3t1 = Student.builder()
                 .email("student3t1@student.com")
                 .name("Student3t1")
                 .neptunCode("QWERTZ")
-                .password("password")
-                .turnusId((long) 1)
-                .gyakorlatList(gyakorlatListt1.subList(0, 2))
-                .eloadasList(eloadasListt1.subList(0, 1))
-                .konzultacioList(konzultacioListt1.subList(0, 3))
+                .password(passwordEncoder.encode("password"))
+                .turnus_id((long) 1)
+                .gyakorlatList(gyakorlatListt1.subList(0, 1))
+                .eloadasList(eloadasListt1.subList(0, 0))
+                .konzultacioList(konzultacioListt1.subList(0, 2))
+                .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
         Student student4t1 = Student.builder()
                 .email("student4t1@student.com")
                 .name("Student4t1")
                 .neptunCode("QWERTZ")
-                .password("password")
-                .turnusId((long) 1)
+                .password(passwordEncoder.encode("password"))
+                .turnus_id((long) 1)
                 .gyakorlatList(gyakorlatListt1)
                 .eloadasList(eloadasListt1)
                 .konzultacioList(konzultacioListt1)
+                .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
         Student student1t2 = Student.builder()
                 .email("student1t2@student.com")
                 .name("Student1t2")
                 .neptunCode("QWERTZ")
-                .password("password")
-                .turnusId((long) 2)
+                .password(passwordEncoder.encode("password"))
+                .turnus_id((long) 2)
+                .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
         Student student2t2 = Student.builder()
                 .email("student2t2@student.com")
                 .name("Student2t2")
                 .neptunCode("QWERTZ")
-                .password("password")
-                .turnusId((long) 2)
+                .password(passwordEncoder.encode("password"))
+                .turnus_id((long) 2)
+                .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
         Student student3t2 = Student.builder()
                 .email("student3t2@student.com")
                 .name("Student3t2")
                 .neptunCode("QWERTZ")
-                .password("password")
-                .turnusId((long) 2)
+                .password(passwordEncoder.encode("password"))
+                .turnus_id((long) 2)
+                .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
         Student student4t2 = Student.builder()
                 .email("student4t2@student.com")
                 .name("Student4t2")
                 .neptunCode("QWERTZ")
-                .password("password")
-                .turnusId((long) 2)
+                .password(passwordEncoder.encode("password"))
+                .turnus_id((long) 2)
+                .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
 
 
