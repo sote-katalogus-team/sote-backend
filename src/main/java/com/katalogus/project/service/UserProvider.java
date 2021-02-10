@@ -56,7 +56,6 @@ public class UserProvider {
                 response.clear();
                 response.put(true, "Registered " + newStudent.getName() + "successfully!");
             }
-
         }
         return response;
     }
