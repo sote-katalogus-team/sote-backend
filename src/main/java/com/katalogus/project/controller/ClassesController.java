@@ -27,12 +27,11 @@ public class ClassesController {
 
     @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")//hiba
     @GetMapping("/student_statistic/{turnus_id}")
-
     public List<StudentStatistic> getAllStatistic(@PathVariable("turnus_id") Long turnusId) {
         return classesProvider.getAllStatistic(turnusId);
     }
 
-    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")//dátum rossz
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
     @GetMapping("/find_by_date")
     public Classes getClassesByDate() {
         return classesProvider.getClassesByDate(new Date());
