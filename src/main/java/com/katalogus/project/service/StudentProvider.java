@@ -1,10 +1,7 @@
 package com.katalogus.project.service;
 
 import com.katalogus.project.entity.*;
-import com.katalogus.project.model.ClassInfo;
-import com.katalogus.project.model.ClassType;
-import com.katalogus.project.model.Classes;
-import com.katalogus.project.model.StudentStatistic;
+import com.katalogus.project.model.*;
 import com.katalogus.project.repository.StudentRepository;
 import com.katalogus.project.security.PasswordConfig;
 import com.katalogus.project.utility.AttendancePercentage;
@@ -44,7 +41,7 @@ public class StudentProvider {
     public Boolean updateStudentById(Student student, Long studentId) {
         Optional<Student> optionalStudent = studentRepository.findById(studentId);
         student.setId(studentId);
-        if (!optionalStudent.get().getPassword().equals(student.getPassword())){
+        if (!optionalStudent.get().getPassword().equals(student.getPassword())) {
             String password = student.getPassword();
             student.setPassword(passwordEncoder.encode(password));
         }
@@ -137,9 +134,10 @@ public class StudentProvider {
         return count;
     }
 
-    public HashMap<Boolean, String> addByNeptunCode(HashMap<String, String> neptunCode, ClassInfo classInfo) {
+    public HashMap<Boolean, String> addByNeptunCode(ManualAttendance manualAttendance) {
         HashMap<Boolean, String> success = new HashMap<>();
-        String neptunString = neptunCode.get("neptunCode");
+        ClassInfo classInfo = manualAttendance.getClassInfo();
+        String neptunString = manualAttendance.getNeptunCode();
         success.put(false, "No registered student with " + neptunString);
         Optional<Student> optionalStudent = studentRepository.findByNeptunCodeIgnoreCase(neptunString);
         if (optionalStudent.isPresent()) {
