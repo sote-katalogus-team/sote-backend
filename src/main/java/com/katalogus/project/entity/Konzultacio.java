@@ -23,6 +23,7 @@ public class Konzultacio extends BasicClass {
 
     private String name;
 
+    @Temporal(TemporalType.DATE)
     private Date date;
 
     private Integer point;

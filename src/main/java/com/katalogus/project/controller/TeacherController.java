@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -25,18 +26,18 @@ public class TeacherController {
 
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PostMapping("/add")
-    public ResponseEntity saveNewTeacher(@RequestBody Teacher teacher) {
-        Boolean successful = teacherProvider.saveNewTeacher(teacher);
-        if (successful) {
-            return ResponseEntity.ok("New Teacher created successfully");
+    public ResponseEntity<String> saveNewTeacher(@RequestBody Teacher teacher) {
+        HashMap<Boolean, String> successful = teacherProvider.saveNewTeacher(teacher);
+        if (successful.containsKey(true)) {
+            return ResponseEntity.ok(successful.get(true));
         } else {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(successful.get(false));
         }
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PutMapping("/{teacher_id}/update")
-    public ResponseEntity updateTeacherById(@RequestBody Teacher teacher, @PathVariable("teacher_id") Long teacherId) {
+    public ResponseEntity<String> updateTeacherById(@RequestBody Teacher teacher, @PathVariable("teacher_id") Long teacherId) {
         Boolean successful = teacherProvider.updateTeacherById(teacher, teacherId);
         if (successful) {
             return ResponseEntity.ok("Teacher updated successfully");

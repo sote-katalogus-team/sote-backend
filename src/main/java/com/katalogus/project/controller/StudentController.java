@@ -2,6 +2,7 @@ package com.katalogus.project.controller;
 
 import com.katalogus.project.entity.Student;
 import com.katalogus.project.model.ClassInfo;
+import com.katalogus.project.model.ManualAttendance;
 import com.katalogus.project.model.StudentStatistic;
 import com.katalogus.project.service.StudentProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +30,15 @@ public class StudentController {
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<String> saveNewStudent(@RequestBody Student student) {
-        Boolean successful = studentProvider.saveNewStudent(student);
-        if (successful) {
-            return ResponseEntity.ok("New Student created successfully");
+        HashMap<Boolean, String> successful = studentProvider.saveNewStudent(student);
+        if (successful.containsKey(true)) {
+            return ResponseEntity.ok(successful.get(true));
         } else {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(successful.get(false));
         }
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN')")
-
     @GetMapping("/head_count/{turnus_id}")
     public ResponseEntity<Integer> getHeadCount(@PathVariable("turnus_id") Long turnusId) {
         Integer headCount = studentProvider.getHeadCount(turnusId);
@@ -87,10 +87,10 @@ public class StudentController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')") // can't check in postman, still woriking on it
     @PostMapping("/addByNeptunCode")
-    public ResponseEntity<String> addByNeptunCode(@RequestBody HashMap<String, String> neptunCode, @RequestBody ClassInfo classInfo) {
-        HashMap<Boolean, String> success = studentProvider.addByNeptunCode(neptunCode, classInfo);
+    public ResponseEntity<String> addByNeptunCode(@RequestBody ManualAttendance manualAttendance) {
+        HashMap<Boolean, String> success = studentProvider.addByNeptunCode(manualAttendance);
         if (success.containsKey(true)) {
             return ResponseEntity.ok(success.get(true));
         } else {

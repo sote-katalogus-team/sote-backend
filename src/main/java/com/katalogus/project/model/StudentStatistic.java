@@ -24,18 +24,18 @@ public class StudentStatistic {
 
     public void createWarning(Turnus turnus) {
         if (percentages.get("lecture") < turnus.getLecture()) {
-            warning = warning.concat("Előadás");
+            warning = "Előadás";
         }
         if (percentages.get("practice") < turnus.getPractice()) {
-            if (warning.length() == 0) {
-                warning = warning.concat("Gyakorlat");
+            if (warning == null) {
+                warning = "Gyakorlat";
             } else {
                 warning = warning.concat(", Gyakorlat");
             }
         }
         if (percentages.get("consultation") < turnus.getConsultation()) {
-            if (warning.length() == 0) {
-                warning = warning.concat("Konzultáció");
+            if (warning == null) {
+                warning = "Konzultáció";
             } else {
                 warning = warning.concat(", Konzultáció");
             }
