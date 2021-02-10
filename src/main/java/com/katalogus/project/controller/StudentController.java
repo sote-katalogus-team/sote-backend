@@ -30,11 +30,11 @@ public class StudentController {
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<String> saveNewStudent(@RequestBody Student student) {
-        Boolean successful = studentProvider.saveNewStudent(student);
-        if (successful) {
-            return ResponseEntity.ok("New Student created successfully");
+        HashMap<Boolean, String> successful = studentProvider.saveNewStudent(student);
+        if (successful.containsKey(true)) {
+            return ResponseEntity.ok(successful.get(true));
         } else {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(successful.get(false));
         }
     }
 

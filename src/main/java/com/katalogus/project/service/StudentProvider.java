@@ -3,6 +3,7 @@ package com.katalogus.project.service;
 import com.katalogus.project.entity.*;
 import com.katalogus.project.model.*;
 import com.katalogus.project.repository.StudentRepository;
+import com.katalogus.project.security.ApplicationUserRole;
 import com.katalogus.project.security.PasswordConfig;
 import com.katalogus.project.utility.AttendancePercentage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,26 @@ public class StudentProvider {
         return studentRepository.findAll();
     }
 
-    public Boolean saveNewStudent(Student student) {
-        Object response = studentRepository.save(student);
-        return response.getClass().equals(Student.class);
+    public HashMap<Boolean, String> saveNewStudent(Student student) {
+        HashMap<Boolean, String> response = new HashMap<>();
+        response.put(false, "Email already in use.");
+        Optional<Student> optionalStudent = studentRepository.findByEmail(student.getEmail());
+        if (optionalStudent.isEmpty()) {
+            response.replace(false, "Can't register this student");
+            Student newStudent = Student.builder()
+                    .email(student.getEmail())
+                    .password(passwordEncoder.encode(student.getPassword()))
+                    .name(student.getName())
+                    .neptunCode(student.getNeptunCode())
+                    .roles(List.of(ApplicationUserRole.STUDENT))
+                    .build();
+            Object saveResponse = studentRepository.save(newStudent);
+            if (saveResponse.getClass().equals(Student.class)) {
+                response.clear();
+                response.put(true, "Registered " + newStudent.getName() + "successfully!");
+            }
+        }
+        return response;
     }
 
     public Boolean updateStudentById(Student student, Long studentId) {
