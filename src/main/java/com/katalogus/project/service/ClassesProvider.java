@@ -79,41 +79,41 @@ public class ClassesProvider {
 
 
         for (Gyakorlat gyakorlat : gyakorlatList) {
-            classAttendances.add(new ClassAttendance(gyakorlat, szamolGyakorlat(gyakorlat.getDate(), studentList)));
+            classAttendances.add(new ClassAttendance(gyakorlat, szamolGyakorlat(gyakorlat.getId(), studentList)));
         }
         for (Eloadas eloadas : eloadasList) {
-            classAttendances.add(new ClassAttendance(eloadas, szamolEloadas(eloadas.getDate(), studentList)));
+            classAttendances.add(new ClassAttendance(eloadas, szamolEloadas(eloadas.getId(), studentList)));
         }
         for (Konzultacio konzultacio : konzultacioList) {
-            classAttendances.add(new ClassAttendance(konzultacio, szamolKonzultacio(konzultacio.getDate(), studentList)));
+            classAttendances.add(new ClassAttendance(konzultacio, szamolKonzultacio(konzultacio.getId(), studentList)));
         }
 
         return classAttendances;
 
     }
 
-    private int szamolGyakorlat(Date date, List<Student> studentList) {
+    private int szamolGyakorlat(Long id, List<Student> studentList) {
         int counter = 0;
         for (Student student : studentList) {
-            int number = (int) student.getGyakorlatList().stream().filter(a -> a.getDate().equals(date)).count();
+            int number = (int) student.getGyakorlatList().stream().filter(a -> a.getId()==id).count();
             counter += number;
         }
         return counter;
     }
 
-    private int szamolEloadas(Date date, List<Student> studentList) {
+    private int szamolEloadas(Long id, List<Student> studentList) {
         int counter = 0;
         for (Student student : studentList) {
-            int number = (int) student.getEloadasList().stream().filter(a -> a.getDate().equals(date)).count();
+            int number = (int) student.getEloadasList().stream().filter(a -> a.getId()==id).count();
             counter += number;
         }
         return counter;
     }
 
-    private int szamolKonzultacio(Date date, List<Student> studentList) {
+    private int szamolKonzultacio(Long id, List<Student> studentList) {
         int counter = 0;
         for (Student student : studentList) {
-            int number = (int) student.getKonzultacioList().stream().filter(a -> a.getDate().equals(date)).count();
+            int number = (int) student.getKonzultacioList().stream().filter(a -> a.getId()==id).count();
             counter += number;
         }
         return counter;
