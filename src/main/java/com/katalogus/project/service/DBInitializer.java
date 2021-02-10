@@ -81,6 +81,7 @@ public class DBInitializer {
                 .potlas(false)
                 .turnusId((long) 1)
                 .id((long) 11)
+                .code("qwertz")
                 .build();
         Eloadas eloadas2t1 = Eloadas.builder()
                 .active(false)
@@ -92,6 +93,7 @@ public class DBInitializer {
                 .potlas(false)
                 .turnusId((long) 1)
                 .id((long) 12)
+                .code("qwertz")
                 .build();
         Eloadas eloadas3t1 = Eloadas.builder()
                 .active(false)
@@ -102,6 +104,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(true)
                 .turnusId((long) 1)
+                .code("qwertz")
                 .id((long) 13)
                 .build();
         Eloadas eloadas1t2 = Eloadas.builder()
@@ -147,7 +150,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .id((long) 11)
+                .code("qwertz")
+                .id((long) 17)
                 .build();
         Konzultacio konzultacio2t1 = Konzultacio.builder()
                 .active(false)
@@ -158,6 +162,7 @@ public class DBInitializer {
                 .point(2)
                 .potlas(false)
                 .turnusId((long) 1)
+                .code("qwertz")
                 .id((long) 12)
                 .build();
         Konzultacio konzultacio3t1 = Konzultacio.builder()
@@ -169,6 +174,7 @@ public class DBInitializer {
                 .point(2)
                 .potlas(false)
                 .turnusId((long) 1)
+                .code("qwertz")
                 .id((long) 13)
                 .build();
         Konzultacio konzultacio1t2 = Konzultacio.builder()
@@ -213,6 +219,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
+                .code("qwertz")
                 .id((long) 11)
                 .build();
         Gyakorlat gyakorlat2t1 = Gyakorlat.builder()
@@ -224,6 +231,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
+                .code("qwertz")
                 .id((long) 12)
                 .build();
         Gyakorlat gyakorlat3t1 = Gyakorlat.builder()
@@ -235,6 +243,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
+                .code("qwertz")
                 .id((long) 13)
                 .build();
         Gyakorlat gyakorlat1t2 = Gyakorlat.builder()
