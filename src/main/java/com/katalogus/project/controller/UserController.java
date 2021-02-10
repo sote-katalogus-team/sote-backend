@@ -1,6 +1,7 @@
 package com.katalogus.project.controller;
 
 import com.katalogus.project.service.UserProvider;
+import com.katalogus.project.utility.RegistrationData;
 import com.katalogus.project.utility.UserCredentials;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -21,12 +23,12 @@ public class UserController {
     UserProvider userProvider;
 
     @PostMapping(value = "/registration", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> registration(@RequestBody UserCredentials user) {
-        boolean success = userProvider.registration(user);
-        if (success) {
-            return ResponseEntity.ok("Successful registration");
+    public ResponseEntity<String> registration(@RequestBody RegistrationData user) {
+        HashMap<Boolean, String> success = userProvider.registration(user);
+        if (success.containsKey(true)) {
+            return ResponseEntity.ok(success.get(true));
         } else {
-            return ResponseEntity.badRequest().body("Registration failed");
+            return ResponseEntity.badRequest().body(success.get(false));
         }
     }
 
