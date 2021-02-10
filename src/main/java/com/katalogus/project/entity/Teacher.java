@@ -22,7 +22,6 @@ public class Teacher extends ApplicationUser {
 
     private String name;
 
-
     private String email;
 
     private String password;
