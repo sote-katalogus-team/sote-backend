@@ -50,7 +50,7 @@ public class StudentProvider {
             Object saveResponse = studentRepository.save(newStudent);
             if (saveResponse.getClass().equals(Student.class)) {
                 response.clear();
-                response.put(true, "Registered " + newStudent.getName() + "successfully!");
+                response.put(true, "Registered " + newStudent.getName() + " successfully!");
             }
         }
         return response;
