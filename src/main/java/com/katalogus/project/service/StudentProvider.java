@@ -29,13 +29,11 @@ public class StudentProvider {
 
     public List<Student> getAll() {
         return studentRepository.findAll();
-
     }
 
     public Boolean saveNewStudent(Student student) {
         Object response = studentRepository.save(student);
         return response.getClass().equals(Student.class);
-
     }
 
     public Boolean updateStudentById(Student student, Long studentId) {
@@ -133,7 +131,7 @@ public class StudentProvider {
         HashMap<Boolean, String> success = new HashMap<>();
         String neptunString = neptunCode.get("neptunCode");
         success.put(false, "No registered student with " + neptunString);
-        Optional<Student> optionalStudent = studentRepository.findByNeptunCode(neptunString);
+        Optional<Student> optionalStudent = studentRepository.findByNeptunCodeIgnoreCase(neptunString);
         if (optionalStudent.isPresent()) {
             success.put(false, "No class found");
             Classes classes = classesProvider.getAllClasses();
