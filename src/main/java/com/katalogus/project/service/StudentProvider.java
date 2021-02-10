@@ -6,8 +6,10 @@ import com.katalogus.project.model.ClassType;
 import com.katalogus.project.model.Classes;
 import com.katalogus.project.model.StudentStatistic;
 import com.katalogus.project.repository.StudentRepository;
+import com.katalogus.project.security.PasswordConfig;
 import com.katalogus.project.utility.AttendancePercentage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -26,6 +28,9 @@ public class StudentProvider {
     @Autowired
     ClassesProvider classesProvider;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
 
     public List<Student> getAll() {
         return studentRepository.findAll();
@@ -37,7 +42,12 @@ public class StudentProvider {
     }
 
     public Boolean updateStudentById(Student student, Long studentId) {
+        Optional<Student> optionalStudent = studentRepository.findById(studentId);
         student.setId(studentId);
+        if (!optionalStudent.get().getPassword().equals(student.getPassword())){
+            String password = student.getPassword();
+            student.setPassword(passwordEncoder.encode(password));
+        }
         Object response = studentRepository.save(student);
         return response.getClass().equals(Student.class);
     }

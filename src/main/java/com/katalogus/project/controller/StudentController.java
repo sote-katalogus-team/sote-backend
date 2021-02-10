@@ -38,7 +38,6 @@ public class StudentController {
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN')")
-
     @GetMapping("/head_count/{turnus_id}")
     public ResponseEntity<Integer> getHeadCount(@PathVariable("turnus_id") Long turnusId) {
         Integer headCount = studentProvider.getHeadCount(turnusId);
@@ -87,7 +86,7 @@ public class StudentController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')") // can't check in postman, still woriking on it
     @PostMapping("/addByNeptunCode")
     public ResponseEntity<String> addByNeptunCode(@RequestBody HashMap<String, String> neptunCode, @RequestBody ClassInfo classInfo) {
         HashMap<Boolean, String> success = studentProvider.addByNeptunCode(neptunCode, classInfo);
