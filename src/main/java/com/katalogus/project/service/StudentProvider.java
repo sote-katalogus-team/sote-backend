@@ -98,7 +98,7 @@ public class StudentProvider {
             List<BasicClass> activeClasses = classes.getActiveClasses();
             BasicClass currentClass = null;
             for (BasicClass classToCheck : activeClasses) {
-                if (classToCheck.getCode().equals(code.get("code"))) {
+                if (classToCheck.getCode().toLowerCase().equals(code.get("code").toLowerCase())) {
                     currentClass = classToCheck;
                 }
             }
