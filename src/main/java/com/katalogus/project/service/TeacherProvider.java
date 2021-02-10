@@ -1,6 +1,5 @@
 package com.katalogus.project.service;
 
-import com.katalogus.project.entity.Student;
 import com.katalogus.project.entity.Teacher;
 import com.katalogus.project.repository.TeacherRepository;
 import com.katalogus.project.security.ApplicationUserRole;
