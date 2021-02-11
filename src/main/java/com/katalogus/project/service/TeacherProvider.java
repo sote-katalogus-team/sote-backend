@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +25,7 @@ public class TeacherProvider {
         return teacherRepository.findAll();
     }
 
-    public HashMap<Boolean, String> saveNewTeacher(Teacher teacher) {
+    public HashMap<Boolean, String> saveNewTeacher(Teacher teacher, String role) {
         HashMap<Boolean, String> response = new HashMap<>();
         response.put(false, "Email already in use.");
         Optional<Teacher> optionalTeacher = teacherRepository.findByEmail(teacher.getEmail());
@@ -34,8 +35,12 @@ public class TeacherProvider {
                     .email(teacher.getEmail())
                     .password(passwordEncoder.encode(teacher.getPassword()))
                     .name(teacher.getName())
-                    .roles(List.of(ApplicationUserRole.TEACHER))
                     .build();
+            List<ApplicationUserRole> roles = new ArrayList<>(List.of(ApplicationUserRole.TEACHER));
+            if (role.equals("admin")) {
+                roles.add(ApplicationUserRole.ADMIN);
+            }
+            newTeacher.setRoles(roles);
             Object saveResponse = teacherRepository.save(newTeacher);
             if (saveResponse.getClass().equals(Teacher.class)) {
                 response.clear();
