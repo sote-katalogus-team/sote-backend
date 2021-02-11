@@ -12,7 +12,7 @@ public class RandomCodeGenerator {
 
     public String codeGenerator() {
         int lengthOfCode = 7;
-        String characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+        String characters = "ABCDEFGHIJKLMNPQRSTUWXYZ123456789";
         List<String> list = Arrays.asList(characters.split(""));
         Collections.shuffle(list);
         return list.stream().limit(lengthOfCode).collect(Collectors.joining());
