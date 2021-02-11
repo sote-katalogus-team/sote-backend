@@ -28,6 +28,12 @@ public class StudentController {
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @GetMapping("/find_by_turnus_id/{turnus_id}")
+    public List<Student> getAllStudentByTurnusId(@PathVariable("turnus_id") Long turnusId) {
+        return studentProvider.getAllStudentByTurnusId(turnusId);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<String> saveNewStudent(@RequestBody Student student) {
         HashMap<Boolean, String> successful = studentProvider.saveNewStudent(student);

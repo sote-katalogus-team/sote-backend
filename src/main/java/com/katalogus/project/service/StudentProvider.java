@@ -208,4 +208,8 @@ public class StudentProvider {
         }
 
     }
+
+    public List<Student> getAllStudentByTurnusId(Long turnusId) {
+        return studentRepository.findAllByTurnusId(turnusId);
+    }
 }
