@@ -5,9 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.Year;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -21,6 +21,8 @@ public class Turnus {
     private Long id;
 
     private String name;
+
+    private Integer year;
 
     @Builder.Default
     private Integer lecture = 0;
