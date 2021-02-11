@@ -15,7 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Eloadas extends BasicClass{
+public class Eloadas extends BasicClass {
 
     @Id
     @GeneratedValue
@@ -25,6 +25,7 @@ public class Eloadas extends BasicClass{
 
     private String name;
 
+    @Temporal(TemporalType.DATE)
     private Date date;
 
     private Integer point;

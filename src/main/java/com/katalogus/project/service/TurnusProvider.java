@@ -5,6 +5,9 @@ import com.katalogus.project.repository.TurnusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.DatabaseMetaData;
+import java.time.Year;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -17,7 +20,13 @@ public class TurnusProvider {
         return turnusRepository.findAll();
     }
 
+    public List<Turnus> getAllByYear() {
+        Integer year = Year.now().getValue();
+        return turnusRepository.findAllByYear(year);
+    }
+
     public Boolean saveNewTurnus(Turnus turnus) {
+        turnus.setCombinedName(turnus.getName() + "/" + turnus.getYear().toString());
         Object response = turnusRepository.save(turnus);
         return response.getClass().equals(Turnus.class);
     }

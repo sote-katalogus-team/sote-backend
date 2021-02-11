@@ -1,7 +1,6 @@
 package com.katalogus.project.controller;
 
 import com.katalogus.project.entity.Eloadas;
-import com.katalogus.project.service.ClassesProvider;
 import com.katalogus.project.service.EloadasProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,10 +1,10 @@
 package com.katalogus.project.service;
 
-import com.katalogus.project.entity.ApplicationUser;
 import com.katalogus.project.entity.Student;
 import com.katalogus.project.repository.StudentRepository;
 import com.katalogus.project.security.ApplicationUserRole;
 import com.katalogus.project.security.JwtTokenServices;
+import com.katalogus.project.utility.RegistrationData;
 import com.katalogus.project.utility.UserCredentials;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,15 +38,27 @@ public class UserProvider {
     private JwtTokenServices jwtTokenServices;
 
 
-    public boolean registration(UserCredentials user) {
-        Student newStudent = Student.builder()
-                .email(user.getEmail())
-                .password(passwordEncoder.encode(user.getPassword()))
-                .name(user.getName())
-                .roles(List.of(ApplicationUserRole.STUDENT))
-                .build();
-        Object response = studentRepository.save(newStudent);
-        return response.getClass().equals(Student.class);
+    public HashMap<Boolean, String> registration(RegistrationData user) {
+        HashMap<Boolean, String> response = new HashMap<>();
+        response.put(false, "Email already in use.");
+        Optional<Student> optionalStudent = studentRepository.findByEmail(user.getEmail());
+        if (optionalStudent.isEmpty()) {
+            response.replace(false, "Can't register this user");
+            Student newStudent = Student.builder()
+                    .email(user.getEmail())
+                    .password(passwordEncoder.encode(user.getPassword()))
+                    .name(user.getName())
+                    .neptunCode(user.getNeptunCode())
+                    .roles(List.of(ApplicationUserRole.STUDENT))
+                    .turnusId(user.getTurnusId())
+                    .build();
+            Object saveResponse = studentRepository.save(newStudent);
+            if (saveResponse.getClass().equals(Student.class)) {
+                response.clear();
+                response.put(true, "Registered " + newStudent.getName() + " successfully!");
+            }
+        }
+        return response;
     }
 
     public Map<Object, Object> login(UserCredentials user) {

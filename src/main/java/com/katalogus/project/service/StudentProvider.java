@@ -1,13 +1,13 @@
 package com.katalogus.project.service;
 
 import com.katalogus.project.entity.*;
-import com.katalogus.project.model.ClassInfo;
-import com.katalogus.project.model.ClassType;
-import com.katalogus.project.model.Classes;
-import com.katalogus.project.model.StudentStatistic;
+import com.katalogus.project.model.*;
 import com.katalogus.project.repository.StudentRepository;
+import com.katalogus.project.security.ApplicationUserRole;
+import com.katalogus.project.security.PasswordConfig;
 import com.katalogus.project.utility.AttendancePercentage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -26,20 +26,44 @@ public class StudentProvider {
     @Autowired
     ClassesProvider classesProvider;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
 
     public List<Student> getAll() {
         return studentRepository.findAll();
-
     }
 
-    public Boolean saveNewStudent(Student student) {
-        Object response = studentRepository.save(student);
-        return response.getClass().equals(Student.class);
-
+    public HashMap<Boolean, String> saveNewStudent(Student student) {
+        HashMap<Boolean, String> response = new HashMap<>();
+        response.put(false, "Email already in use.");
+        Optional<Student> optionalStudent = studentRepository.findByEmail(student.getEmail());
+        if (optionalStudent.isEmpty()) {
+            response.replace(false, "Can't register this student");
+            Student newStudent = Student.builder()
+                    .email(student.getEmail())
+                    .password(passwordEncoder.encode(student.getPassword()))
+                    .name(student.getName())
+                    .neptunCode(student.getNeptunCode())
+                    .roles(List.of(ApplicationUserRole.STUDENT))
+                    .turnusId(student.getTurnusId())
+                    .build();
+            Object saveResponse = studentRepository.save(newStudent);
+            if (saveResponse.getClass().equals(Student.class)) {
+                response.clear();
+                response.put(true, "Registered " + newStudent.getName() + " successfully!");
+            }
+        }
+        return response;
     }
 
     public Boolean updateStudentById(Student student, Long studentId) {
+        Optional<Student> optionalStudent = studentRepository.findById(studentId);
         student.setId(studentId);
+        if (!optionalStudent.get().getPassword().equals(student.getPassword())) {
+            String password = student.getPassword();
+            student.setPassword(passwordEncoder.encode(password));
+        }
         Object response = studentRepository.save(student);
         return response.getClass().equals(Student.class);
     }
@@ -75,7 +99,7 @@ public class StudentProvider {
             List<BasicClass> activeClasses = classes.getActiveClasses();
             BasicClass currentClass = null;
             for (BasicClass classToCheck : activeClasses) {
-                if (classToCheck.getCode().equals(code.get("code"))) {
+                if (classToCheck.getCode().toLowerCase().equals(code.get("code").toLowerCase())) {
                     currentClass = classToCheck;
                 }
             }
@@ -129,11 +153,12 @@ public class StudentProvider {
         return count;
     }
 
-    public HashMap<Boolean, String> addByNeptunCode(HashMap<String, String> neptunCode, ClassInfo classInfo) {
+    public HashMap<Boolean, String> addByNeptunCode(ManualAttendance manualAttendance) {
         HashMap<Boolean, String> success = new HashMap<>();
-        String neptunString = neptunCode.get("neptunCode");
+        ClassInfo classInfo = manualAttendance.getClassInfo();
+        String neptunString = manualAttendance.getNeptunCode();
         success.put(false, "No registered student with " + neptunString);
-        Optional<Student> optionalStudent = studentRepository.findByNeptunCode(neptunString);
+        Optional<Student> optionalStudent = studentRepository.findByNeptunCodeIgnoreCase(neptunString);
         if (optionalStudent.isPresent()) {
             success.put(false, "No class found");
             Classes classes = classesProvider.getAllClasses();
@@ -182,5 +207,9 @@ public class StudentProvider {
             return headCount;
         }
 
+    }
+
+    public List<Student> getAllStudentByTurnusId(Long turnusId) {
+        return studentRepository.findAllByTurnusId(turnusId);
     }
 }
