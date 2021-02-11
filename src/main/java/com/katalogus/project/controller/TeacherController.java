@@ -1,6 +1,7 @@
 package com.katalogus.project.controller;
 
 import com.katalogus.project.entity.Teacher;
+import com.katalogus.project.security.ApplicationUserRole;
 import com.katalogus.project.service.TeacherProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +26,9 @@ public class TeacherController {
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN')")
-    @PostMapping("/add")
-    public ResponseEntity<String> saveNewTeacher(@RequestBody Teacher teacher) {
-        HashMap<Boolean, String> successful = teacherProvider.saveNewTeacher(teacher);
+    @PostMapping("/add/{role}")
+    public ResponseEntity<String> saveNewTeacher(@RequestBody Teacher teacher, @PathVariable("role") String role) {
+        HashMap<Boolean, String> successful = teacherProvider.saveNewTeacher(teacher, role);
         if (successful.containsKey(true)) {
             return ResponseEntity.ok(successful.get(true));
         } else {
