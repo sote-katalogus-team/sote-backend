@@ -24,6 +24,8 @@ public class Turnus {
 
     private Integer year;
 
+    private String combinedName;
+
     @Builder.Default
     private Integer lecture = 0;
 

@@ -26,6 +26,7 @@ public class TurnusProvider {
     }
 
     public Boolean saveNewTurnus(Turnus turnus) {
+        turnus.setCombinedName(turnus.getName() + "/" + turnus.getYear().toString());
         Object response = turnusRepository.save(turnus);
         return response.getClass().equals(Turnus.class);
     }
