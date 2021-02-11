@@ -70,11 +70,23 @@ public class UserProvider {
                     .collect(Collectors.toList());
 
             String token = jwtTokenServices.createToken(user.getEmail(), roles);
+            Student studentData = null;
+            if (roles.contains("STUDENT")) {
+               Optional<Student> student = studentRepository.findByEmail(user.getEmail());
+               if (student.isPresent()) {
+                   studentData = student.get();
+               }
+            }
 
             Map<Object, Object> model = new HashMap<>();
+            model.put("name", user.getName());
             model.put("email", user.getEmail());
             model.put("roles", roles);
             model.put("token", token);
+            if (studentData != null) {
+                model.put("id", studentData.getId());
+                model.put("name", studentData.getName());
+            }
 
             return model;
         } catch (AuthenticationException e) {
