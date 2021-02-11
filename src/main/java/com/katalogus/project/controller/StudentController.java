@@ -95,7 +95,7 @@ public class StudentController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')") // can't check in postman, still woriking on it
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
     @PostMapping("/addByNeptunCode")
     public ResponseEntity<String> addByNeptunCode(@RequestBody ManualAttendance manualAttendance) {
         HashMap<Boolean, String> success = studentProvider.addByNeptunCode(manualAttendance);
