@@ -23,9 +23,15 @@ public class TurnusController {
         return turnusService.getAll();
     }
 
+    @PreAuthorize("hasAnyAuthority('STUDENT')")
+    @GetMapping("/all_by_year")
+    public List<Turnus> getAllTurnusByYear() {
+        return turnusService.getAllByYear();
+    }
+
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PostMapping("/add")
-    public ResponseEntity<String>  saveNewTurnus(@RequestBody Turnus turnus) {
+    public ResponseEntity<String> saveNewTurnus(@RequestBody Turnus turnus) {
         Boolean successful = turnusService.saveNewTurnus(turnus);
         if (successful) {
             return ResponseEntity.ok("New Turnus created successfully");
@@ -36,7 +42,7 @@ public class TurnusController {
 
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @PutMapping("/{turnus_id}/update")
-    public ResponseEntity<String>  updateTurnusById(@RequestBody Turnus turnus, @PathVariable("turnus_id") Long turnusId) {
+    public ResponseEntity<String> updateTurnusById(@RequestBody Turnus turnus, @PathVariable("turnus_id") Long turnusId) {
         Boolean successful = turnusService.updateTurnusById(turnus, turnusId);
         if (successful) {
             return ResponseEntity.ok("Turnus updated successfully");

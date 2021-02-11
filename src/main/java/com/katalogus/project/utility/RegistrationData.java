@@ -18,4 +18,6 @@ public class RegistrationData {
     private String password;
 
     private String neptunCode;
+
+    private Long turnusId;
 }

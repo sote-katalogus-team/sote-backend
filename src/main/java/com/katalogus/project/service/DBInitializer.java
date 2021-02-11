@@ -44,6 +44,8 @@ public class DBInitializer {
                 .consultation(100)
                 .practice(100)
                 .lecture(75)
+                .year(2021)
+                .combinedName("Turnus_1/2021")
                 .build());
         turnusRepository.save(Turnus.builder()
                 .id((long) 2)
@@ -51,6 +53,8 @@ public class DBInitializer {
                 .consultation(100)
                 .practice(100)
                 .lecture(75)
+                .year(2021)
+                .combinedName("Turnus_2/2021")
                 .build());
         teacherRepository.save(Teacher.builder()
                 .email("teacher1@teacher.com")
