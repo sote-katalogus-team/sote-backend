@@ -2,6 +2,7 @@ package com.katalogus.project.controller;
 
 import com.katalogus.project.entity.Student;
 import com.katalogus.project.model.ClassInfo;
+import com.katalogus.project.model.ClassType;
 import com.katalogus.project.model.ManualAttendance;
 import com.katalogus.project.model.StudentStatistic;
 import com.katalogus.project.service.StudentProvider;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.HashMap;
 import java.util.List;
 
@@ -93,7 +95,7 @@ public class StudentController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')") // can't check in postman, still woriking on it
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
     @PostMapping("/addByNeptunCode")
     public ResponseEntity<String> addByNeptunCode(@RequestBody ManualAttendance manualAttendance) {
         HashMap<Boolean, String> success = studentProvider.addByNeptunCode(manualAttendance);
@@ -106,7 +108,8 @@ public class StudentController {
 
     @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
     @GetMapping("/countStudent")
-    public Integer countStudentAtClass(@RequestBody ClassInfo classInfo) {
+    public Integer countStudentAtClass(@PathParam("id") Long id, @PathParam("type") ClassType type) {
+        ClassInfo classInfo = new ClassInfo(type, id);
         return studentProvider.countStudentAtClass(classInfo);
     }
 }
