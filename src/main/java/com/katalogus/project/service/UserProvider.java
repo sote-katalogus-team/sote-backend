@@ -50,6 +50,7 @@ public class UserProvider {
                     .name(user.getName())
                     .neptunCode(user.getNeptunCode())
                     .roles(List.of(ApplicationUserRole.STUDENT))
+                    .turnusId(user.getTurnusId())
                     .build();
             Object saveResponse = studentRepository.save(newStudent);
             if (saveResponse.getClass().equals(Student.class)) {
