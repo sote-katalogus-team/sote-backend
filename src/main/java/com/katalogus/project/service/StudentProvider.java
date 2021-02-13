@@ -3,9 +3,8 @@ package com.katalogus.project.service;
 import com.katalogus.project.entity.*;
 import com.katalogus.project.model.*;
 import com.katalogus.project.repository.StudentRepository;
-import com.katalogus.project.security.ApplicationUserRole;
-import com.katalogus.project.security.PasswordConfig;
 import com.katalogus.project.utility.AttendancePercentage;
+import com.katalogus.project.utility.RandomCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,17 +17,22 @@ import java.util.Optional;
 public class StudentProvider {
 
     @Autowired
-    StudentRepository studentRepository;
+    private StudentRepository studentRepository;
 
     @Autowired
-    AttendancePercentage attendancePercentage;
+    private AttendancePercentage attendancePercentage;
 
     @Autowired
-    ClassesProvider classesProvider;
+    private ClassesProvider classesProvider;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private RandomCodeGenerator randomCodeGenerator;
+
+    @Autowired
+    private EmailService emailService;
 
     public List<Student> getAll() {
         return studentRepository.findAll();
@@ -45,13 +49,14 @@ public class StudentProvider {
                     .password(passwordEncoder.encode(student.getPassword()))
                     .name(student.getName())
                     .neptunCode(student.getNeptunCode())
-                    .roles(List.of(ApplicationUserRole.STUDENT))
+                    .validationCode(randomCodeGenerator.codeGenerator())
                     .turnusId(student.getTurnusId())
                     .build();
             Object saveResponse = studentRepository.save(newStudent);
             if (saveResponse.getClass().equals(Student.class)) {
                 response.clear();
                 response.put(true, "Registered " + newStudent.getName() + " successfully!");
+                emailService.sendMessage(student.getEmail(), student.getValidationCode());
             }
         }
         return response;

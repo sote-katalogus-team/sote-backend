@@ -31,6 +31,8 @@ public class Student extends ApplicationUser {
 
     private Long turnusId;
 
+    private String validationCode;
+
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private List<ApplicationUserRole> roles;
