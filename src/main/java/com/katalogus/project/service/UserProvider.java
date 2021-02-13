@@ -112,7 +112,9 @@ public class UserProvider {
             response.replace(false, "Invalid code: " + validateDetail.getCode());
             Student student = optionalStudent.get();
             if (student.getValidationCode().toLowerCase().equals(validateDetail.getCode().toLowerCase())) {
-                student.setRoles(List.of(ApplicationUserRole.STUDENT));
+                List<ApplicationUserRole> roles = student.getRoles();
+                roles.add(ApplicationUserRole.STUDENT);
+                student.setRoles(roles);
                 studentRepository.save(student);
                 response.put(true, validateDetail.getEmail() + " validated successfully!");
             }
