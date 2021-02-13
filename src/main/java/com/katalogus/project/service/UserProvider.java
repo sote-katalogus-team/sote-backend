@@ -1,9 +1,11 @@
 package com.katalogus.project.service;
 
 import com.katalogus.project.entity.Student;
+import com.katalogus.project.model.ValidateDetail;
 import com.katalogus.project.repository.StudentRepository;
 import com.katalogus.project.security.ApplicationUserRole;
 import com.katalogus.project.security.JwtTokenServices;
+import com.katalogus.project.utility.RandomCodeGenerator;
 import com.katalogus.project.utility.RegistrationData;
 import com.katalogus.project.utility.UserCredentials;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,9 @@ public class UserProvider {
     @Autowired
     private JwtTokenServices jwtTokenServices;
 
+    @Autowired
+    private RandomCodeGenerator randomCodeGenerator;
+
 
     public HashMap<Boolean, String> registration(RegistrationData user) {
         HashMap<Boolean, String> response = new HashMap<>();
@@ -49,13 +54,15 @@ public class UserProvider {
                     .password(passwordEncoder.encode(user.getPassword()))
                     .name(user.getName())
                     .neptunCode(user.getNeptunCode())
-                    .roles(List.of(ApplicationUserRole.STUDENT))
+                    .roles(null)
                     .turnusId(user.getTurnusId())
+                    .validationCode(randomCodeGenerator.codeGenerator())
                     .build();
             Object saveResponse = studentRepository.save(newStudent);
             if (saveResponse.getClass().equals(Student.class)) {
                 response.clear();
                 response.put(true, "Registered " + newStudent.getName() + " successfully!");
+                //send email with valid code
             }
         }
         return response;
@@ -72,10 +79,10 @@ public class UserProvider {
             String token = jwtTokenServices.createToken(user.getEmail(), roles);
             Student studentData = null;
             if (roles.contains("STUDENT")) {
-               Optional<Student> student = studentRepository.findByEmail(user.getEmail());
-               if (student.isPresent()) {
-                   studentData = student.get();
-               }
+                Optional<Student> student = studentRepository.findByEmail(user.getEmail());
+                if (student.isPresent()) {
+                    studentData = student.get();
+                }
             }
 
             Map<Object, Object> model = new HashMap<>();
@@ -92,5 +99,21 @@ public class UserProvider {
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username/password supplied");
         }
+    }
+
+    public HashMap<Boolean, String> validateUser(ValidateDetail validateDetail) {
+        HashMap<Boolean, String> response = new HashMap<>();
+        response.put(false, "No user registrated with: " + validateDetail.getEmail());
+        Optional<Student> optionalStudent = studentRepository.findByEmail(validateDetail.getEmail());
+        if (optionalStudent.isPresent()) {
+            response.replace(false, "Invalid code: " + validateDetail.getCode());
+            Student student = optionalStudent.get();
+            if (student.getValidationCode().toLowerCase().equals(validateDetail.getCode().toLowerCase())) {
+                student.setRoles(List.of(ApplicationUserRole.STUDENT));
+                studentRepository.save(student);
+                response.put(true, validateDetail.getEmail() + " validated successfully!");
+            }
+        }
+        return response;
     }
 }
