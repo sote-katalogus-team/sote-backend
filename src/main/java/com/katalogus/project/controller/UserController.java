@@ -1,5 +1,6 @@
 package com.katalogus.project.controller;
 
+import com.katalogus.project.model.ValidateDetail;
 import com.katalogus.project.service.UserProvider;
 import com.katalogus.project.utility.RegistrationData;
 import com.katalogus.project.utility.UserCredentials;
@@ -35,6 +36,16 @@ public class UserController {
     @PostMapping(value = "/login", consumes = "application/json", produces = "application/json")
     public Map<Object, Object> login(@RequestBody UserCredentials user) {
         return userProvider.login(user);
+    }
+
+    @PostMapping("validate")
+    public ResponseEntity<String> validateUser(@RequestBody ValidateDetail validateDetail){
+        HashMap<Boolean, String> success = userProvider.validateUser(validateDetail);
+        if (success.containsKey(true)) {
+            return ResponseEntity.ok(success.get(true));
+        } else {
+            return ResponseEntity.badRequest().body(success.get(false));
+        }
     }
 
 }
