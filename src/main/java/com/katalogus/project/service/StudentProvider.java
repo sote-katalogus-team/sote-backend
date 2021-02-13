@@ -64,12 +64,16 @@ public class StudentProvider {
 
     public Boolean updateStudentById(Student student, Long studentId) {
         Optional<Student> optionalStudent = studentRepository.findById(studentId);
-        student.setId(studentId);
-        if (!optionalStudent.get().getPassword().equals(student.getPassword())) {
+        Student oldStudent = optionalStudent.get();
+        if (!oldStudent.getPassword().equals(student.getPassword())) {
             String password = student.getPassword();
-            student.setPassword(passwordEncoder.encode(password));
+            oldStudent.setPassword(passwordEncoder.encode(password));
         }
-        Object response = studentRepository.save(student);
+        oldStudent.setName(student.getName());
+        oldStudent.setEmail(student.getEmail());
+        oldStudent.setNeptunCode(student.getNeptunCode());
+        oldStudent.setTurnusId(student.getTurnusId());
+        Object response = studentRepository.save(oldStudent);
         return response.getClass().equals(Student.class);
     }
 

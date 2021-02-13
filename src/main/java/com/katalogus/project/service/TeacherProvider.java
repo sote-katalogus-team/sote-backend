@@ -52,12 +52,14 @@ public class TeacherProvider {
 
     public Boolean updateTeacherById(Teacher teacher, Long teacherId) {
         Optional<Teacher> optionalTeacher = teacherRepository.findById(teacherId);
-        teacher.setId(teacherId);
+        Teacher oldTeacher = optionalTeacher.get();
         if (!optionalTeacher.get().getPassword().equals(teacher.getPassword())) {
             String password = teacher.getPassword();
             teacher.setPassword(passwordEncoder.encode(password));
         }
-        Object response = teacherRepository.save(teacher);
+        oldTeacher.setEmail(teacher.getEmail());
+        oldTeacher.setName(teacher.getName());
+        Object response = teacherRepository.save(oldTeacher);
         return response.getClass().equals(Teacher.class);
     }
 
