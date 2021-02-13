@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 public class UserProvider {
 
     @Autowired
-    StudentRepository studentRepository;
+    private StudentRepository studentRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -41,6 +41,9 @@ public class UserProvider {
 
     @Autowired
     private RandomCodeGenerator randomCodeGenerator;
+
+    @Autowired
+    private EmailService emailService;
 
 
     public HashMap<Boolean, String> registration(RegistrationData user) {
@@ -62,7 +65,7 @@ public class UserProvider {
             if (saveResponse.getClass().equals(Student.class)) {
                 response.clear();
                 response.put(true, "Registered " + newStudent.getName() + " successfully!");
-                //send email with valid code
+                emailService.sendMessage(newStudent.getEmail(), newStudent.getValidationCode());
             }
         }
         return response;
