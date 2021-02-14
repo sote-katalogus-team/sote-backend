@@ -1,11 +1,14 @@
 package com.katalogus.project.controller;
 
 import com.katalogus.project.entity.Konzultacio;
+import com.katalogus.project.entity.Student;
 import com.katalogus.project.service.KonzultacioProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/konzultacio")
@@ -80,5 +83,11 @@ public class KonzultacioController {
         } else {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @GetMapping("/{konzultacio_id}/students")
+    public List<Student> getStudentsByKonzultacioId(@PathVariable Long konzultacioId) {
+        return konzultacioProvider.getStudentsById(konzultacioId);
     }
 }
