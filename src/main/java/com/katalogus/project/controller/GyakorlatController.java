@@ -2,12 +2,15 @@ package com.katalogus.project.controller;
 
 import com.katalogus.project.entity.Eloadas;
 import com.katalogus.project.entity.Gyakorlat;
+import com.katalogus.project.entity.Student;
 import com.katalogus.project.service.ClassesProvider;
 import com.katalogus.project.service.GyakorlatProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/gyakorlat")
@@ -82,5 +85,13 @@ public class GyakorlatController {
         } else {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @GetMapping("/{gyakorlat_id}/students")
+    public List<Student> getStudentByGyakorlatId(@PathVariable Long gyakorlat_id) {
+        System.out.println(gyakorlat_id);
+        return gyakorlatProvider.getStudentsById(gyakorlat_id);
     }
 }

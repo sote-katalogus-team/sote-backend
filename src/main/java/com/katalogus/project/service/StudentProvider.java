@@ -103,7 +103,7 @@ public class StudentProvider {
             List<BasicClass> activeClasses = classes.getActiveClasses();
             BasicClass currentClass = null;
             for (BasicClass classToCheck : activeClasses) {
-                if (classToCheck.getCode().toLowerCase().equals(code.get("code").toLowerCase())) {
+                if (classToCheck.getCode().equalsIgnoreCase(code.get("code"))) {
                     currentClass = classToCheck;
                 }
             }
@@ -171,30 +171,36 @@ public class StudentProvider {
                 for (Eloadas eloadas : classes.getEloadasList()) {
                     if (eloadas.getId().equals(classInfo.getId())) {
                         List<Eloadas> eloadasList = student.getEloadasList();
-                        eloadasList.add(eloadas);
-                        student.setEloadasList(eloadasList);
-                        success.remove(false);
-                        success.put(true, student.getName() + "was added to class!");
+                        if (!eloadasList.contains(eloadas)) {
+                            eloadasList.add(eloadas);
+                            student.setEloadasList(eloadasList);
+                            success.remove(false);
+                            success.put(true, student.getName() + "was added to class!");
+                        }
                     }
                 }
             } else if (classInfo.getType() == ClassType.GYAKORLAT) {
                 for (Gyakorlat gyakorlat : classes.getGyakorlatList()) {
                     if (gyakorlat.getId().equals(classInfo.getId())) {
                         List<Gyakorlat> gyakorlatList = student.getGyakorlatList();
-                        gyakorlatList.add(gyakorlat);
-                        student.setGyakorlatList(gyakorlatList);
-                        success.remove(false);
-                        success.put(true, student.getName() + "was added to class!");
+                        if (!gyakorlatList.contains(gyakorlat)) {
+                            gyakorlatList.add(gyakorlat);
+                            student.setGyakorlatList(gyakorlatList);
+                            success.remove(false);
+                            success.put(true, student.getName() + "was added to class!");
+                        }
                     }
                 }
             } else {
                 for (Konzultacio konzultacio : classes.getKonzultacioList()) {
                     if (konzultacio.getId().equals(classInfo.getId())) {
                         List<Konzultacio> konzultacioList = student.getKonzultacioList();
-                        konzultacioList.add(konzultacio);
-                        student.setKonzultacioList(konzultacioList);
-                        success.remove(false);
-                        success.put(true, student.getName() + "was added to class!");
+                        if (!konzultacioList.contains(konzultacio)) {
+                            konzultacioList.add(konzultacio);
+                            student.setKonzultacioList(konzultacioList);
+                            success.remove(false);
+                            success.put(true, student.getName() + "was added to class!");
+                        }
                     }
                 }
             }
