@@ -1,11 +1,14 @@
 package com.katalogus.project.controller;
 
 import com.katalogus.project.entity.Eloadas;
+import com.katalogus.project.entity.Student;
 import com.katalogus.project.service.EloadasProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/eloadas")
@@ -81,4 +84,11 @@ public class EloadasController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @GetMapping("/{eloadas_id}/students")
+    public List<Student> getStudentsByEloadasId(@PathVariable("eloadas_id") Long eloadasId) {
+        return eloadasProvider.getStudentsById(eloadasId);
+    }
 }
+

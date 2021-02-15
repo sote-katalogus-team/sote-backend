@@ -1,11 +1,18 @@
 package com.katalogus.project.service;
 
+import com.katalogus.project.entity.Eloadas;
 import com.katalogus.project.entity.Gyakorlat;
+import com.katalogus.project.entity.Konzultacio;
+import com.katalogus.project.entity.Student;
+import com.katalogus.project.model.ClassType;
 import com.katalogus.project.repository.GyakorlatRepository;
+import com.katalogus.project.repository.StudentRepository;
 import com.katalogus.project.utility.RandomCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,6 +23,9 @@ public class GyakorlatProvider {
 
     @Autowired
     RandomCodeGenerator randomCodeGenerator;
+
+    @Autowired
+    StudentRepository studentRepository;
 
 
     public Boolean saveNewGyakorlat(Gyakorlat gyakorlat) {
@@ -76,5 +86,18 @@ public class GyakorlatProvider {
             success = true;
         }
         return success;
+    }
+
+    public List<Student> getStudentsById(Long id) {
+        List<Student> result = new ArrayList<>();
+        List<Student> studentList = studentRepository.findAll();
+        for (Student currentStudent : studentList) {
+            for (Gyakorlat gyakorlat : currentStudent.getGyakorlatList()) {
+                if (gyakorlat.getId().equals(id)) {
+                    result.add(currentStudent);
+                }
+            }
+        }
+        return result;
     }
 }
