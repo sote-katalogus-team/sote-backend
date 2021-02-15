@@ -13,4 +13,7 @@ public interface GyakorlatRepository extends JpaRepository<Gyakorlat, Long> {
     List<Gyakorlat> findAllByTurnusId(Long turnusId);
 
     List<Gyakorlat> findByDate(Date date);
+
+
+
 }
