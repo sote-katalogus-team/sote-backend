@@ -23,7 +23,6 @@ public class TurnusController {
         return turnusService.getAll();
     }
 
-    @PreAuthorize("hasAnyAuthority('STUDENT')")
     @GetMapping("/all_by_year")
     public List<Turnus> getAllTurnusByYear() {
         return turnusService.getAllByYear();
