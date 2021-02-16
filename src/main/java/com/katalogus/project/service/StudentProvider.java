@@ -115,21 +115,12 @@ public class StudentProvider {
             success.put(false, "Not valid code");
             if (currentClass != null) {
                 success.remove(false);
-                success.put(true, "Successfully attend at class");
-                if (currentClass.getClass() == Eloadas.class) {
-                    List<Eloadas> eloadasList = student.getEloadasList();
-                    eloadasList.add((Eloadas) currentClass);
-                    student.setEloadasList(eloadasList);
-                } else if (currentClass.getClass() == Gyakorlat.class) {
-                    List<Gyakorlat> gyakorlatList = student.getGyakorlatList();
-                    gyakorlatList.add((Gyakorlat) currentClass);
-                    student.setGyakorlatList(gyakorlatList);
-                } else if (currentClass.getClass() == Konzultacio.class) {
-                    List<Konzultacio> konzultaciList = student.getKonzultacioList();
-                    konzultaciList.add((Konzultacio) currentClass);
-                    student.setKonzultacioList(konzultaciList);
+                success.put(true, "Student already attended in this class");
+                if (!student.wasInClass(currentClass)) {
+                    success.put(true, "Successfully attend at class");
+                    student.addClass(currentClass);
+                    studentRepository.save(student);
                 }
-                studentRepository.save(student);
             }
         }
         return success;
@@ -172,44 +163,36 @@ public class StudentProvider {
             success.put(false, "No class found");
             Classes classes = classesProvider.getAllClasses();
             Student student = optionalStudent.get();
+            BasicClass currentClass = null;
             if (classInfo.getType() == ClassType.ELOADAS) {
                 for (Eloadas eloadas : classes.getEloadasList()) {
                     if (eloadas.getId().equals(classInfo.getId())) {
-                        List<Eloadas> eloadasList = student.getEloadasList();
-                        if (!eloadasList.contains(eloadas)) {
-                            eloadasList.add(eloadas);
-                            student.setEloadasList(eloadasList);
-                            success.remove(false);
-                            success.put(true, student.getName() + "was added to class!");
-                        }
+                        currentClass = eloadas;
                     }
                 }
             } else if (classInfo.getType() == ClassType.GYAKORLAT) {
                 for (Gyakorlat gyakorlat : classes.getGyakorlatList()) {
                     if (gyakorlat.getId().equals(classInfo.getId())) {
-                        List<Gyakorlat> gyakorlatList = student.getGyakorlatList();
-                        if (!gyakorlatList.contains(gyakorlat)) {
-                            gyakorlatList.add(gyakorlat);
-                            student.setGyakorlatList(gyakorlatList);
-                            success.remove(false);
-                            success.put(true, student.getName() + "was added to class!");
-                        }
+                        currentClass = gyakorlat;
                     }
                 }
             } else {
                 for (Konzultacio konzultacio : classes.getKonzultacioList()) {
                     if (konzultacio.getId().equals(classInfo.getId())) {
-                        List<Konzultacio> konzultacioList = student.getKonzultacioList();
-                        if (!konzultacioList.contains(konzultacio)) {
-                            konzultacioList.add(konzultacio);
-                            student.setKonzultacioList(konzultacioList);
-                            success.remove(false);
-                            success.put(true, student.getName() + "was added to class!");
-                        }
+                        currentClass = konzultacio;
                     }
                 }
             }
-            studentRepository.save(student);
+            if (currentClass != null) {
+                success.put(false, "Student was already on the class");
+                if (!student.wasInClass(currentClass)){
+                    student.addClass(currentClass);
+                    studentRepository.save(student);
+                    success.remove(false);
+                    success.put(true, student.getName() + " was added to class!");
+
+                }
+            }
         }
         return success;
     }
