@@ -33,6 +33,7 @@ public class EmailService {
             request.setMethod(Method.POST);
             request.setEndpoint("mail/send");
             request.setBody(mail.build());
+            sg.api(request);
         } catch (Exception e) {
             System.out.println("Email: " + email + ". Error: " + e);
         }
