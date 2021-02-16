@@ -53,12 +53,25 @@ public class TurnusController {
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @DeleteMapping("/{turnus_id}/delete")
     public ResponseEntity<String> deleteTurnusById(@PathVariable("turnus_id") Long turnusId) {
-        Boolean successful = turnusService.deleteTurnusById(turnusId);
+        boolean successful = turnusService.deleteTurnusById(turnusId);
         if (successful) {
             return ResponseEntity.ok("Turnus deletion successfully");
         } else {
             return ResponseEntity.badRequest().build();
         }
+
+    }
+
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @GetMapping("/{new_turnus_id}/duplicate/{old_turnus_id}")
+    public ResponseEntity<String> duplicateByTurnusId(@PathVariable("new_turnus_id") Long newTurnusId, @PathVariable("old_turnus_id") Long oldTurnusId) {
+        boolean successful = turnusService.duplicateByTurnusId(newTurnusId, oldTurnusId);
+        if (successful) {
+            return ResponseEntity.ok("Turnus duplicated successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+
 
     }
 }

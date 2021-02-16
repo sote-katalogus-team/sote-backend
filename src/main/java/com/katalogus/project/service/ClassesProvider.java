@@ -44,6 +44,14 @@ public class ClassesProvider {
                 .build();
     }
 
+    public Classes getAllOriginalByTurnusId(Long turnusId) {
+        return Classes.builder()
+                .eloadasList(eloadasRepository.findAllByTurnusIdAndPotlasIsFalse(turnusId))
+                .gyakorlatList(gyakorlatRepository.findAllByTurnusIdAndPotlasIsFalse(turnusId))
+                .konzultacioList(konzultacioRepository.findAllByTurnusIdAndPotlasIsFalse(turnusId))
+                .build();
+    }
+
     public List<StudentStatistic> getAllStatistic(Long turnusId) {
         Turnus turnus = turnusRepository.getOne(turnusId);
         Classes classes = Classes.builder()
@@ -68,6 +76,12 @@ public class ClassesProvider {
                 .gyakorlatList(gyakorlatRepository.findAll())
                 .konzultacioList(konzultacioRepository.findAll())
                 .build();
+    }
+
+    public void saveClasses(Classes classes) {
+        eloadasRepository.saveAll(classes.getEloadasList());
+        konzultacioRepository.saveAll(classes.getKonzultacioList());
+        gyakorlatRepository.saveAll(classes.getGyakorlatList());
     }
 
     public List<ClassAttendance> getClassesStatisByTurnusId(Long turnusId) {
@@ -95,7 +109,7 @@ public class ClassesProvider {
     private int szamolGyakorlat(Long id, List<Student> studentList) {
         int counter = 0;
         for (Student student : studentList) {
-            int number = (int) student.getGyakorlatList().stream().filter(a -> a.getId()==id).count();
+            int number = (int) student.getGyakorlatList().stream().filter(a -> a.getId() == id).count();
             counter += number;
         }
         return counter;
@@ -104,7 +118,7 @@ public class ClassesProvider {
     private int szamolEloadas(Long id, List<Student> studentList) {
         int counter = 0;
         for (Student student : studentList) {
-            int number = (int) student.getEloadasList().stream().filter(a -> a.getId()==id).count();
+            int number = (int) student.getEloadasList().stream().filter(a -> a.getId() == id).count();
             counter += number;
         }
         return counter;
@@ -113,7 +127,7 @@ public class ClassesProvider {
     private int szamolKonzultacio(Long id, List<Student> studentList) {
         int counter = 0;
         for (Student student : studentList) {
-            int number = (int) student.getKonzultacioList().stream().filter(a -> a.getId()==id).count();
+            int number = (int) student.getKonzultacioList().stream().filter(a -> a.getId() == id).count();
             counter += number;
         }
         return counter;

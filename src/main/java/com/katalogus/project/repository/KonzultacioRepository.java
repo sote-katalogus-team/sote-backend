@@ -1,5 +1,6 @@
 package com.katalogus.project.repository;
 
+import com.katalogus.project.entity.Eloadas;
 import com.katalogus.project.entity.Konzultacio;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,4 +14,6 @@ public interface KonzultacioRepository extends JpaRepository<Konzultacio, Long> 
     List<Konzultacio> findAllByTurnusId(Long turnusId);
 
     List<Konzultacio> findByDate(Date date);
+
+    List<Konzultacio> findAllByTurnusIdAndPotlasIsFalse(Long turnusId);
 }
