@@ -13,4 +13,6 @@ public interface EloadasRepository extends JpaRepository<Eloadas, Long> {
     List<Eloadas> findAllByTurnusId(Long turnusId);
 
     List<Eloadas> findByDate(Date date);
+
+    List<Eloadas> findAllByTurnusIdAndPotlasIsFalse(Long turnusId);
 }
