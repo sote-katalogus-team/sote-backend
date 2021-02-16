@@ -46,4 +46,18 @@ public class Student extends ApplicationUser {
     @ManyToMany
     private List<Gyakorlat> gyakorlatList;
 
+    public boolean wasInClass(BasicClass currentClass) {
+        return konzultacioList.contains(currentClass) || eloadasList.contains(currentClass) || gyakorlatList.contains(currentClass);
+    }
+
+    public void addClass(BasicClass currentClass){
+        if (currentClass.getClass() == Eloadas.class) {
+            eloadasList.add((Eloadas) currentClass);
+        } else if (currentClass.getClass() == Gyakorlat.class) {
+            gyakorlatList.add((Gyakorlat) currentClass);
+        } else if (currentClass.getClass() == Konzultacio.class) {
+            konzultacioList.add((Konzultacio) currentClass);
+        }
+    }
+
 }
