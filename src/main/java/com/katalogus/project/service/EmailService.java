@@ -21,7 +21,7 @@ public class EmailService {
     private SendGrid sendgrid = new SendGrid(APIKEY);
 
     public void sendMessage(String email, String code) {
-        Email from = new Email("ifjeszkis@gmail.com");
+        Email from = new Email("katalogus@gyerekklinika.com");
         String subject = "Validation code";
         Email to = new Email(email);
         Content content = new Content("text/plain", "Dear New User! \n \n Here is your validation code: " + code + "\n \n Sincerely SOTE");
