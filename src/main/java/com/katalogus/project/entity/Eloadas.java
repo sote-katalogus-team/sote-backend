@@ -33,7 +33,7 @@ public class Eloadas extends BasicClass {
 
     @Builder.Default
     @Enumerated(EnumType.STRING)
-    private AttendanceType attendaceType = AttendanceType.ALL;
+    private AttendanceType attendanceType = AttendanceType.ALL;
 
     @Builder.Default
     private String code = null;
