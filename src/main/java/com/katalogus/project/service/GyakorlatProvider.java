@@ -1,10 +1,7 @@
 package com.katalogus.project.service;
 
-import com.katalogus.project.entity.Eloadas;
 import com.katalogus.project.entity.Gyakorlat;
-import com.katalogus.project.entity.Konzultacio;
 import com.katalogus.project.entity.Student;
-import com.katalogus.project.model.ClassType;
 import com.katalogus.project.repository.GyakorlatRepository;
 import com.katalogus.project.repository.StudentRepository;
 import com.katalogus.project.utility.RandomCodeGenerator;
@@ -41,8 +38,14 @@ public class GyakorlatProvider {
     }
 
     public Boolean updateGyakorlatById(Gyakorlat gyakorlat, Long gyakorlatId) {
-        gyakorlat.setId(gyakorlatId);
-        Object response = gyakorlatRepository.save(gyakorlat);
+        Optional<Gyakorlat> optionalGyakorlat = gyakorlatRepository.findById(gyakorlatId);
+        Gyakorlat oldGyakorlat = optionalGyakorlat.get();
+        oldGyakorlat.setName(gyakorlat.getName());
+        oldGyakorlat.setDate(gyakorlat.getDate());
+        oldGyakorlat.setPotlas(gyakorlat.getPotlas());
+        oldGyakorlat.setActive(gyakorlat.getActive());
+        oldGyakorlat.setAttendanceType(gyakorlat.getAttendanceType());
+        Object response = gyakorlatRepository.save(oldGyakorlat);
         return response.getClass().equals(Gyakorlat.class);
     }
 

@@ -1,6 +1,5 @@
 package com.katalogus.project.service;
 
-import com.katalogus.project.entity.Gyakorlat;
 import com.katalogus.project.entity.Konzultacio;
 import com.katalogus.project.entity.Student;
 import com.katalogus.project.repository.KonzultacioRepository;
@@ -30,8 +29,14 @@ public class KonzultacioProvider {
     }
 
     public Boolean updateKonzultacioById(Konzultacio konzultacio, Long konzultacioId) {
-        konzultacio.setId(konzultacioId);
-        Object response = konzultacioRepository.save(konzultacio);
+        Optional<Konzultacio> optionalKonzultacio = konzultacioRepository.findById(konzultacioId);
+        Konzultacio oldKonzultacio = optionalKonzultacio.get();
+        oldKonzultacio.setName(konzultacio.getName());
+        oldKonzultacio.setDate(konzultacio.getDate());
+        oldKonzultacio.setPotlas(konzultacio.getPotlas());
+        oldKonzultacio.setActive(konzultacio.getActive());
+        oldKonzultacio.setAttendanceType(konzultacio.getAttendanceType());
+        Object response = konzultacioRepository.save(oldKonzultacio);
         return response.getClass().equals(Konzultacio.class);
     }
 
