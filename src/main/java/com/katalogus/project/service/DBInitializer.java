@@ -8,7 +8,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -81,9 +80,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(bevezeto);
 
@@ -94,9 +91,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(gyermekgyogyaszat);
 
@@ -107,9 +102,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(surgossegiGyermekgyogyaszat);
 
@@ -120,9 +113,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(gyermekpulmonologia);
 
@@ -133,9 +124,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(neonatalogia);
 
@@ -146,9 +135,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(infektologia);
 
@@ -159,9 +146,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(gasztroenterológia);
 
@@ -172,9 +157,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(nefrologia);
 
@@ -185,9 +168,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(neurologia);
 
@@ -198,9 +179,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(endokrinologia);
 
@@ -211,9 +190,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(sebeszet);
 
@@ -224,9 +201,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(borgyogyaszat);
 
@@ -237,9 +212,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(pszichiátria);
 
@@ -250,9 +223,7 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .active(true)
                 .build();
         eloadasRepository.save(genetika);
 
@@ -263,9 +234,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(introduction);
 
@@ -276,9 +246,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(development);
 
@@ -289,9 +258,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(pediatric);
 
@@ -302,9 +270,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(pulmonology);
 
@@ -315,9 +282,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(neonatalogy);
 
@@ -328,9 +294,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(infectiousDiseases);
 
@@ -341,9 +306,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(gastroenterology);
 
@@ -354,9 +318,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(nephrology);
 
@@ -367,9 +330,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(neurology);
 
@@ -380,9 +342,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(endocrinology);
 
@@ -393,9 +354,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(surgery);
 
@@ -406,9 +366,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(dermatology);
 
@@ -419,9 +378,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(psychiatry);
 
@@ -432,9 +390,8 @@ public class DBInitializer {
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
-                .active(false)
-                .code(null)
+                .code("QWERTZ1")
+                .active(true)
                 .build();
         eloadasRepository.save(genetics);
 
@@ -442,886 +399,776 @@ public class DBInitializer {
         //Konzultáció generálás, és hozzáadás
         Konzultacio konzultacio1 = Konzultacio.builder()
                 .name("Konzultáció")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         konzultacioRepository.save(konzultacio1);
 
         Konzultacio konzultacio2 = Konzultacio.builder()
                 .name("Konzultáció")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         konzultacioRepository.save(konzultacio2);
 
         Konzultacio konzultacio3 = Konzultacio.builder()
                 .name("Konzultáció")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         konzultacioRepository.save(konzultacio3);
 
         Konzultacio konzultacio4 = Konzultacio.builder()
                 .name("Konzultáció")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         konzultacioRepository.save(konzultacio4);
 
         Konzultacio konzultacio5 = Konzultacio.builder()
                 .name("Konzultáció")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         konzultacioRepository.save(konzultacio5);
 
         Konzultacio konzultacio6 = Konzultacio.builder()
                 .name("Konzultáció")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         konzultacioRepository.save(konzultacio6);
 
         Konzultacio konzultacio7 = Konzultacio.builder()
                 .name("Konzultáció")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         konzultacioRepository.save(konzultacio7);
 
         Konzultacio konzultacio8 = Konzultacio.builder()
                 .name("Konzultáció")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         konzultacioRepository.save(konzultacio8);
 
         Konzultacio konzultacio9 = Konzultacio.builder()
                 .name("Konzultáció")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         konzultacioRepository.save(konzultacio9);
 
         Konzultacio konzultacio10 = Konzultacio.builder()
                 .name("Konzultáció")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         konzultacioRepository.save(konzultacio10);
 
         Konzultacio konzultacio11 = Konzultacio.builder()
                 .name("Konzultáció")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         konzultacioRepository.save(konzultacio11);
 
         Konzultacio konzultacio12 = Konzultacio.builder()
                 .name("Konzultáció")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         konzultacioRepository.save(konzultacio12);
 
         Konzultacio consultation1 = Konzultacio.builder()
                 .name("Consultation")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         konzultacioRepository.save(consultation1);
 
         Konzultacio consultation2 = Konzultacio.builder()
                 .name("Consultation")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         konzultacioRepository.save(consultation2);
 
         Konzultacio consultation3 = Konzultacio.builder()
                 .name("Consultation")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         konzultacioRepository.save(consultation3);
 
         Konzultacio consultation4 = Konzultacio.builder()
                 .name("Consultation")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         konzultacioRepository.save(consultation4);
 
         Konzultacio consultation5 = Konzultacio.builder()
                 .name("Consultation")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         konzultacioRepository.save(consultation5);
 
         Konzultacio consultation6 = Konzultacio.builder()
                 .name("Consultation")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         konzultacioRepository.save(consultation6);
 
         Konzultacio consultation7 = Konzultacio.builder()
                 .name("Consultation")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         konzultacioRepository.save(consultation7);
 
         Konzultacio consultation8 = Konzultacio.builder()
                 .name("Consultation")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         konzultacioRepository.save(consultation8);
 
         Konzultacio consultation9 = Konzultacio.builder()
                 .name("Consultation")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         konzultacioRepository.save(consultation9);
 
         Konzultacio consultation10 = Konzultacio.builder()
                 .name("Consultation")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         konzultacioRepository.save(consultation10);
 
         Konzultacio consultation11 = Konzultacio.builder()
                 .name("Consultation")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         konzultacioRepository.save(consultation11);
 
         //Gyakorlat generálás, és hozzáadás
         Gyakorlat gyakorlat1 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat1);
 
         Gyakorlat specgyakorlatReumatologia = Gyakorlat.builder()
                 .name("Spec gyakorlat-Reumatológiai betegvizsgálat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specgyakorlatReumatologia);
 
         Gyakorlat gyakorlat2 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat2);
 
         Gyakorlat specgyakorlatNeurologia = Gyakorlat.builder()
                 .name("Spec gyakorlat-Neurológiai betegvizsgálat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specgyakorlatNeurologia);
 
         Gyakorlat gyakorlat3 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat3);
 
         Gyakorlat specgyakorlatHematologia = Gyakorlat.builder()
                 .name("Spec gyakorlat-Hematológia")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specgyakorlatHematologia);
 
         Gyakorlat gyakorlat4 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat4);
 
         Gyakorlat specgyakorlatEndokrinologia = Gyakorlat.builder()
                 .name("Spec gyakorlat-Endokrinológia")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specgyakorlatEndokrinologia);
 
         Gyakorlat gyakorlat5 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat5);
 
         Gyakorlat gyakorlat6 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat6);
 
         Gyakorlat specgyakorlatGasztroenterologia = Gyakorlat.builder()
                 .name("Spec gyakorlat-Gasztroenterológia")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specgyakorlatGasztroenterologia);
 
         Gyakorlat gyakorlat7 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat7);
 
         Gyakorlat gyakorlat8 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat8);
 
         Gyakorlat gyakorlat9 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat9);
 
         Gyakorlat specgyakorlatOnkologia = Gyakorlat.builder()
                 .name("Spec gyakorlat-Onkológia")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specgyakorlatOnkologia);
 
         Gyakorlat gyakorlat10 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat10);
 
         Gyakorlat gyakorlat11 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat11);
 
         Gyakorlat specgyakorlatSebeszet = Gyakorlat.builder()
                 .name("Spec gyakorlat-Sebészet")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specgyakorlatSebeszet);
 
         Gyakorlat gyakorlat12 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat12);
 
         Gyakorlat specgyakorlatKardiologia = Gyakorlat.builder()
                 .name("Spec gyakorlat-Kardiológia")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specgyakorlatKardiologia);
 
         Gyakorlat gyakorlat13 = Gyakorlat.builder()
                 .name("Osztályos gyakorlat")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(gyakorlat13);
 
         Gyakorlat practice1 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice1);
 
         Gyakorlat specPracticeRheumatology = Gyakorlat.builder()
                 .name("Spec practice-Rheumatology")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specPracticeRheumatology);
 
         Gyakorlat practice2 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice2);
 
         Gyakorlat specPracticeNeurology = Gyakorlat.builder()
                 .name("Spec practice-Neurology")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specPracticeNeurology);
 
         Gyakorlat practice3 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice3);
 
         Gyakorlat specPracticeHematology = Gyakorlat.builder()
                 .name("Spec practice-Hematology")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specPracticeHematology);
 
         Gyakorlat practice4 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice4);
 
         Gyakorlat specPracticeCardiology = Gyakorlat.builder()
                 .name("Spec practice-Cardiology")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specPracticeCardiology);
 
         Gyakorlat practice5 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice5);
 
         Gyakorlat practice6 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice6);
 
         Gyakorlat specPracticeEndocrinology = Gyakorlat.builder()
                 .name("Spec practice-Endocrinology")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specPracticeEndocrinology);
 
         Gyakorlat practice7 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice7);
 
         Gyakorlat specPracticeCommunication = Gyakorlat.builder()
                 .name("Spec practice-Communication skills")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specPracticeCommunication);
 
         Gyakorlat practice8 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice8);
 
         Gyakorlat practice9 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice9);
 
         Gyakorlat specPracticeInfectology = Gyakorlat.builder()
                 .name("Spec practice-Infectology")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specPracticeInfectology);
 
         Gyakorlat practice10 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice10);
 
         Gyakorlat specPracticeOncology = Gyakorlat.builder()
                 .name("Spec practice-Oncology")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specPracticeOncology);
 
         Gyakorlat practice11 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice11);
 
         Gyakorlat specPracticeSurgery = Gyakorlat.builder()
                 .name("Spec practice-Surgery")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specPracticeSurgery);
 
         Gyakorlat practice12 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice12);
 
         Gyakorlat  specPracticeGastroenterology= Gyakorlat.builder()
                 .name("Spec practice-Gastroenterology")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 2)
-                .code("qwertz")
                 .build();
         gyakorlatRepository.save(specPracticeGastroenterology);
 
         Gyakorlat practice13 = Gyakorlat.builder()
                 .name("Practice")
-                .active(false)
-                .code(null)
+                .active(true)
                 .date(new Date())
                 .isAttendanceOpen(false)
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
-                .code("qwertz")
+                .code("QWERTZ1")
                 .build();
         gyakorlatRepository.save(practice13);
 
 
-/*
+
         List<Gyakorlat> gyakorlatListt1 = gyakorlatRepository.findAllByTurnusId((long) 1);
         List<Konzultacio> konzultacioListt1 = konzultacioRepository.findAllByTurnusId((long) 1);
         List<Eloadas> eloadasListt1 = eloadasRepository.findAllByTurnusId((long) 1);
 
         Student student1t1 = Student.builder()
-                .email("student1t1@student.com")
-                .name("Student1t1")
-                .neptunCode("QWERT1")
+                .email("kovacspeter@student.com")
+                .name("Kovács Péter")
+                .neptunCode("WQ45DS")
                 .password(passwordEncoder.encode("password"))
                 .turnusId((long) 1)
                 .gyakorlatList(gyakorlatListt1.subList(0, 2))
@@ -1330,31 +1177,31 @@ public class DBInitializer {
                 .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
         Student student2t1 = Student.builder()
-                .email("student2t1@student.com")
-                .name("Student2t1")
-                .neptunCode("QWERT2")
+                .email("szaboa92@student.com")
+                .name("Szabó Andrea")
+                .neptunCode("LK34RP")
                 .password(passwordEncoder.encode("password"))
                 .turnusId((long) 1)
-                .gyakorlatList(gyakorlatListt1.subList(0, 0))
-                .eloadasList(eloadasListt1.subList(0, 2))
-                .konzultacioList(konzultacioListt1.subList(0, 1))
+                .gyakorlatList(gyakorlatListt1.subList(0, 12))
+                .eloadasList(eloadasListt1.subList(0, 13))
+                .konzultacioList(konzultacioListt1.subList(0, 9))
                 .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
         Student student3t1 = Student.builder()
-                .email("student3t1@student.com")
-                .name("Student3t1")
-                .neptunCode("QWERT3")
+                .email("takácsp@student.com")
+                .name("Takács Péter")
+                .neptunCode("DIRA45")
                 .password(passwordEncoder.encode("password"))
                 .turnusId((long) 1)
-                .gyakorlatList(gyakorlatListt1.subList(0, 1))
-                .eloadasList(eloadasListt1.subList(0, 0))
-                .konzultacioList(konzultacioListt1.subList(0, 2))
+                .gyakorlatList(gyakorlatListt1.subList(0, 11))
+                .eloadasList(eloadasListt1.subList(0, 12))
+                .konzultacioList(konzultacioListt1.subList(0, 10))
                 .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
         Student student4t1 = Student.builder()
-                .email("student4t1@student.com")
-                .name("Student4t1")
-                .neptunCode("QWERT4")
+                .email("kandras92@student.com")
+                .name("Kovács András")
+                .neptunCode("A45RTQ3")
                 .password(passwordEncoder.encode("password"))
                 .turnusId((long) 1)
                 .gyakorlatList(gyakorlatListt1)
@@ -1362,52 +1209,10 @@ public class DBInitializer {
                 .konzultacioList(konzultacioListt1)
                 .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
-        Student student1t2 = Student.builder()
-                .email("student1t2@student.com")
-                .name("Student1t2")
-                .neptunCode("QWERT5")
-                .password(passwordEncoder.encode("password"))
-                .turnusId((long) 2)
-                .roles(List.of(ApplicationUserRole.STUDENT))
-                .build();
-        Student student2t2 = Student.builder()
-                .email("student2t2@student.com")
-                .name("Student2t2")
-                .neptunCode("QWERT6")
-                .password(passwordEncoder.encode("password"))
-                .turnusId((long) 2)
-                .roles(List.of(ApplicationUserRole.STUDENT))
-                .build();
-        Student student3t2 = Student.builder()
-                .email("student3t2@student.com")
-                .name("Student3t2")
-                .neptunCode("QWERT7")
-                .password(passwordEncoder.encode("password"))
-                .turnusId((long) 2)
-                .roles(List.of(ApplicationUserRole.STUDENT))
-                .build();
-        Student student4t2 = Student.builder()
-                .email("student4t2@student.com")
-                .name("Student4t2")
-                .neptunCode("QWERT8")
-                .password(passwordEncoder.encode("password"))
-                .turnusId((long) 2)
-                .roles(List.of(ApplicationUserRole.STUDENT))
-                .build();
-
 
         studentRepository.save(student1t1);
         studentRepository.save(student2t1);
         studentRepository.save(student3t1);
         studentRepository.save(student4t1);
-
-        studentRepository.save(student1t2);
-        studentRepository.save(student2t2);
-        studentRepository.save(student3t2);
-        studentRepository.save(student4t2);
-
- */
-
-
     }
 }
