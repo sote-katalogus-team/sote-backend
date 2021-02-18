@@ -18,7 +18,7 @@ import java.util.Date;
 public class Eloadas extends BasicClass {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long turnusId;

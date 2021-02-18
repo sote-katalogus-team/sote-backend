@@ -16,7 +16,7 @@ import java.util.Date;
 public class Konzultacio extends BasicClass {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long turnusId;
