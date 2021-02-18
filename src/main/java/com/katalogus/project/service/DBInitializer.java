@@ -39,7 +39,6 @@ public class DBInitializer {
     @PostConstruct
     public void postConstruct() {
         turnusRepository.save(Turnus.builder()
-                .id((long) 1)
                 .name("Turnus_angol")
                 .consultation(100)
                 .practice(100)
@@ -48,7 +47,6 @@ public class DBInitializer {
                 .combinedName("Turnus_angol/2021")
                 .build());
         turnusRepository.save(Turnus.builder()
-                .id((long) 2)
                 .name("Turnus_magyar")
                 .consultation(100)
                 .practice(100)
@@ -117,7 +115,7 @@ public class DBInitializer {
                 .build();
         gyakorlatRepository.save(gyakorlat1t1);
 
-
+/*
         List<Gyakorlat> gyakorlatListt1 = gyakorlatRepository.findAllByTurnusId((long) 1);
         List<Konzultacio> konzultacioListt1 = konzultacioRepository.findAllByTurnusId((long) 1);
         List<Eloadas> eloadasListt1 = eloadasRepository.findAllByTurnusId((long) 1);
@@ -209,6 +207,8 @@ public class DBInitializer {
         studentRepository.save(student2t2);
         studentRepository.save(student3t2);
         studentRepository.save(student4t2);
+
+ */
 
 
     }
