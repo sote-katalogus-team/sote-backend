@@ -26,6 +26,8 @@ public abstract class BasicClass {
 
     private Boolean isAttendanceOpen = false;
 
+    private AttendanceType attendaceType;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

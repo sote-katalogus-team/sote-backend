@@ -16,7 +16,7 @@ import java.util.Date;
 public class Konzultacio extends BasicClass {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long turnusId;
@@ -28,10 +28,14 @@ public class Konzultacio extends BasicClass {
 
     private Integer point;
 
+    private Boolean potlas;
+
+    @Builder.Default
+    @Enumerated(EnumType.STRING)
+    private AttendanceType attendanceType = AttendanceType.ALL;
+
     @Builder.Default
     private String code = null;
-
-    private Boolean potlas;
 
     @Builder.Default
     private Boolean active = true;

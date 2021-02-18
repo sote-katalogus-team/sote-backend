@@ -39,22 +39,20 @@ public class DBInitializer {
     @PostConstruct
     public void postConstruct() {
         turnusRepository.save(Turnus.builder()
-                .id((long) 1)
-                .name("Turnus_1")
+                .name("Turnus_angol")
                 .consultation(100)
                 .practice(100)
                 .lecture(75)
                 .year(2021)
-                .combinedName("Turnus_1/2021")
+                .combinedName("Turnus_angol/2021")
                 .build());
         turnusRepository.save(Turnus.builder()
-                .id((long) 2)
-                .name("Turnus_2")
+                .name("Turnus_magyar")
                 .consultation(100)
                 .practice(100)
                 .lecture(75)
                 .year(2021)
-                .combinedName("Turnus_2/2021")
+                .combinedName("Turnus_magyar/2021")
                 .build());
         teacherRepository.save(Teacher.builder()
                 .email("teacher1@teacher.com")
@@ -75,240 +73,49 @@ public class DBInitializer {
                 .roles(List.of(ApplicationUserRole.TEACHER, ApplicationUserRole.ADMIN))
                 .build());
 
+        //Előadás generálás, és hozzáadás
         Eloadas eloadas1t1 = Eloadas.builder()
-                .active(false)
-                .code(null)
                 .date(new Date())
-                .isAttendanceOpen(false)
                 .name("eloadas1t1")
-                .point(1)
-                .potlas(false)
-                .turnusId((long) 1)
-                .id((long) 11)
-                .code("qwertz")
-                .build();
-        Eloadas eloadas2t1 = Eloadas.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
                 .isAttendanceOpen(false)
-                .name("eloadas2t1")
-                .point(1)
-                .potlas(false)
-                .turnusId((long) 1)
-                .id((long) 12)
-                .code("qwertz")
-                .build();
-        Eloadas eloadas3t1 = Eloadas.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("eloadas3t1")
-                .point(1)
-                .potlas(true)
-                .turnusId((long) 1)
-                .code("qwertz")
-                .id((long) 13)
-                .build();
-        Eloadas eloadas1t2 = Eloadas.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("eloadas1t2")
-                .point(1)
-                .potlas(false)
-                .turnusId((long) 2)
-                .id((long) 14)
-                .build();
-        Eloadas eloadas2t2 = Eloadas.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("eloadas2t2")
-                .point(1)
-                .potlas(false)
-                .turnusId((long) 2)
-                .id((long) 15)
-                .build();
-        Eloadas eloadas3t2 = Eloadas.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("eloadas3t2")
-                .point(1)
-                .potlas(true)
-                .turnusId((long) 2)
-                .id((long) 16)
-                .build();
-
-        Konzultacio konzultacio1t1 = Konzultacio.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("konzultacio1t1")
                 .point(1)
                 .potlas(false)
                 .turnusId((long) 1)
                 .code("qwertz")
-                .id((long) 17)
-                .build();
-        Konzultacio konzultacio2t1 = Konzultacio.builder()
                 .active(false)
                 .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("konzultacio2t1")
-                .point(2)
-                .potlas(false)
-                .turnusId((long) 1)
-                .code("qwertz")
-                .id((long) 12)
                 .build();
-        Konzultacio konzultacio3t1 = Konzultacio.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("konzultacio3t1")
-                .point(2)
-                .potlas(false)
-                .turnusId((long) 1)
-                .code("qwertz")
-                .id((long) 13)
-                .build();
-        Konzultacio konzultacio1t2 = Konzultacio.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("konzultacio1t2")
-                .point(1)
-                .potlas(false)
-                .turnusId((long) 2)
-                .id((long) 14)
-                .build();
-        Konzultacio konzultacio2t2 = Konzultacio.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("konzultacio2t2")
-                .point(2)
-                .potlas(false)
-                .turnusId((long) 2)
-                .id((long) 15)
-                .build();
-        Konzultacio konzultacio3t2 = Konzultacio.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("konzultacio3t2")
-                .point(2)
-                .potlas(false)
-                .turnusId((long) 2)
-                .id((long) 16)
-                .build();
-        Gyakorlat gyakorlat1t1 = Gyakorlat.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("gyakorlat1t1")
-                .point(1)
-                .potlas(false)
-                .turnusId((long) 1)
-                .code("qwertz")
-                .id((long) 11)
-                .build();
-        Gyakorlat gyakorlat2t1 = Gyakorlat.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("gyakorlat2t1")
-                .point(1)
-                .potlas(false)
-                .turnusId((long) 1)
-                .code("qwertz")
-                .id((long) 12)
-                .build();
-        Gyakorlat gyakorlat3t1 = Gyakorlat.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("gyakorlat3t1")
-                .point(1)
-                .potlas(false)
-                .turnusId((long) 1)
-                .code("qwertz")
-                .id((long) 13)
-                .build();
-        Gyakorlat gyakorlat1t2 = Gyakorlat.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("gyakorlat1t2")
-                .point(1)
-                .potlas(false)
-                .turnusId((long) 2)
-                .id((long) 14)
-                .build();
-        Gyakorlat gyakorlat2t2 = Gyakorlat.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("gyakorlat2t2")
-                .point(1)
-                .potlas(false)
-                .turnusId((long) 2)
-                .id((long) 15)
-                .build();
-        Gyakorlat gyakorlat3t2 = Gyakorlat.builder()
-                .active(false)
-                .code(null)
-                .date(new Date())
-                .isAttendanceOpen(false)
-                .name("gyakorlat3t2")
-                .point(1)
-                .potlas(false)
-                .turnusId((long) 2)
-                .id((long) 16)
-                .build();
-
         eloadasRepository.save(eloadas1t1);
-        eloadasRepository.save(eloadas2t1);
-        eloadasRepository.save(eloadas3t1);
 
-        eloadasRepository.save(eloadas1t2);
-        eloadasRepository.save(eloadas2t2);
-        eloadasRepository.save(eloadas3t2);
-
-
+        //Konzultáció generálás, és hozzáadás
+        Konzultacio konzultacio1t1 = Konzultacio.builder()
+                .name("konzultacio1t1")
+                .active(false)
+                .code(null)
+                .date(new Date())
+                .isAttendanceOpen(false)
+                .point(1)
+                .potlas(false)
+                .turnusId((long) 1)
+                .code("qwertz")
+                .build();
         konzultacioRepository.save(konzultacio1t1);
-        konzultacioRepository.save(konzultacio2t1);
-        konzultacioRepository.save(konzultacio3t1);
 
-        konzultacioRepository.save(konzultacio1t2);
-        konzultacioRepository.save(konzultacio2t2);
-        konzultacioRepository.save(konzultacio3t2);
-
+        //Gyakorlat generálás, és hozzáadás
+        Gyakorlat gyakorlat1t1 = Gyakorlat.builder()
+                .name("gyakorlat1t1")
+                .active(false)
+                .code(null)
+                .date(new Date())
+                .isAttendanceOpen(false)
+                .point(1)
+                .potlas(false)
+                .turnusId((long) 1)
+                .code("qwertz")
+                .build();
         gyakorlatRepository.save(gyakorlat1t1);
-        gyakorlatRepository.save(gyakorlat2t1);
-        gyakorlatRepository.save(gyakorlat3t1);
 
-        gyakorlatRepository.save(gyakorlat1t2);
-        gyakorlatRepository.save(gyakorlat2t2);
-        gyakorlatRepository.save(gyakorlat3t2);
-
+/*
         List<Gyakorlat> gyakorlatListt1 = gyakorlatRepository.findAllByTurnusId((long) 1);
         List<Konzultacio> konzultacioListt1 = konzultacioRepository.findAllByTurnusId((long) 1);
         List<Eloadas> eloadasListt1 = eloadasRepository.findAllByTurnusId((long) 1);
@@ -400,6 +207,8 @@ public class DBInitializer {
         studentRepository.save(student2t2);
         studentRepository.save(student3t2);
         studentRepository.save(student4t2);
+
+ */
 
 
     }

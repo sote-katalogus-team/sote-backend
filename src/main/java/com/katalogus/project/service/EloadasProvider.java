@@ -1,8 +1,6 @@
 package com.katalogus.project.service;
 
 import com.katalogus.project.entity.Eloadas;
-import com.katalogus.project.entity.Gyakorlat;
-import com.katalogus.project.entity.Konzultacio;
 import com.katalogus.project.entity.Student;
 import com.katalogus.project.repository.EloadasRepository;
 import com.katalogus.project.repository.StudentRepository;
@@ -32,8 +30,14 @@ public class EloadasProvider {
     }
 
     public Boolean updateEloadasById(Eloadas eloadas, Long eloadasId) {
-        eloadas.setId(eloadasId);
-        Object response = eloadasRepository.save(eloadas);
+        Optional<Eloadas> optionalEloadas = eloadasRepository.findById(eloadasId);
+        Eloadas oldEloadas = optionalEloadas.get();
+        oldEloadas.setName(eloadas.getName());
+        oldEloadas.setDate(eloadas.getDate());
+        oldEloadas.setPotlas(eloadas.getPotlas());
+        oldEloadas.setActive(eloadas.getActive());
+        oldEloadas.setAttendanceType(eloadas.getAttendanceType());
+        Object response = eloadasRepository.save(oldEloadas);
         return response.getClass().equals(Eloadas.class);
     }
 

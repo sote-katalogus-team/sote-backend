@@ -17,7 +17,7 @@ import java.util.List;
 public class Teacher extends ApplicationUser {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
