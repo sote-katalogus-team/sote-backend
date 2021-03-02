@@ -1,8 +1,10 @@
 package com.katalogus.project.service;
 
 import com.katalogus.project.entity.Student;
+import com.katalogus.project.entity.Teacher;
 import com.katalogus.project.model.ValidateDetail;
 import com.katalogus.project.repository.StudentRepository;
+import com.katalogus.project.repository.TeacherRepository;
 import com.katalogus.project.security.ApplicationUserRole;
 import com.katalogus.project.security.JwtTokenServices;
 import com.katalogus.project.utility.RandomCodeGenerator;
@@ -29,6 +31,9 @@ public class UserProvider {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private TeacherRepository teacherRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -87,6 +92,14 @@ public class UserProvider {
                     studentData = student.get();
                 }
             }
+            Teacher teacherData = null;
+            if (roles.contains("ADMIN")) {
+                Optional<Teacher> teacher = teacherRepository.findByEmail(user.getEmail());
+                if (teacher.isPresent()) {
+                    teacherData = teacher.get();
+                }
+
+            }
 
             Map<Object, Object> model = new HashMap<>();
             model.put("name", user.getName());
@@ -96,6 +109,10 @@ public class UserProvider {
             if (studentData != null) {
                 model.put("id", studentData.getId());
                 model.put("name", studentData.getName());
+            }
+            if (teacherData != null) {
+                model.put("id", teacherData.getId());
+                model.put("name", teacherData.getName());
             }
 
             return model;
