@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 
 import javax.persistence.*;
@@ -18,7 +17,7 @@ import java.util.Date;
 public class Eloadas extends BasicClass {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long turnusId;
@@ -30,10 +29,14 @@ public class Eloadas extends BasicClass {
 
     private Integer point;
 
+    private Boolean potlas;
+
+    @Builder.Default
+    @Enumerated(EnumType.STRING)
+    private AttendanceType attendanceType = AttendanceType.ALL;
+
     @Builder.Default
     private String code = null;
-
-    private Boolean potlas;
 
     @Builder.Default
     private Boolean active = true;

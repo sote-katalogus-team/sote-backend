@@ -56,7 +56,7 @@ public class StudentProvider {
             if (saveResponse.getClass().equals(Student.class)) {
                 response.clear();
                 response.put(true, "Registered " + newStudent.getName() + " successfully!");
-                emailService.sendMessage(student.getEmail(), student.getValidationCode());
+                emailService.sendNewValidationCode(student.getEmail(), student.getValidationCode());
             }
         }
         return response;

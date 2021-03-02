@@ -54,12 +54,13 @@ public class ClassesProvider {
 
     public List<StudentStatistic> getAllStatistic(Long turnusId) {
         Turnus turnus = turnusRepository.getOne(turnusId);
+        List<Student> studentList = studentRepository.findAllByTurnusId(turnusId);
         Classes classes = Classes.builder()
                 .eloadasList(eloadasRepository.findAllByTurnusId(turnusId))
                 .gyakorlatList(gyakorlatRepository.findAllByTurnusId(turnusId))
                 .konzultacioList(konzultacioRepository.findAllByTurnusId(turnusId))
                 .build();
-        return attendancePercentage.getStudentsStatistics(turnus, studentRepository.findAll(), classes);
+        return attendancePercentage.getStudentsStatistics(turnus, studentList, classes);
     }
 
     public Classes getClassesByDate(Date date) {

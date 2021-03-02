@@ -38,6 +38,16 @@ public class UserController {
         return userProvider.login(user);
     }
 
+    @PostMapping(value = "/resetpassword")
+    public ResponseEntity<String> resetPassword(@RequestBody ValidateDetail validateDetail) {
+        HashMap<Boolean, String> success = userProvider.resetPassword(validateDetail);
+        if (success.containsKey(true)) {
+            return ResponseEntity.ok(success.get(true));
+        } else {
+            return ResponseEntity.badRequest().body(success.get(false));
+        }
+    }
+
     @PostMapping("validate")
     public ResponseEntity<String> validateUser(@RequestBody ValidateDetail validateDetail){
         HashMap<Boolean, String> success = userProvider.validateUser(validateDetail);

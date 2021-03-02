@@ -53,9 +53,12 @@ public class TeacherProvider {
     public Boolean updateTeacherById(Teacher teacher, Long teacherId) {
         Optional<Teacher> optionalTeacher = teacherRepository.findById(teacherId);
         Teacher oldTeacher = optionalTeacher.get();
+        if (teacher.getPassword().equals("")) {
+            teacher.setPassword(optionalTeacher.get().getPassword());
+        }
         if (!optionalTeacher.get().getPassword().equals(teacher.getPassword())) {
             String password = teacher.getPassword();
-            teacher.setPassword(passwordEncoder.encode(password));
+            oldTeacher.setPassword(passwordEncoder.encode(password));
         }
         oldTeacher.setEmail(teacher.getEmail());
         oldTeacher.setName(teacher.getName());

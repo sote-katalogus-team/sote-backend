@@ -1,8 +1,10 @@
 package com.katalogus.project.service;
 
 import com.katalogus.project.entity.Student;
+import com.katalogus.project.entity.Teacher;
 import com.katalogus.project.model.ValidateDetail;
 import com.katalogus.project.repository.StudentRepository;
+import com.katalogus.project.repository.TeacherRepository;
 import com.katalogus.project.security.ApplicationUserRole;
 import com.katalogus.project.security.JwtTokenServices;
 import com.katalogus.project.utility.RandomCodeGenerator;
@@ -29,6 +31,9 @@ public class UserProvider {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private TeacherRepository teacherRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -65,7 +70,7 @@ public class UserProvider {
             if (saveResponse.getClass().equals(Student.class)) {
                 response.clear();
                 response.put(true, "Registered " + newStudent.getName() + " successfully!");
-                emailService.sendMessage(newStudent.getEmail(), newStudent.getValidationCode());
+                emailService.sendNewValidationCode(newStudent.getEmail(), newStudent.getValidationCode());
             }
         }
         return response;
@@ -87,6 +92,14 @@ public class UserProvider {
                     studentData = student.get();
                 }
             }
+            Teacher teacherData = null;
+            if (roles.contains("ADMIN")) {
+                Optional<Teacher> teacher = teacherRepository.findByEmail(user.getEmail());
+                if (teacher.isPresent()) {
+                    teacherData = teacher.get();
+                }
+
+            }
 
             Map<Object, Object> model = new HashMap<>();
             model.put("name", user.getName());
@@ -97,11 +110,36 @@ public class UserProvider {
                 model.put("id", studentData.getId());
                 model.put("name", studentData.getName());
             }
+            if (teacherData != null) {
+                model.put("id", teacherData.getId());
+                model.put("name", teacherData.getName());
+            }
 
             return model;
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username/password supplied");
         }
+    }
+
+    public HashMap<Boolean, String> resetPassword(ValidateDetail validateDetail) {
+        HashMap<Boolean, String> response = new HashMap<>();
+        Optional<Student> optionalStudent = studentRepository.findByEmail(validateDetail.getEmail());
+        if (optionalStudent.isEmpty()) {
+            response.put(false, "Invalid user: " + validateDetail.getEmail());
+        }
+        else {
+            Student student = optionalStudent.get();
+            if (student.getNeptunCode().toLowerCase().equals(validateDetail.getCode().toLowerCase())) {
+                String newPassword = randomCodeGenerator.codeGenerator();
+                student.setPassword(passwordEncoder.encode(newPassword));
+                Object saveResponse = studentRepository.save(student);
+                if (saveResponse.getClass().equals(Student.class)) {
+                    response.put(true, validateDetail.getEmail() + "'s password updated successfully!");
+                    emailService.sendNewPassword(student.getEmail(), newPassword);
+                }
+            }
+        }
+        return response;
     }
 
     public HashMap<Boolean, String> validateUser(ValidateDetail validateDetail) {
