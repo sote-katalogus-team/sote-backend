@@ -32,7 +32,7 @@ public class EmailService {
 
     public void sendNewPassword(String email, String password) {
         Email from = new Email(fromEmail);
-        String subject = "Validation code";
+        String subject = "New password";
         Email to = new Email(email);
         Content content = new Content("text/plain", "Dear User! \n \n Here is your new password: " + password + "\n \n Sincerely SOTE");
         sendMail(email, from, subject, to, content);

@@ -1209,10 +1209,22 @@ public class DBInitializer {
                 .konzultacioList(konzultacioListt1)
                 .roles(List.of(ApplicationUserRole.STUDENT))
                 .build();
+        Student student5t1 = Student.builder()
+            .email("bence.hausknecht@gmail.com")
+            .name("Bence Hausknecht")
+            .neptunCode("DASD32")
+            .password(passwordEncoder.encode("password"))
+            .turnusId((long) 1)
+            .gyakorlatList(gyakorlatListt1)
+            .eloadasList(eloadasListt1)
+            .konzultacioList(konzultacioListt1)
+            .roles(List.of(ApplicationUserRole.STUDENT))
+            .build();
 
         studentRepository.save(student1t1);
         studentRepository.save(student2t1);
         studentRepository.save(student3t1);
         studentRepository.save(student4t1);
+        studentRepository.save(student5t1);
     }
 }
