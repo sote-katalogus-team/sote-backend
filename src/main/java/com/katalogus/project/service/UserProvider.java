@@ -129,7 +129,7 @@ public class UserProvider {
             Student student = optionalStudent.get();
             if (student.getValidationCode().toLowerCase().equals(validateDetail.getCode().toLowerCase())) {
                 String newPassword = randomCodeGenerator.codeGenerator();
-                student.setPassword(newPassword);
+                student.setPassword(passwordEncoder.encode(newPassword));
                 studentRepository.save(student);
                 response.replace(true, validateDetail.getEmail() + "'s password updated successfully!");
             }

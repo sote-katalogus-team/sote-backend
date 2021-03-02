@@ -44,4 +44,27 @@ public class EmailService {
         }
     }
 
+    public void sendNewPassword(String email, String password) {
+        System.out.println(fromEmail);
+        Email from = new Email(fromEmail);
+        String subject = "Validation code";
+        Email to = new Email(email);
+        Content content = new Content("text/plain", "Dear New User! \n \n Here is your validation code: " + code + "\n \n Sincerely SOTE");
+        Mail mail = new Mail(from, subject, to, content);
+
+        SendGrid sg = new SendGrid(APIKEY);
+        Request request = new Request();
+        try {
+            request.setMethod(Method.POST);
+            request.setEndpoint("mail/send");
+            request.setBody(mail.build());
+            Response response = sg.api(request);
+            System.out.println(response.getStatusCode());
+            System.out.println(response.getHeaders());
+            System.out.println(response.getBody());
+        } catch (Exception e) {
+            System.out.println("Email: " + email + ". Error: " + e);
+        }
+    }
+
 }
