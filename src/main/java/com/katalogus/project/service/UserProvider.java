@@ -121,6 +121,22 @@ public class UserProvider {
         }
     }
 
+    public HashMap<Boolean, String> resetPassword(ValidateDetail validateDetail) {
+        HashMap<Boolean, String> response = new HashMap<>();
+        Optional<Student> optionalStudent = studentRepository.findByEmail(validateDetail.getEmail());
+        if (optionalStudent.isPresent()) {
+            response.put(false, "Invalid code: " + validateDetail.getCode());
+            Student student = optionalStudent.get();
+            if (student.getValidationCode().toLowerCase().equals(validateDetail.getCode().toLowerCase())) {
+                String newPassword = randomCodeGenerator.codeGenerator();
+                student.setPassword(newPassword);
+                studentRepository.save(student);
+                response.replace(true, validateDetail.getEmail() + "'s password updated successfully!");
+            }
+        }
+        return response;
+    }
+
     public HashMap<Boolean, String> validateUser(ValidateDetail validateDetail) {
         HashMap<Boolean, String> response = new HashMap<>();
         response.put(false, "No user registrated with: " + validateDetail.getEmail());
