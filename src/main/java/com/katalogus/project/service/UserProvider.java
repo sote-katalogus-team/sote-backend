@@ -70,7 +70,7 @@ public class UserProvider {
             if (saveResponse.getClass().equals(Student.class)) {
                 response.clear();
                 response.put(true, "Registered " + newStudent.getName() + " successfully!");
-                emailService.sendMessage(newStudent.getEmail(), newStudent.getValidationCode());
+                emailService.sendNewValidationCode(newStudent.getEmail(), newStudent.getValidationCode());
             }
         }
         return response;
@@ -130,8 +130,11 @@ public class UserProvider {
             if (student.getValidationCode().toLowerCase().equals(validateDetail.getCode().toLowerCase())) {
                 String newPassword = randomCodeGenerator.codeGenerator();
                 student.setPassword(passwordEncoder.encode(newPassword));
-                studentRepository.save(student);
-                response.replace(true, validateDetail.getEmail() + "'s password updated successfully!");
+                Object saveResponse = studentRepository.save(student);
+                if (saveResponse.getClass().equals(Student.class)) {
+                    response.replace(true, validateDetail.getEmail() + "'s password updated successfully!");
+                    emailService.sendNewPassword(student.getEmail(), newPassword);
+                }
             }
         }
         return response;

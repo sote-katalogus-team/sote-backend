@@ -21,35 +21,24 @@ public class EmailService {
     @Value("${spring.mail.username}")
     private String fromEmail;
 
-    public void sendMessage(String email, String code) {
+    public void sendNewValidationCode(String email, String code) {
         System.out.println(fromEmail);
         Email from = new Email(fromEmail);
         String subject = "Validation code";
         Email to = new Email(email);
         Content content = new Content("text/plain", "Dear New User! \n \n Here is your validation code: " + code + "\n \n Sincerely SOTE");
-        Mail mail = new Mail(from, subject, to, content);
-
-        SendGrid sg = new SendGrid(APIKEY);
-        Request request = new Request();
-        try {
-            request.setMethod(Method.POST);
-            request.setEndpoint("mail/send");
-            request.setBody(mail.build());
-            Response response = sg.api(request);
-            System.out.println(response.getStatusCode());
-            System.out.println(response.getHeaders());
-            System.out.println(response.getBody());
-        } catch (Exception e) {
-            System.out.println("Email: " + email + ". Error: " + e);
-        }
+        sendMail(email, from, subject, to, content);
     }
 
     public void sendNewPassword(String email, String password) {
-        System.out.println(fromEmail);
         Email from = new Email(fromEmail);
         String subject = "Validation code";
         Email to = new Email(email);
-        Content content = new Content("text/plain", "Dear New User! \n \n Here is your validation code: " + code + "\n \n Sincerely SOTE");
+        Content content = new Content("text/plain", "Dear User! \n \n Here is your new password: " + password + "\n \n Sincerely SOTE");
+        sendMail(email, from, subject, to, content);
+    }
+
+    private void sendMail(String email, Email from, String subject, Email to, Content content) {
         Mail mail = new Mail(from, subject, to, content);
 
         SendGrid sg = new SendGrid(APIKEY);
