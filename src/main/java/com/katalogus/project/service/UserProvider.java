@@ -109,6 +109,8 @@ public class UserProvider {
             if (studentData != null) {
                 model.put("id", studentData.getId());
                 model.put("name", studentData.getName());
+                model.put("turnus_id", studentData.getTurnusId());
+                model.put("neptun_code", studentData.getNeptunCode());
             }
             if (teacherData != null) {
                 model.put("id", teacherData.getId());
