@@ -57,15 +57,75 @@ public class StudentController {
         }
     }
 
-    @PutMapping("/{student_id}/update")
-    public ResponseEntity<String> updateStudentById(@RequestBody Student student, @PathVariable("student_id") Long studentId) {
-        Boolean successful = studentProvider.updateStudentById(student, studentId);
+    @PutMapping("/{student_id}/name/update")
+    public ResponseEntity<String> updateStudentsNameById(@RequestBody HashMap<String, String> nameMap, @PathVariable("student_id") Long studentId) {
+        Boolean successful = false;
+        if (nameMap.get("name") != null) {
+            String name = nameMap.get("name");
+            successful = studentProvider.updateStudentsNameById(name, studentId);
+
+        }
+
         if (successful) {
             return ResponseEntity.ok("Student updated successfully");
         } else {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @PutMapping("/{student_id}/email/update")
+    public ResponseEntity<String> updateStudentsEmailById(@RequestBody HashMap<String, String> emailMap, @PathVariable("student_id") Long studentId) {
+        Boolean successful = false;
+
+        if (emailMap.get("email") != null) {
+            successful = studentProvider.updateStudentsEmailById(emailMap.get("email"), studentId);
+        }
+        if (successful) {
+            return ResponseEntity.ok("Student updated successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PutMapping("/{student_id}/turnus/update")
+    public ResponseEntity<String> updateStudentsTurnusById(@RequestBody HashMap<String, String> turnusMap, @PathVariable("student_id") Long studentId) {
+        Boolean successful = false;
+        if (turnusMap.get("turnusId") != null) {
+            successful = studentProvider.updateStudentsTurnusById(Long.parseLong(turnusMap.get("turnusId")), studentId);
+        }
+        if (successful) {
+            return ResponseEntity.ok("Student updated successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    @PutMapping("/{student_id}/password/update")
+    public ResponseEntity<String> updateStudentsPasswordById(@RequestBody HashMap<String, String> passwordMap, @PathVariable("student_id") Long studentId) {
+        Boolean successful = false;
+        if (passwordMap.get("password") != null) {
+            successful = studentProvider.updateStudentsPasswordById(passwordMap.get("password"), studentId);
+        }
+        if (successful) {
+            return ResponseEntity.ok("Student updated successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PutMapping("/{student_id}/neptunCode/update")
+    public ResponseEntity<String> updateStudentsNeptunCodeById(@RequestBody HashMap<String, String> neptunCodeMap, @PathVariable("student_id") Long studentId) {
+        Boolean successful = false;
+        if (neptunCodeMap.get("neptunCode") != null) {
+            successful = studentProvider.updateStudentsNeptunCodeById(neptunCodeMap.get("neptunCode"), studentId);
+        }
+
+        if (successful) {
+            return ResponseEntity.ok("Student updated successfully");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @DeleteMapping("/{student_id}/delete")
@@ -112,4 +172,6 @@ public class StudentController {
         ClassInfo classInfo = new ClassInfo(type, id);
         return studentProvider.countStudentAtClass(classInfo);
     }
+
+
 }
