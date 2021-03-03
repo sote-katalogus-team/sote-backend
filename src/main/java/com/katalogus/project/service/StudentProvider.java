@@ -69,6 +69,9 @@ public class StudentProvider {
             String password = student.getPassword();
             oldStudent.setPassword(passwordEncoder.encode(password));
         }
+        if (student.getPassword().equals("")) {
+            student.setPassword(optionalStudent.get().getPassword());
+        }
         oldStudent.setName(student.getName());
         oldStudent.setEmail(student.getEmail());
         oldStudent.setNeptunCode(student.getNeptunCode());
