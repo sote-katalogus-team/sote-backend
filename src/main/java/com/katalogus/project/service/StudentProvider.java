@@ -5,6 +5,7 @@ import com.katalogus.project.model.*;
 import com.katalogus.project.repository.StudentRepository;
 import com.katalogus.project.utility.AttendancePercentage;
 import com.katalogus.project.utility.RandomCodeGenerator;
+import org.hibernate.query.criteria.internal.predicate.BooleanExpressionPredicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -78,6 +79,76 @@ public class StudentProvider {
         oldStudent.setTurnusId(student.getTurnusId());
         Object response = studentRepository.save(oldStudent);
         return response.getClass().equals(Student.class);
+    }
+    public Boolean updateStudentsNameById(String name, Long studentId) {
+        Optional<Student> optionalStudent = studentRepository.findById(studentId);
+        if (optionalStudent.isPresent()) {
+            Student oldStudent = optionalStudent.get();
+            oldStudent.setName(name);
+            Object response = studentRepository.save(oldStudent);
+            return response.getClass().equals(Student.class);
+        }
+        else {
+            return false;
+        }
+    }
+    public Boolean updateStudentsEmailById(String email, Long studentId) {
+        Optional<Student> optionalStudent = studentRepository.findById(studentId);
+        if (optionalStudent.isPresent()) {
+            if (isEmailUnique(email)) {
+                Student oldStudent = optionalStudent.get();
+                oldStudent.setEmail(email);
+                Object response = studentRepository.save(oldStudent);
+                return response.getClass().equals(Student.class);
+            } else{
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+    public Boolean updateStudentsPasswordById(String password, Long studentId) {
+        Optional<Student> optionalStudent = studentRepository.findById(studentId);
+        if (optionalStudent.isPresent()) {
+            Student oldStudent = optionalStudent.get();
+            oldStudent.setPassword(passwordEncoder.encode(password));
+            Object response = studentRepository.save(oldStudent);
+            return response.getClass().equals(Student.class);
+        }
+        else {
+            return false;
+        }
+    }
+    public Boolean updateStudentsNeptunCodeById(String neptunCode, Long studentId) {
+        Optional<Student> optionalStudent = studentRepository.findById(studentId);
+        if (optionalStudent.isPresent()) {
+            if (isNeptunCodelUnique(neptunCode)) {
+                Student oldStudent = optionalStudent.get();
+                oldStudent.setNeptunCode(neptunCode);
+                Object response = studentRepository.save(oldStudent);
+                return response.getClass().equals(Student.class);
+            }
+            else {
+                return false;
+            }
+
+        }
+        else {
+            return false;
+        }
+    }
+    public Boolean updateStudentsTurnusById(Long turnusId, Long studentId) {
+        Optional<Student> optionalStudent = studentRepository.findById(studentId);
+        if (optionalStudent.isPresent()) {
+            Student oldStudent = optionalStudent.get();
+            oldStudent.setTurnusId(turnusId);
+            Object response = studentRepository.save(oldStudent);
+            return response.getClass().equals(Student.class);
+        }
+        else {
+            return false;
+        }
     }
 
     public Boolean deleteStudentById(Long studentId) {
@@ -212,5 +283,25 @@ public class StudentProvider {
 
     public List<Student> getAllStudentByTurnusId(Long turnusId) {
         return studentRepository.findAllByTurnusId(turnusId);
+    }
+
+    private Boolean isEmailUnique (String email) {
+        List<Student> allStudent = studentRepository.findAll();
+        for (Student student: allStudent)  {
+            if (student.getEmail().equals(email)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private Boolean isNeptunCodelUnique (String neptunCode) {
+        System.out.println(neptunCode + "  NPETUNCODE");
+        List<Student> allStudent = studentRepository.findAll();
+        for (Student student: allStudent)  {
+            if (student.getNeptunCode().equalsIgnoreCase(neptunCode)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
