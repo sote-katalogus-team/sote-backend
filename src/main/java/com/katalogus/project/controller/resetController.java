@@ -1,33 +1,20 @@
-package com.katalogus.project.service;
+package com.katalogus.project.controller;
 
-import com.katalogus.project.entity.*;
-import com.katalogus.project.repository.*;
+
+import com.katalogus.project.entity.Teacher;
+import com.katalogus.project.repository.TeacherRepository;
 import com.katalogus.project.security.ApplicationUserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.PostConstruct;
-import java.util.Date;
 import java.util.List;
 
-@Component
-public class DBInitializer {
-
-    @Autowired
-    TurnusRepository turnusRepository;
-
-    @Autowired
-    EloadasRepository eloadasRepository;
-
-    @Autowired
-    GyakorlatRepository gyakorlatRepository;
-
-    @Autowired
-    KonzultacioRepository konzultacioRepository;
-
-    @Autowired
-    StudentRepository studentRepository;
+@RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+public class resetController {
 
     @Autowired
     TeacherRepository teacherRepository;
@@ -35,8 +22,9 @@ public class DBInitializer {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostConstruct
-    public void postConstruct() {
+
+    @GetMapping("/reset/add-base-data")
+    public String notAGoodThing() {
         teacherRepository.save(Teacher.builder()
                 .email("tanar1@sote.hu")
                 .name("tanar1")
@@ -55,5 +43,9 @@ public class DBInitializer {
                 .password(passwordEncoder.encode("sote123"))
                 .roles(List.of(ApplicationUserRole.TEACHER, ApplicationUserRole.ADMIN))
                 .build());
+
+
+
+        return "success";
     }
 }
