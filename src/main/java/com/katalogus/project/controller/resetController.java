@@ -2,6 +2,7 @@ package com.katalogus.project.controller;
 
 
 import com.katalogus.project.entity.Teacher;
+import com.katalogus.project.repository.StudentRepository;
 import com.katalogus.project.repository.TeacherRepository;
 import com.katalogus.project.security.ApplicationUserRole;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class resetController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private StudentRepository studentRepository;
 
 
     @GetMapping("/reset/add-base-data")
@@ -55,4 +59,11 @@ public class resetController {
 
         return "success";
     }
+
+    @GetMapping("/remove/maryn")
+    public String removeMAryn() {
+        studentRepository.deleteById(1L);
+        return "success";
+    }
+
 }
