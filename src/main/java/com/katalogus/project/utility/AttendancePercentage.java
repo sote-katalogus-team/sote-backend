@@ -21,9 +21,9 @@ public class AttendancePercentage {
         int pointValueOfPracticeAtTheSchool = classes.getGyakorlatList().stream().filter(a -> (!a.getPotlas() && a.getCode() != null) && (a.getAttendanceType().equals(AttendanceType.ALL) || a.getAttendanceType().equals(AttendanceType.GROUP_A))).mapToInt(b -> b.getPoint()).sum();
         int pointValueOfConsultationAtTheSchool = classes.getKonzultacioList().stream().filter(a -> (!a.getPotlas() && a.getCode() != null) && (a.getAttendanceType().equals(AttendanceType.ALL) || a.getAttendanceType().equals(AttendanceType.GROUP_A))).mapToInt(b -> b.getPoint()).sum();
 
-        int pointValueOfLectureAtTheStudent = student.getEloadasList().stream().mapToInt(b -> b.getPoint()).sum();
-        int pointValueOfPracticeAtTheStudent = student.getGyakorlatList().stream().mapToInt(b -> b.getPoint()).sum();
-        int pointValueOfConsultationAtTheStudent = student.getKonzultacioList().stream().mapToInt(b -> b.getPoint()).sum();
+        int pointValueOfLectureAtTheStudent = student.getEloadasListByTurnusId(student.getTurnusId()).stream().mapToInt(b -> b.getPoint()).sum();
+        int pointValueOfPracticeAtTheStudent = student.getGyakorlatListByTurnusId(student.getTurnusId()).stream().mapToInt(b -> b.getPoint()).sum();
+        int pointValueOfConsultationAtTheStudent = student.getKonzultacioListByTurnusId(student.getTurnusId()).stream().mapToInt(b -> b.getPoint()).sum();
 
         percentages.put("lecture", (int) ((pointValueOfLectureAtTheStudent / (double) pointValueOfLectureAtTheSchool) * 100));
         percentages.put("practice", (int) ((pointValueOfPracticeAtTheStudent / (double) pointValueOfPracticeAtTheSchool) * 100));

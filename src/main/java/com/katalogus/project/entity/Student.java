@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -59,5 +60,46 @@ public class Student extends ApplicationUser {
             konzultacioList.add((Konzultacio) currentClass);
         }
     }
+
+
+    public List<Gyakorlat> getGyakorlatListByTurnusId(Long turnusId) {
+        List<Gyakorlat> finalGyakorlatList = new ArrayList<>();
+
+        gyakorlatList.forEach(gyakorlat -> {
+            if (gyakorlat.getTurnusId().equals(turnusId)) {
+                finalGyakorlatList.add(gyakorlat);
+            }
+        });
+
+        return finalGyakorlatList;
+    }
+
+
+    public List<Konzultacio> getKonzultacioListByTurnusId(Long turnusId) {
+        List<Konzultacio> finalKonzultacioList = new ArrayList<>();
+
+        konzultacioList.forEach(konzultacio -> {
+            if (konzultacio.getTurnusId().equals(turnusId)) {
+                finalKonzultacioList.add(konzultacio);
+            }
+        });
+
+        return finalKonzultacioList;
+    }
+
+
+    public List<Eloadas> getEloadasListByTurnusId(Long turnusId) {
+        List<Eloadas> finalEloadasList = new ArrayList<>();
+
+        eloadasList.forEach(eloadas -> {
+            if (eloadas.getTurnusId().equals(turnusId)) {
+                finalEloadasList.add(eloadas);
+            }
+        });
+
+        return finalEloadasList;
+    }
+
+
 
 }
