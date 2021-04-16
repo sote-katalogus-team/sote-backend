@@ -25,26 +25,33 @@ public class resetController {
 
     @GetMapping("/reset/add-base-data")
     public String notAGoodThing() {
-        teacherRepository.save(Teacher.builder()
-                .email("tanar1@sote.hu")
-                .name("tanar1")
-                .password(passwordEncoder.encode("sote123"))
-                .roles(List.of(ApplicationUserRole.TEACHER))
-                .build());
-        teacherRepository.save(Teacher.builder()
-                .email("tanar2@sote.hu")
-                .name("tanar2")
-                .password(passwordEncoder.encode("sote123"))
-                .roles(List.of(ApplicationUserRole.TEACHER))
-                .build());
-        teacherRepository.save(Teacher.builder()
-                .email("katalogus@gyermekklinika.com")
-                .name("admin")
-                .password(passwordEncoder.encode("sote123"))
-                .roles(List.of(ApplicationUserRole.TEACHER, ApplicationUserRole.ADMIN))
-                .build());
+        List<Teacher> all = teacherRepository.findAll();
+
+        all.forEach(teacher -> {
+            teacherRepository.deleteById(teacher.getId());
+        });
 
 
+        if (teacherRepository.count() == 0) {
+            teacherRepository.save(Teacher.builder()
+                    .email("tanar1@sote.hu")
+                    .name("tanar1")
+                    .password(passwordEncoder.encode("sote123"))
+                    .roles(List.of(ApplicationUserRole.TEACHER))
+                    .build());
+            teacherRepository.save(Teacher.builder()
+                    .email("tanar2@sote.hu")
+                    .name("tanar2")
+                    .password(passwordEncoder.encode("sote123"))
+                    .roles(List.of(ApplicationUserRole.TEACHER))
+                    .build());
+            teacherRepository.save(Teacher.builder()
+                    .email("katalogus@gyermekklinika.com")
+                    .name("admin")
+                    .password(passwordEncoder.encode("sote123"))
+                    .roles(List.of(ApplicationUserRole.TEACHER, ApplicationUserRole.ADMIN))
+                    .build());
+        }
 
         return "success";
     }
