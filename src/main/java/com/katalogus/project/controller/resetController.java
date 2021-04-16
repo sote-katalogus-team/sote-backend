@@ -59,11 +59,4 @@ public class resetController {
 
         return "success";
     }
-
-    @GetMapping("/remove/maryn")
-    public String removeMAryn() {
-        studentRepository.deleteById(1L);
-        return "success";
-    }
-
 }
